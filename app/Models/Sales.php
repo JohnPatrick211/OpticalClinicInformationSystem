@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use DB;
+
+class Sales extends Model
+{
+    use HasFactory;
+    protected $table = 'tbl_sales';
+
+    protected $fillable = [
+        'invoice_no',
+        'product_code',
+        'qty',
+        'amount',
+        'payment_method',
+        'order_from',
+        'status'
+    ];
+
+    public function readSales($date_from, $date_to, $order_from, $payment_method){
+        return DB::table('tbl_sales as S')
+        ->select('S.*', 'P.*', 'S.qty', 'S.id as id',
+                'U.name as unit', 
+                DB::raw('S.created_at as date_time'))
+        ->leftJoin('tbl_product as P', 'P.id', '=', 'S.product_code')
+        ->where('S.status', 1)
+        ->where('S.order_from', $order_from)
+        ->where('S.payment_method', $payment_method)
+        ->whereBetween(DB::raw('DATE(S.created_at)'), [$date_from, $date_to])
+        ->orderBy   ('S.invoice_no', 'desc')
+        ->get();
+    }
+
+    public function computeTotalSales($date_from, $date_to, $salesreportbranch){
+        if($salesreportbranch == 'All Branches')
+        {
+            return DB::table('tbl_sales')
+            ->where('status', 1)
+            ->whereBetween(DB::raw('DATE(created_at)'), [$date_from, $date_to])
+            ->sum('amount');
+        }
+        else{
+            return DB::table('tbl_sales')
+            ->where('status', 1)
+            ->where('branch_id',$salesreportbranch)
+            ->whereBetween(DB::raw('DATE(created_at)'), [$date_from, $date_to])
+            ->sum('amount');
+        }
+    }
+}
