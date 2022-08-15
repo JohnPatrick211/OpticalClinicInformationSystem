@@ -72,7 +72,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseApproval"
                     aria-expanded="true" aria-controls="collapseApproval">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Scheduling</span>
+                    <span>Appointment</span>
                 </a>
                 <div id="collapseApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -366,6 +366,7 @@
     <script src="js/archive.js"></script>
     <script src="js/region.js"></script>
     <script src="js/patienthistory.js"></script>
+    <script src="js/patientprescription.js"></script>
     <script src="js/login.js"></script>
     <script src="js/appointment.js"></script>
 

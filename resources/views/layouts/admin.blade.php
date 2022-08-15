@@ -55,7 +55,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAppointmentApproval"
                     aria-expanded="true" aria-controls="collapseApproval">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Scheduling</span>
+                    <span>Appointment</span>
                 </a>
                 <div id="collapseAppointmentApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">

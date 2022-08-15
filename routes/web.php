@@ -173,6 +173,11 @@ Route::get('secretary-dashboard', [App\Http\Controllers\LoginController::class, 
 Route::get('patient-dashboard', [App\Http\Controllers\LoginController::class, 'patient'])->middleware('Islogged');
 Route::get('editprofile',[App\Http\Controllers\RegisterController::class, 'editprofile'])->middleware('Islogged');
 Route::post('saveeditprofile',[App\Http\Controllers\RegisterController::class, 'saveeditprofile'])->middleware('Islogged');
+//PATIENT PRESCRIPTION
+Route::get('patient-prescription', [App\Http\Controllers\PatientPrescriptionController::class, 'PrescriptionView'])->middleware('Islogged');
+Route::get('patientprescription-data',[App\Http\Controllers\PatientPrescriptionController::class, 'PatientPrescriptionData'])->middleware('Islogged');
+Route::get('/patientprescription/getpatientprescriptioninfo/{id}', [App\Http\Controllers\PatientPrescriptionController::class, 'getPatientPrescriptionData']);
+Route::get('patientprescription/preview-prescription/{doctorname}/{branchname}/{date}/{time}/{patient_id}/{prescription}', [App\Http\Controllers\PatientPrescriptionController::class, 'patientprescriptionpreview']);
 //PATIENT HISTORY
 Route::get('patient-history', [App\Http\Controllers\PatientHistoryController::class, 'HistoryView'])->middleware('Islogged');
 Route::get('patienthistory-data',[App\Http\Controllers\PatientHistoryController::class, 'PatientHistoryData'])->middleware('Islogged');

@@ -53,7 +53,7 @@ $(document).ready(function(){
 
           columnDefs: [
             {
-            targets: [5],
+            targets: [6],
             orderable: true,
             changeLength: true,
             className: 'dt-body-center',
@@ -62,7 +62,7 @@ $(document).ready(function(){
             }
           },
           {
-            visible: false, targets: [6],
+            visible: false, targets: [7],
           }],
   
             columns:[
@@ -158,7 +158,7 @@ $(document).ready(function(){
           
           columnDefs: [
             {
-            targets: [5],
+            targets: [6],
             orderable: true,
             changeLength: true,
             className: 'dt-body-center',
@@ -167,7 +167,7 @@ $(document).ready(function(){
             }
           },
           {
-            visible: false, targets: [6],
+            visible: false, targets: [7],
           }],
   
             columns:[

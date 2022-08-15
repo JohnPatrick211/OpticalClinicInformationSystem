@@ -160,16 +160,16 @@ class AppointmentListController extends Controller
             'status' => 'Completed',
         ]);
 
-        // DB::table('tbl_user')
-        //     ->select('tbl_user.email')
-        //     ->where('tbl_user.id',$patient_id)
+        // DB::table('tbl_branch')
+        //     ->select('tbl_branch.id')
+        //     ->where('tbl_branch.branchname',$patient_id)
         //     ->get();
 
         DB::table('tbl_prescription')->insert([
             'patient_id' => $patient_id,
             'prescription' => $prescription,
             'doctor_name' => $doctorname,
-            'branchname' => $branchname,
+            'branchname' => $branch_id,
             'date' => $date,
             'time' => $time,
         ]);

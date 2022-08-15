@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\base;
+use App\Models\MailVerify;
+use Mail; 
 
 use Illuminate\Http\Request;
 
@@ -46,6 +48,12 @@ class RegisterController extends Controller
         $patient_acc->save();
 
         Session::forget('otp');
+
+        $message =  "<p>From: " . "Optical Clinic"  . "</p>" .
+                    "<p>Patient Name: " .  $fullname  . "</p>" .
+                    "<p>Message: " . "Good Day, Your Registration Has been sent to the approval list, Please Wait for the email result for the verification of your credentials" . "</p>";
+
+        Mail::to($email)->send(new MailVerify($message));
         
         return redirect('login')->send();         
       

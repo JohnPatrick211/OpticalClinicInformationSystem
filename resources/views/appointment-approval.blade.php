@@ -83,7 +83,7 @@
                                             <th>Branch</th>
                                             <th>Appointment Date</th>
                                             <th>Appointment Day</th>
-                                            <th>Available Time</th>
+                                            <th>Appointment Time</th>
                                             <th>End Time</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -111,7 +111,7 @@
                                             <th>Branch</th>
                                             <th>Appointment Date</th>
                                             <th>Appointment Day</th>
-                                            <th>Available Time</th>
+                                            <th>Appointment Time</th>
                                             <th>End Time</th>
                                             <th>Status</th>
                                             <th>Action</th>

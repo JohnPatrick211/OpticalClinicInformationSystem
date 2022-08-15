@@ -380,9 +380,13 @@ function on_Click () {
 
     $(document).on('click', '.btn-load-more', function(){
         $(this).html('<i class="fas fa-spinner fa-spin"></i>');
+        let type = $('#type').val()
+        let billingbranch = $('#billingbranch').val()
+        console.log(type);
+        console.log(billingbranch);
 
         $.ajax({
-            url: '/customer/product',
+            url: '/customer/product/' +type +"/"+ billingbranch,
             type: 'GET',
             
             success:function(data){
@@ -394,9 +398,19 @@ function on_Click () {
                     var enable_button = false;
                     var old_last_key = last_key;
                     last_key = old_last_key + 6;
-                    for (var i = old_last_key; i < last_key; i++) {
-                        if (typeof data_storage[i] != 'undefined') 
+                    if(type == 'Product')
+                    {
+                        for (var i = old_last_key; i < last_key; i++) {
+                            if (typeof data_storage[i] != 'undefined') 
                             html += getItems(data_storage[i]);
+                        }
+                    }
+                    if(type == 'Service')
+                    {
+                        for (var i = old_last_key; i < last_key; i++) {
+                            if (typeof data_storage[i] != 'undefined') 
+                            html += getService(data_storage[i]);
+                        }
                     }
 
                     if (data_storage.length >= last_key) {

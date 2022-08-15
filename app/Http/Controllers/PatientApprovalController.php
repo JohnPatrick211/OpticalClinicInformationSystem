@@ -135,7 +135,7 @@ class PatientApprovalController extends Controller
         Mail::to($email)->send(new MailVerify($message));
         $getname = Session::get('Name');
             $getusertype = Session::get('User-Type');
-            base::recordAction( $getname, $getusertype,'Patient Approval', 'Patient Approved, Patient Name'.$name);
+            base::recordAction( $getname, $getusertype,'Patient Approval', 'Patient Approved, Patient Name'.$users->name);
 
 
     }
@@ -151,6 +151,6 @@ class PatientApprovalController extends Controller
         Mail::to($email)->send(new MailVerify($message));
         $getname = Session::get('Name');
             $getusertype = Session::get('User-Type');
-            base::recordAction( $getname, $getusertype,'Patient Approval', 'Patient Rejected, Patient Name'.$name);
+            base::recordAction( $getname, $getusertype,'Patient Approval', 'Patient Rejected');
     }
 }
