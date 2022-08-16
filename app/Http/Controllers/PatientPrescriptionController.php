@@ -99,6 +99,7 @@ class PatientPrescriptionController extends Controller
          .p-name{
              text-align:center;
              margin-bottom:5px;
+             font-size: 23px;
          }
 
          .p-name2{
