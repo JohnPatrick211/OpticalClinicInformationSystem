@@ -215,8 +215,8 @@ $(document).ready(function()
             {
                 $('#edit_user_type').val('Doctor'); 
                 console.log(user_type);
-                var test = $('#especialization').val('');
-                $('.ehide-specialization').css('display', 'inline');
+                //var test = $('#especialization').val('');
+                // $('.ehide-specialization').css('display', 'inline');
                 console.log(test);
                 getUserDetails(id);
             }
@@ -224,24 +224,24 @@ $(document).ready(function()
                 $('#edit_user_type').val('Secretary');
                 console.log(user_type);
                 var test = $('#especialization').val('none');
-                $('.ehide-specialization').css('display', 'none');
-                console.log(test);
+                //$('.ehide-specialization').css('display', 'none');
+               console.log(test);
                 getUserDetails(id);
             }
             else if(user_type == 'Staff'){
               $('#edit_user_type').val('Staff');
               console.log(user_type);
               var test = $('#especialization').val('none');
-              $('.ehide-specialization').css('display', 'none');
-              console.log(test);
+             $('.ehide-specialization').css('display', 'none');
+             console.log(test);
               getUserDetails(id);
           }
             else if(user_type == 'System Admin'){
               $('#edit_user_type').val('System Admin');
               console.log(user_type);
               var test = $('#especialization').val('none');
-              $('.ehide-specialization').css('display', 'none');
-              console.log(test);
+             $('.ehide-specialization').css('display', 'none');
+             console.log(test);
               getUserDetails(id);
           }
         });
@@ -265,7 +265,13 @@ $(document).ready(function()
                     $('#ebirthdate').val(data[0].birthdate);
                     $('#egender').val(data[0].gender);
                     $('#ecivilstatus').val(data[0].civilstatus);
-                    $('#especialization').val(data[0].specialty);
+                    if(data[0].user_role == 'Doctor')
+                    {
+                      $('#especialization').val(data[0].specialty);
+                    }
+                    else{
+                      $('#especialization').val('none');
+                    }
                    // $('#ebranch').val(data[0].branchname);
                 }
                });
