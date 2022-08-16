@@ -215,8 +215,8 @@ $(document).ready(function()
             {
                 $('#edit_user_type').val('Doctor'); 
                 console.log(user_type);
-                //var test = $('#especialization').val('');
-                // $('.ehide-specialization').css('display', 'inline');
+                var test = $('#especialization').val('');
+                $('.ehide-specialization').css('display', 'inline');
                 console.log(test);
                 getUserDetails(id);
             }
@@ -224,7 +224,7 @@ $(document).ready(function()
                 $('#edit_user_type').val('Secretary');
                 console.log(user_type);
                 var test = $('#especialization').val('none');
-                //$('.ehide-specialization').css('display', 'none');
+                $('.ehide-specialization').css('display', 'none');
                console.log(test);
                 getUserDetails(id);
             }

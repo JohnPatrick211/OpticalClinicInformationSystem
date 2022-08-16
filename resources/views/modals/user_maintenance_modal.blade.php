@@ -172,7 +172,7 @@
                 <input type="text" class="form-control" name="name" id="ename" required>
               </div>
 
-              <div class="ehide-specialization col-12 mb-2" >
+              <div class="ehide-specialization col-12 mb-2" style="display: none">
                   <label class="col-form-label">Specialization</label>
                   <input type="text" class="form-control" name="specialization" id="especialization" required>
                   <div class="empty-reject-specialization mr-auto ml-3" style="display: none">
