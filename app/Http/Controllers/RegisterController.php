@@ -78,7 +78,8 @@ class RegisterController extends Controller
 
     public function sendOTP(Request $request){
         $phone_no =  $request->input('phone_no');
-        $basic  = new \Vonage\Client\Credentials\Basic("534ad896", "2qI43TOV5XsNSPd4");
+        $basic  = new \Vonage\Client\Credentials\Basic("9898a37c", "RWnDn3sbvaz1YQ5J");
+        //$basic  = new \Vonage\Client\Credentials\Basic("534ad896", "2qI43TOV5XsNSPd4");
         $client = new \Vonage\Client($basic);
 
         $otp = rand(1000,9999);
