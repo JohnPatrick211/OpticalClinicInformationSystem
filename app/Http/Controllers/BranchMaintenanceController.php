@@ -70,6 +70,7 @@ class BranchMaintenanceController extends Controller
                     ['tbl_branch.id', '=', 'tbl_user.branch_id'],
                     ])
                     ->where('tbl_branch.id', $id)
+                    ->where('tbl_user.archive_status', 'no')
                     ->get();
         if($users->isEmpty())
         {
@@ -101,6 +102,7 @@ class BranchMaintenanceController extends Controller
                     ['tbl_branch.id', '=', 'tbl_user.branch_id'],
                     ])
                     ->where('tbl_branch.id', $id)
+                    ->where('tbl_user.archive_status', 'no')
                     ->get();
         
         if($users->isEmpty())
