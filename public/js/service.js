@@ -5,9 +5,18 @@ $(document).ready(function(){
         }
       });
 
-      fetchService();
+      load_data();
 
-      function fetchService(){
+      function load_data()  {
+          let mainservicebranch = $('#mainservicebranch').val()
+          console.log(mainservicebranch);
+          fetchService(mainservicebranch);
+          fetchDoctorService(mainservicebranch);
+          fetchSecretaryService(mainservicebranch);
+
+      }
+
+      function fetchService(mainservicebranch){
 
       var tbl_for_validation = $('#datatable-service').DataTable({
 
@@ -16,6 +25,9 @@ $(document).ready(function(){
 
           ajax:{
            url: "service-data",
+           data:{
+            mainservicebranch:mainservicebranch
+            },
           },
 
           columnDefs: [{
@@ -81,6 +93,170 @@ $(document).ready(function(){
    });
 
       }
+
+      function fetchDoctorService(mainservicebranch){
+
+        var tbl_for_validation = $('#datatable-doctor-service').DataTable({
+  
+            processing: true,
+            serverSide: true,
+  
+            ajax:{
+             url: "doctor-service-data",
+             data:{
+              mainservicebranch:mainservicebranch
+              },
+            },
+  
+            columnDefs: [{
+              targets: 0,
+              searchable: false,
+              orderable: true,
+              changeLength: true,
+              className: 'dt-body-center',
+              render: function (data, type, full, meta){
+                  return 'S-'+data;
+              }
+           },
+           {
+            targets: [3,4],
+            orderable: true,
+            changeLength: true,
+            className: 'dt-body-center',
+            render: function (data, type, full, meta){
+                return '₱'+data;
+            }
+         }],
+  
+        //    columnDefs: [{
+        //     targets: [2,3],
+        //     orderable: true,
+        //     changeLength: true,
+        //     className: 'dt-body-center',
+        //     render: function (data, type, full, meta){
+        //         return '₱'+data;
+        //     }
+        //  }],
+  
+            columns:[
+              {data: 'id', name: 'id'},
+              {data: 'servicename', name: 'servicename'},
+              {data: 'branchname', name: 'branchname'},
+              {data: 'orig_price', name: 'orig_price'},
+              {data: 'selling_price', name: 'selling_price'},
+              // { data: 'BIR_file', name: 'BIR_file',
+              //         render: function( data, type, full, meta ) {
+              //             return "<img src=\"/storage/BIR/" + data + "\" height=\"50\"id=\"trigger\"/>";
+              //           // return '<div align="center"><a href="/storage/jobposts/" """><img src="{{ asset("siteicons/Info_Box_Blue.png") }}" id="trigger" onclick="ShowSlider(0)"></a></div>';
+              //         }
+              //     },
+              {data: 'action', name: 'action', orderable:false}
+            ],
+             order: [[1, 'asc']],
+          });
+  
+  
+     $('#select-all').on('click', function(){
+      var rows = tbl_for_validation.rows({ 'search': 'applied' }).nodes();
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+      });
+  
+      $('#for-validation-table tbody').on('change', 'input[type="checkbox"]', function(){
+        if(!this.checked){
+           var el = $('#select-all').get(0);
+           if(el && el.checked && ('indeterminate' in el)){
+              el.indeterminate = true;
+           }
+        }
+     });
+  
+        }
+
+        function fetchSecretaryService(mainservicebranch){
+
+          var tbl_for_validation = $('#datatable-secretary-service').DataTable({
+    
+              processing: true,
+              serverSide: true,
+    
+              ajax:{
+               url: "secretary-service-data",
+               data:{
+                mainservicebranch:mainservicebranch
+                },
+              },
+    
+              columnDefs: [{
+                targets: 0,
+                searchable: false,
+                orderable: true,
+                changeLength: true,
+                className: 'dt-body-center',
+                render: function (data, type, full, meta){
+                    return 'S-'+data;
+                }
+             },
+             {
+              targets: [3,4],
+              orderable: true,
+              changeLength: true,
+              className: 'dt-body-center',
+              render: function (data, type, full, meta){
+                  return '₱'+data;
+              }
+           }],
+    
+          //    columnDefs: [{
+          //     targets: [2,3],
+          //     orderable: true,
+          //     changeLength: true,
+          //     className: 'dt-body-center',
+          //     render: function (data, type, full, meta){
+          //         return '₱'+data;
+          //     }
+          //  }],
+    
+              columns:[
+                {data: 'id', name: 'id'},
+                {data: 'servicename', name: 'servicename'},
+                {data: 'branchname', name: 'branchname'},
+                {data: 'orig_price', name: 'orig_price'},
+                {data: 'selling_price', name: 'selling_price'},
+                // { data: 'BIR_file', name: 'BIR_file',
+                //         render: function( data, type, full, meta ) {
+                //             return "<img src=\"/storage/BIR/" + data + "\" height=\"50\"id=\"trigger\"/>";
+                //           // return '<div align="center"><a href="/storage/jobposts/" """><img src="{{ asset("siteicons/Info_Box_Blue.png") }}" id="trigger" onclick="ShowSlider(0)"></a></div>';
+                //         }
+                //     },
+                {data: 'action', name: 'action', orderable:false}
+              ],
+               order: [[1, 'asc']],
+            });
+    
+    
+       $('#select-all').on('click', function(){
+        var rows = tbl_for_validation.rows({ 'search': 'applied' }).nodes();
+        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+        });
+    
+        $('#for-validation-table tbody').on('change', 'input[type="checkbox"]', function(){
+          if(!this.checked){
+             var el = $('#select-all').get(0);
+             if(el && el.checked && ('indeterminate' in el)){
+                el.indeterminate = true;
+             }
+          }
+       });
+    
+          }
+
+      $('#mainservicebranch').change(function()
+      {
+          let mainservicebranch = $('#mainservicebranch').val()
+          console.log(mainservicebranch);
+          $('#datatable-service').DataTable().destroy();
+          fetchService(mainservicebranch);
+      });
 
 
       $(document).on('click', '#btn-edit-service', function(){
@@ -166,6 +342,8 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn_service_delete').text('Yes');
               $('#datatable-service').DataTable().ajax.reload();
+              $('#datatable-doctor-service').DataTable().ajax.reload();
+              $('#datatable-secretary-service').DataTable().ajax.reload();
               setTimeout(function(){
               $('.existservice-success').fadeOut('slow');
             },2000);
@@ -179,6 +357,8 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn_service_delete').text('Yes');
               $('#datatable-service').DataTable().ajax.reload();
+              $('#datatable-doctor-service').DataTable().ajax.reload();
+              $('#datatable-secretary-service').DataTable().ajax.reload();
               setTimeout(function(){
               $('.delete-success').fadeOut('slow');
               $('#proconfirmModal').modal('toggle');
@@ -216,6 +396,8 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn-edit-save-service').text('Edit');
               $('#datatable-service').DataTable().ajax.reload();
+              $('#datatable-doctor-service').DataTable().ajax.reload();
+              $('#datatable-secretary-service').DataTable().ajax.reload();
               setTimeout(function(){
               $('.existservice-success').fadeOut('slow');
             },2000);
@@ -229,9 +411,13 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn-edit-save-service').text('Edit');
               $('#datatable-service').DataTable().ajax.reload();
+              $('#datatable-doctor-service').DataTable().ajax.reload();
+              $('#datatable-secretary-service').DataTable().ajax.reload();
               setTimeout(function(){
               $('.update-success-validation').fadeOut('slow');
               $('#EditServiceModal').modal('toggle');
+              $('#DoctorEditServiceModal').modal('toggle');
+              $('#SecretaryEditServiceModal').modal('toggle');
 
             },2000);
             }

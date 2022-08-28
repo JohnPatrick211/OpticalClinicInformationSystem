@@ -29,6 +29,42 @@ class ProductMaintenanceController extends Controller
              return view('maintenance-product', $data)->with('users3',$users3)->with('users4',$users4);
          }
     }
+
+    public function DoctorProductMaintenance(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+             $users3 = Category::orderBy('name', 'ASC')->get();
+             $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+             return view('doctor-maintenance-product', $data)->with('users3',$users3)->with('users4',$users4);
+         }
+    }
+
+    public function SecretaryProductMaintenance(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+             $users3 = Category::orderBy('name', 'ASC')->get();
+             $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+             return view('secretary-maintenance-product', $data)->with('users3',$users3)->with('users4',$users4);
+         }
+    }
     
     // public function pesostaffCategoryMaintenance(){
     //     if(Session::has('LoggedUser')){
@@ -197,9 +233,9 @@ class ProductMaintenanceController extends Controller
         // }
     }
 
-    public function ProductData()
+    public function ProductData(Request $request)
     {
-        $getEm = $this->getProduct();
+        $getEm = $this->getProduct($request->mainproductbranch);
          if(request()->ajax())
              {
                 return datatables()->of($getEm)
@@ -217,8 +253,50 @@ class ProductMaintenanceController extends Controller
              }
     }
 
-    public function getProduct()
+    public function DoctorProductData(Request $request)
     {
+        $getEm = $this->getProduct($request->mainproductbranch);
+         if(request()->ajax())
+             {
+                return datatables()->of($getEm)
+                ->addColumn('action', function($getEm){
+                $button = '<a class="btn btn-sm btn-success m-1" id="btn-edit-product" employer-id='. $getEm->id .' data-toggle="modal" data-target="#DoctorEditProductModal">
+                    <i class="fa fa-edit"></i></a>';
+                    $button .= '<a class="btn btn-sm btn-danger m-1" id="btn-delete-product" employer-id='. $getEm->id .' data-toggle="modal" data-target="#proconfirmModal">
+                    <i class="fa fa-archive"></i></a>';
+
+
+                return $button;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+             }
+    }
+
+    public function SecretaryProductData(Request $request)
+    {
+        $getEm = $this->getProduct($request->mainproductbranch);
+         if(request()->ajax())
+             {
+                return datatables()->of($getEm)
+                ->addColumn('action', function($getEm){
+                $button = '<a class="btn btn-sm btn-success m-1" id="btn-edit-product" employer-id='. $getEm->id .' data-toggle="modal" data-target="#SecretaryEditProductModal">
+                    <i class="fa fa-edit"></i></a>';
+                    $button .= '<a class="btn btn-sm btn-danger m-1" id="btn-delete-product" employer-id='. $getEm->id .' data-toggle="modal" data-target="#proconfirmModal">
+                    <i class="fa fa-archive"></i></a>';
+
+
+                return $button;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+             }
+    }
+
+    public function getProduct($mainproductbranch)
+    {
+        if($mainproductbranch == 'All Branches')
+        {
         $getproduct = DB::table('tbl_product')
         ->select('tbl_product.*','tbl_category.name','tbl_branch.branchname')
         ->leftJoin('tbl_category', 'tbl_product.category_id', '=', 'tbl_category.id')
@@ -227,6 +305,19 @@ class ProductMaintenanceController extends Controller
         ->get();
 
         return $getproduct;
+        }
+        else
+        {
+            $getproduct = DB::table('tbl_product')
+            ->select('tbl_product.*','tbl_category.name','tbl_branch.branchname')
+            ->leftJoin('tbl_category', 'tbl_product.category_id', '=', 'tbl_category.id')
+            ->leftJoin('tbl_branch', 'tbl_product.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_product.status', '1')
+            ->where('tbl_product.branch_id',$mainproductbranch)
+            ->get();
+
+            return $getproduct;
+        }
 
             // return DB::table('tbl_user AS BR')
     //             ->select('BR.*', 'tbl_branch.branchname')

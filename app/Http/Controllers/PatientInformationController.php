@@ -34,6 +34,37 @@ class PatientInformationController extends Controller
 
          }
     }
+
+    public function DoctorPatientInformationView(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users5 = Login::orderBy('id', 'ASC')->where('user_role','=','Doctor')->get();
+             $data = [
+                 'LoggedUserInfo' => $users2
+             ];
+             //$users3 = User::where('role','employer')->get();
+             return view('doctor-patient-information', $data)->with('users4',$users4)->with('users5',$users5);
+
+
+         }
+    }
+
+    public function SecretaryPatientInformationView(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users5 = Login::orderBy('id', 'ASC')->where('user_role','=','Doctor')->get();
+             $data = [
+                 'LoggedUserInfo' => $users2
+             ];
+             //$users3 = User::where('role','employer')->get();
+             return view('secretary-patient-information', $data)->with('users4',$users4)->with('users5',$users5);
+
+
+         }
+    }
+
     public function PatientInformation()
     {
         $getEm = $this->getPatientInformation();

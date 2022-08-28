@@ -149,6 +149,7 @@ $(document).ready(function(){
                 var diagnosis = $('#certificationdiagnosis').val('');
                 var remarks = $('#certificationremarks').val('');
                 $('#CertificationModal').modal('toggle');
+                $('#DoctorCertificationModal').modal('toggle');
                 },2000);
       },
      });

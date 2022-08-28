@@ -39,6 +39,32 @@
 
                           </div>
                         </div>
+
+                        <div class="row mb-2">
+
+
+
+<div class="col-sm-2 mb-3">
+<select class="form-control" style="width:auto;" name="branch" id="mainschedulebranch">
+                    <option value="All Branches">All Branches</option>
+                    @foreach($users4 as $item)
+                        <option value="{{$item->id}}">{{$item->branchname}}</option>
+                    @endforeach
+                    </select>
+</div>
+
+<div class="mt-2">
+    -
+    </div>
+
+<!-- <div class="col-sm-2 mb-3">
+    <input data-column="9" type="date" class="form-control" id="vacantdate_to" value="{{ date('Y-m-d') }}">
+    </div>
+        
+        <div class="mt-2">
+    </div> -->
+
+</div>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">

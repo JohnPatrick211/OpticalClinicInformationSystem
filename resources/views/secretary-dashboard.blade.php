@@ -5,17 +5,17 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                 <!-- <div class="row h-auto w-auto"href="admin-dashboard">
-                <div class="col-xl-5 col-md-6 mb-4 h-100">
-                    <div class="card border-left-danger shadow h-100 py-2">
+                <div class="row h-auto w-auto"href="doctor-dashboard">
+                <div class="col-xl-4 col-md-6 mb-4 h-100">
+                    <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-sm font-weight-bold text-danger text-uppercase mb-3">
-                                        Pending Employers</div>
-                                    <div class="h3 mb-0 font-weight-bold text-gray-800">1
+                                    <div class="text-sm font-weight-bold text-primary text-uppercase mb-3">
+                                        Appointment For Today</div>
+                                    <div class="h3 mb-0 font-weight-bold text-gray-800">{{ $AppointmentForToday}}
                                     <br><br>
-                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="employer-approval">Click Here to See More</a></div>
+                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="secretary-appointment-list">Click Here to See More</a></div>
                                     </div>
                                 </div>
                                 <div class="col-auto">
@@ -24,57 +24,76 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
 
                 <!-- Earnings (Monthly) Card Example -->
-                <!-- <div class="col-xl-6 col-md-6 mb-4">
-                    <div class="card border-left-success shadow h-100 py-2">
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-sm font-weight-bold text-success text-uppercase mb-3">
-                                        Number of Employers Approved</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">1
-                                        <br><br><br>
-                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="employer-approval">Click Here to See More</a></div>
+                                    <div class="text-sm font-weight-bold text-primary text-uppercase mb-3">
+                                        Pending Appointment Approval</div>
+                                    <div class="h3 mb-0 font-weight-bold text-gray-800">{{ $pendingappointmentapproval}}
+                                        <br><br>
+                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="secretary-appointment-approval">Click Here to See More</a></div>
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-thumbs-up fa-3x text-gray-400"></i>
+                                    <i class="fas fa-history fa-3x text-gray-400"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                  <div class="col-xl-5 col-md-6 mb-4 h-100">
-                    <div class="card border-left-danger shadow h-100 py-2">
+                  <div class="col-xl-4 col-md-6 mb-4 h-100">
+                    <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-sm font-weight-bold text-danger text-uppercase mb-3">
-                                        Pending Jobs</div>
-                                    <div class="h3 mb-0 font-weight-bold text-gray-800">1
+                                    <div class="text-sm font-weight-bold text-primary text-uppercase mb-3">
+                                        No. of Appointment Completed</div>
+                                    <div class="h3 mb-0 font-weight-bold text-gray-800">{{ $completeappointment }}
                                      <br><br>
-                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="employer-job-approval">Click Here to See More</a></div></div>
+                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="secretary-appointment-reports">Click Here to See More</a></div></div>
                                     
                                 </div>
                                 <div class="col-auto">
+                                    <i class="fas fa-thumbs-up fa-3x text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-sm font-weight-bold text-success text-uppercase mb-3">
+                                        Pending Patient Approval</div>
+                                    <div class="h3 mb-0 font-weight-bold text-gray-800">{{$pendingpatient}}
+                                     <br><br>   
+                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="secretary-patient-approval">Click Here to See More</a></div></div>
+                                </div>
+                                <div class="col-auto">
                                     <i class="fas fa-history fa-3x text-gray-400"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                 <div class="col-xl-6 col-md-6 mb-4">
+                <div class="col-xl-4 col-md-6 mb-4 h-100">
                     <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-sm font-weight-bold text-success text-uppercase mb-3">
-                                        Number of Job Approved</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">1
-                                     <br><br><br>
-                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="employer-job-approval">Click Here to See More</a></div></div>
+                                    No. of Patient Approved</div>
+                                    <div class="h3 mb-0 font-weight-bold text-gray-800">{{$approvedpatient}}
+                                     <br><br>
+                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="secretary-patient-approval">Click Here to See More</a></div></div>
+                                    
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-thumbs-up fa-3x text-gray-400"></i>
@@ -82,7 +101,25 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
+                 <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-danger shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-sm font-weight-bold text-danger text-uppercase mb-3">
+                                        Total Sales for Today</div>
+                                    <div class="h3 mb-0 font-weight-bold text-gray-800"><span style="font-size: 28px;">&#8369;</span> {{number_format($sales, 2, '.',',')}}
+                                     <br><br>   
+                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="secretary-sales-reports">Click Here to See More</a></div></div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-money-bill fa-3x text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 
 

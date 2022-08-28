@@ -47,7 +47,7 @@
                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                 </div>
 
-                              <div class="col-sm-2 mb-3">
+                              <div class="col-sm-4 mb-3">
                               <p>Total sales: <span style="font-size: 21px;">&#8369; <b id="txt-total-sales"></b></span></p>
                           </div>
 

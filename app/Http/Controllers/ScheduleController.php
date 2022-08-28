@@ -35,6 +35,51 @@ class ScheduleController extends Controller
             ];
             return view('maintenance-schedule', $data)->with('users4',$users4)->with('users5',$users5);;
     }
+
+    function Doctorschedule(Request $request)
+    {
+            $staff = Login:: where('id','=', session('LoggedUser'))->first();
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users5 = Login::orderBy('id', 'ASC')->where('branch_id',2)->get();
+            //   $CountPendingEmployer = DB::table('users')->where('role','=', 'employer')->where('status','=', 'Pending')->count();
+            //   $CountApprovedEmployer = DB::table('users')->where('role','=', 'employer')->where('status','=', 'Approved')->count();
+            //    $CountPendingJob = DB::table('job_posts')->where('jobstatus','=', 'Pending')->count();
+            //    $CountApprovedJob = DB::table('job_posts')->where('jobstatus','=', 'Approved')->count();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+            return view('doctor-maintenance-schedule', $data)->with('users4',$users4)->with('users5',$users5);;
+    }
+
+    function Secretaryschedule(Request $request)
+    {
+            $staff = Login:: where('id','=', session('LoggedUser'))->first();
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users5 = Login::orderBy('id', 'ASC')->where('branch_id',2)->get();
+            //   $CountPendingEmployer = DB::table('users')->where('role','=', 'employer')->where('status','=', 'Pending')->count();
+            //   $CountApprovedEmployer = DB::table('users')->where('role','=', 'employer')->where('status','=', 'Approved')->count();
+            //    $CountPendingJob = DB::table('job_posts')->where('jobstatus','=', 'Pending')->count();
+            //    $CountApprovedJob = DB::table('job_posts')->where('jobstatus','=', 'Approved')->count();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+            return view('secretary-maintenance-schedule', $data)->with('users4',$users4)->with('users5',$users5);;
+    }
+
     public function storedoctorschedule(Request $request)
     {
         $scheduledoctor = new DoctorSchedule();
@@ -126,9 +171,9 @@ class ScheduleController extends Controller
         // }
     }
 
-    public function ScheduleData()
+    public function ScheduleData(Request $request)
     {
-        $getEm = $this->getSchedule();
+        $getEm = $this->getSchedule($request->mainschedulebranch);
          if(request()->ajax())
              {
                 return datatables()->of($getEm)
@@ -146,16 +191,72 @@ class ScheduleController extends Controller
              }
     }
 
-    public function getSchedule()
+    public function DoctorScheduleData(Request $request)
     {
-        $getschedule = DB::table('tbl_doctorschedule')
-        ->select('tbl_doctorschedule.*','tbl_branch.branchname','tbl_user.name','tbl_doctor.specialty')
-        ->leftJoin('tbl_branch', 'tbl_doctorschedule.branch_id', '=', 'tbl_branch.id')
-        ->leftJoin('tbl_user', 'tbl_doctorschedule.doctor_id', '=', 'tbl_user.id')
-        ->leftJoin('tbl_doctor', 'tbl_doctorschedule.doctor_id', '=', 'tbl_doctor.doctor_id')
-        ->get();
+        $getEm = $this->getSchedule($request->mainschedulebranch);
+         if(request()->ajax())
+             {
+                return datatables()->of($getEm)
+                ->addColumn('action', function($getEm){
+                $button = '<a class="btn btn-sm btn-success m-1" id="btn-edit-schedule" employer-id='. $getEm->id .' data-toggle="modal" data-target="#DoctorEditScheduleModal">
+                    <i class="fa fa-edit"></i></a>';
+                    $button .= '<a class="btn btn-sm btn-danger m-1" id="btn-delete-service" employer-id='. $getEm->id .' data-toggle="modal" data-target="#scheduleproconfirmModal">
+                    <i class="fa fa-archive"></i></a>';
 
-        return $getschedule;
+
+                return $button;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+             }
+    }
+
+    public function SecretaryScheduleData(Request $request)
+    {
+        $getEm = $this->getSchedule($request->mainschedulebranch);
+         if(request()->ajax())
+             {
+                return datatables()->of($getEm)
+                ->addColumn('action', function($getEm){
+                $button = '<a class="btn btn-sm btn-success m-1" id="btn-edit-schedule" employer-id='. $getEm->id .' data-toggle="modal" data-target="#SecretaryEditScheduleModal">
+                    <i class="fa fa-edit"></i></a>';
+                    $button .= '<a class="btn btn-sm btn-danger m-1" id="btn-delete-service" employer-id='. $getEm->id .' data-toggle="modal" data-target="#scheduleproconfirmModal">
+                    <i class="fa fa-archive"></i></a>';
+
+
+                return $button;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+             }
+    }
+
+
+    public function getSchedule($mainschedulebranch)
+    {
+        if($mainschedulebranch == 'All Branches')
+        {
+            $getschedule = DB::table('tbl_doctorschedule')
+            ->select('tbl_doctorschedule.*','tbl_branch.branchname','tbl_user.name','tbl_doctor.specialty')
+            ->leftJoin('tbl_branch', 'tbl_doctorschedule.branch_id', '=', 'tbl_branch.id')
+            ->leftJoin('tbl_user', 'tbl_doctorschedule.doctor_id', '=', 'tbl_user.id')
+            ->leftJoin('tbl_doctor', 'tbl_doctorschedule.doctor_id', '=', 'tbl_doctor.doctor_id')
+            ->get();
+
+            return $getschedule;
+        }
+        else
+        {
+            $getschedule = DB::table('tbl_doctorschedule')
+            ->select('tbl_doctorschedule.*','tbl_branch.branchname','tbl_user.name','tbl_doctor.specialty')
+            ->leftJoin('tbl_branch', 'tbl_doctorschedule.branch_id', '=', 'tbl_branch.id')
+            ->leftJoin('tbl_user', 'tbl_doctorschedule.doctor_id', '=', 'tbl_user.id')
+            ->leftJoin('tbl_doctor', 'tbl_doctorschedule.doctor_id', '=', 'tbl_doctor.doctor_id')
+            ->where('tbl_doctorschedule.branch_id',$mainschedulebranch)
+            ->get();
+
+            return $getschedule;
+        }
     }
 
     public function getScheduleData($id)

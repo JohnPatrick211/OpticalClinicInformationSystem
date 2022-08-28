@@ -210,14 +210,15 @@ async function getTrayItems (data) {
     console.log(data);
     var html = "";
     html += '<tr>';
-    html += '<td>'+ data.product_id +'</td>';
     if(data.servicename != null)
     {
+        html += '<td>'+"S-"+ data.product_id +'</td>';
         html += '<td>'+ data.servicename +'</td>';
         html += '<td>'+ data.selling_price2 +'</td>';
     }
     if(data.productname != null)
     {
+        html += '<td>'+"P-"+ data.product_id +'</td>';
         html += '<td>'+ data.productname +'</td>';
         html += '<td>'+ data.selling_price +'</td>';
     }
@@ -633,12 +634,13 @@ function on_Keyup() {
 
 async function render() {
     let type = $('#type').val()
+    let billingbranch = $('#billingbranch').val()
+    console.log(billingbranch);
     $('.img-gcash-qr').css('display', 'none');  
     await readTray();
-    await readAllProducts(type,1);
+    await readAllProducts(type,billingbranch);
     on_Click();
     on_Keyup();
 }
 
 render();
-

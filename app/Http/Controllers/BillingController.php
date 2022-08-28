@@ -38,6 +38,62 @@ class BillingController extends Controller
             return view('billing', $data,compact('product','service'))->with('users4',$users4);
     }
 
+    function doctorbilling()
+    {
+            $product = new Product;
+            $service = new Service;
+            $staff = Login:: where('id','=', session('LoggedUser'))->first();
+            $product = $product->readAllProduct();
+            $service = $service->readAllService();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+            //   $CountPendingEmployer = DB::table('users')->where('role','=', 'employer')->where('status','=', 'Pending')->count();
+            //   $CountApprovedEmployer = DB::table('users')->where('role','=', 'employer')->where('status','=', 'Approved')->count();
+            //    $CountPendingJob = DB::table('job_posts')->where('jobstatus','=', 'Pending')->count();
+            //    $CountApprovedJob = DB::table('job_posts')->where('jobstatus','=', 'Approved')->count();
+            $data = [
+                'LoggedUserInfo' => $staff,
+                'users6' =>  $users6,
+                // 'CountPendingEmployer' => $CountPendingEmployer,
+                // 'CountApprovedEmployer' => $CountApprovedEmployer,
+                // 'CountPendingJob' => $CountPendingJob,
+                // 'CountApprovedJob' => $CountApprovedJob
+            ];
+            return view('doctor-billing', $data,compact('product','service'))->with('users4',$users4);
+    }
+
+    function secretarybilling()
+    {
+            $product = new Product;
+            $service = new Service;
+            $staff = Login:: where('id','=', session('LoggedUser'))->first();
+            $product = $product->readAllProduct();
+            $service = $service->readAllService();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+            //   $CountPendingEmployer = DB::table('users')->where('role','=', 'employer')->where('status','=', 'Pending')->count();
+            //   $CountApprovedEmployer = DB::table('users')->where('role','=', 'employer')->where('status','=', 'Approved')->count();
+            //    $CountPendingJob = DB::table('job_posts')->where('jobstatus','=', 'Pending')->count();
+            //    $CountApprovedJob = DB::table('job_posts')->where('jobstatus','=', 'Approved')->count();
+            $data = [
+                'LoggedUserInfo' => $staff,
+                'users6' =>  $users6,
+                // 'CountPendingEmployer' => $CountPendingEmployer,
+                // 'CountApprovedEmployer' => $CountApprovedEmployer,
+                // 'CountPendingJob' => $CountPendingJob,
+                // 'CountApprovedJob' => $CountApprovedJob
+            ];
+            return view('secretary-billing', $data,compact('product','service'))->with('users4',$users4);
+    }
+
     public function readAllProduct($type,$billingbranch)
     {
         if($type == 'Product')

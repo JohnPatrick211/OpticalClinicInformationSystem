@@ -46,7 +46,16 @@ $(document).ready(function(){
               changeLength: true,
               className: 'dt-body-center',
               render: function (data, type, full, meta){
-                  return 'P/S-'+data;
+                const firstDigitStr = String(data)[0];
+                console.log(firstDigitStr);
+                if(firstDigitStr == 1)
+                {
+                  return 'P-'+data;
+                }
+                else
+                {
+                  return 'S-'+data;
+                }
               }
            },
            {

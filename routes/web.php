@@ -27,7 +27,7 @@ Route::post('/signup/signup', [App\Http\Controllers\RegisterController::class, '
 Route::get('/signup/isexists', [App\Http\Controllers\RegisterController::class, 'isPhoneNoExists']);
 Route::get('/signup/send-OTP', [App\Http\Controllers\RegisterController::class, 'sendOTP']);
 Route::get('/signup/validate-otp/{otp}', [App\Http\Controllers\RegisterController::class, 'validateOTP']);
-//Patient Information /patientinformation/getpatientinfo/
+//Patient Information
 Route::get('patient-information',[App\Http\Controllers\PatientInformationController::class, 'PatientInformationView'])->middleware('Islogged');
 Route::get('patientinformation-data',[App\Http\Controllers\PatientInformationController::class, 'PatientInformation'])->middleware('Islogged');
 Route::get('/patientinformation/getpatientinfo/{id}', [App\Http\Controllers\PatientInformationController::class, 'getPatientInfo']);
@@ -162,12 +162,67 @@ Route::post('/inventory/addquantity/', [App\Http\Controllers\InventoryController
 
 //DOCTOR INTERFACE
 Route::get('doctor-dashboard', [App\Http\Controllers\LoginController::class, 'doctor'])->middleware('Islogged');
+//doctor Patient Information
+Route::get('doctor-patient-information',[App\Http\Controllers\PatientInformationController::class, 'DoctorPatientInformationView'])->middleware('Islogged');
+//doctor Patient Approval
+Route::get('doctor-patient-approval',[App\Http\Controllers\PatientApprovalController::class, 'DoctorPatientApprovalView'])->middleware('Islogged');
+//doctor Appointment Approval
+Route::get('doctor-appointment-approval',[App\Http\Controllers\AppointmentApprovalController::class, 'DoctorAppointmentApprovalView'])->middleware('Islogged');
+//doctor Appointment List
+Route::get('doctor-appointment-list',[App\Http\Controllers\AppointmentListController::class, 'DoctorAppointmentListView'])->middleware('Islogged');
+//doctor BILLING
+Route::get('doctor-billing', [App\Http\Controllers\BillingController::class, 'doctorbilling'])->middleware('Islogged');
+//doctor Inventory
+Route::get('doctor-inventory',[App\Http\Controllers\InventoryController::class, 'DoctorInventory'])->middleware('Islogged');
+//doctor Sales Reports 
+Route::get('doctor-sales-reports',[App\Http\Controllers\SalesReportController::class, 'DoctorSalesReportView'])->middleware('Islogged');
+//doctor Appointment Reports
+Route::get('doctor-appointment-reports',[App\Http\Controllers\AppointmentReportController::class, 'DoctorAppointmentReportView'])->middleware('Islogged');
+//doctor Certification Reports
+Route::get('doctor-certification-reports',[App\Http\Controllers\CertificationReportController::class, 'DoctorCertificationReportView'])->middleware('Islogged');
+//doctor Service maintenance
+Route::get('doctor-maintenance-service',[App\Http\Controllers\ServiceMaintenanceController::class, 'DoctorServiceMaintenance'])->middleware('Islogged');
+Route::get('doctor-service-data',[App\Http\Controllers\ServiceMaintenanceController::class, 'DoctorServiceData'])->middleware('Islogged');
+//doctor Product maintenance
+Route::get('doctor-maintenance-product',[App\Http\Controllers\ProductMaintenanceController::class, 'DoctorProductMaintenance'])->middleware('Islogged');
+Route::get('doctor-product-data',[App\Http\Controllers\ProductMaintenanceController::class, 'DoctorProductData'])->middleware('Islogged');
+//doctor Schedule Maintenance
+Route::get('doctor-maintenance-schedule',[App\Http\Controllers\ScheduleController::class, 'Doctorschedule'])->middleware('Islogged');
+Route::get('doctor-schedule-data',[App\Http\Controllers\ScheduleController::class, 'DoctorScheduleData'])->middleware('Islogged');
+
 
 //STAFF INTERFACE
 Route::get('staff-dashboard', [App\Http\Controllers\LoginController::class, 'staff'])->middleware('Islogged');
 
 //SECRETARY INTERFACE
 Route::get('secretary-dashboard', [App\Http\Controllers\LoginController::class, 'secretary'])->middleware('Islogged');
+//secretary Patient Information
+Route::get('secretary-patient-information',[App\Http\Controllers\PatientInformationController::class, 'SecretaryPatientInformationView'])->middleware('Islogged');
+//secretary Patient Approval
+Route::get('secretary-patient-approval',[App\Http\Controllers\PatientApprovalController::class, 'SecretaryPatientApprovalView'])->middleware('Islogged');
+//secretary Appointment Approval
+Route::get('secretary-appointment-approval',[App\Http\Controllers\AppointmentApprovalController::class, 'SecretaryAppointmentApprovalView'])->middleware('Islogged');
+//secretary Appointment List
+Route::get('secretary-appointment-list',[App\Http\Controllers\AppointmentListController::class, 'SecretaryAppointmentListView'])->middleware('Islogged');
+//secretary BILLING
+Route::get('secretary-billing', [App\Http\Controllers\BillingController::class, 'secretarybilling'])->middleware('Islogged');
+//secretary Inventory
+Route::get('secretary-inventory',[App\Http\Controllers\InventoryController::class, 'SecretaryInventory'])->middleware('Islogged');
+//secretary Sales Reports 
+Route::get('secretary-sales-reports',[App\Http\Controllers\SalesReportController::class, 'SecretarySalesReportView'])->middleware('Islogged');
+//secretary Appointment Reports
+Route::get('secretary-appointment-reports',[App\Http\Controllers\AppointmentReportController::class, 'SecretaryAppointmentReportView'])->middleware('Islogged');
+//secretary Certification Reports
+Route::get('secretary-certification-reports',[App\Http\Controllers\CertificationReportController::class, 'SecretaryCertificationReportView'])->middleware('Islogged');
+//secretary Service maintenance
+Route::get('secretary-maintenance-service',[App\Http\Controllers\ServiceMaintenanceController::class, 'SecretaryServiceMaintenance'])->middleware('Islogged');
+Route::get('secretary-service-data',[App\Http\Controllers\ServiceMaintenanceController::class, 'SecretaryServiceData'])->middleware('Islogged');
+//secretary Product maintenance
+Route::get('secretary-maintenance-product',[App\Http\Controllers\ProductMaintenanceController::class, 'SecretaryProductMaintenance'])->middleware('Islogged');
+Route::get('secretary-product-data',[App\Http\Controllers\ProductMaintenanceController::class, 'SecretaryProductData'])->middleware('Islogged');
+//secretary Schedule Maintenance
+Route::get('secretary-maintenance-schedule',[App\Http\Controllers\ScheduleController::class, 'Secretaryschedule'])->middleware('Islogged');
+Route::get('secretary-schedule-data',[App\Http\Controllers\ScheduleController::class, 'SecretaryScheduleData'])->middleware('Islogged');
 
 //PATIENT INTERFACE
 Route::get('patient-dashboard', [App\Http\Controllers\LoginController::class, 'patient'])->middleware('Islogged');

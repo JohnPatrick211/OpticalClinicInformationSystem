@@ -5,19 +5,21 @@ $(document).ready(function(){
         }
       });
 
-      fetchSchedule();
-
       load_data();
 
       function load_data()  {
         let schedulebranch = $('#schedulebranch').val()
+        let mainschedulebranch = $('#mainschedulebranch').val()
         console.log(schedulebranch);
+        console.log(mainschedulebranch);
         fetchDoctorName(schedulebranch);
-
+        fetchSchedule(mainschedulebranch);
+        fetchDoctorSchedule(mainschedulebranch);
+        fetchSecretarySchedule(mainschedulebranch);
       }
       
 
-      function fetchSchedule(){
+      function fetchSchedule(mainschedulebranch){
 
       var tbl_for_validation = $('#datatable-adminschedule').DataTable({
 
@@ -26,6 +28,9 @@ $(document).ready(function(){
 
           ajax:{
            url: "schedule-data",
+           data:{
+            mainschedulebranch:mainschedulebranch
+            },
           },
 
 
@@ -76,6 +81,130 @@ $(document).ready(function(){
 
       }
 
+      function fetchDoctorSchedule(mainschedulebranch){
+
+        var tbl_for_validation = $('#datatable-doctor-schedule').DataTable({
+  
+            processing: true,
+            serverSide: true,
+  
+            ajax:{
+             url: "doctor-schedule-data",
+             data:{
+              mainschedulebranch:mainschedulebranch
+              },
+            },
+  
+  
+        //    columnDefs: [{
+        //     targets: [2,3],
+        //     orderable: true,
+        //     changeLength: true,
+        //     className: 'dt-body-center',
+        //     render: function (data, type, full, meta){
+        //         return '₱'+data;
+        //     }
+        //  }],
+  
+            columns:[
+              {data: 'name', name: 'name'},
+              {data: 'specialty', name: 'specialty'},
+              {data: 'branchname', name: 'branchname'},
+              {data: 'doctor_schedule_date', name: 'doctor_schedule_date'},
+              {data: 'doctor_schedule_day', name: 'doctor_schedule_day'},
+              {data: 'doctor_schedule_start_time', name: 'doctor_schedule_start_time'},
+              {data: 'doctor_schedule_end_time', name: 'doctor_schedule_end_time'},
+              {data: 'status', name: 'status'},
+              // { data: 'BIR_file', name: 'BIR_file',
+              //         render: function( data, type, full, meta ) {
+              //             return "<img src=\"/storage/BIR/" + data + "\" height=\"50\"id=\"trigger\"/>";
+              //           // return '<div align="center"><a href="/storage/jobposts/" """><img src="{{ asset("siteicons/Info_Box_Blue.png") }}" id="trigger" onclick="ShowSlider(0)"></a></div>';
+              //         }
+              //     },
+              {data: 'action', name: 'action', orderable:false}
+            ],
+             order: [[1, 'asc']],
+          });
+  
+  
+     $('#select-all').on('click', function(){
+      var rows = tbl_for_validation.rows({ 'search': 'applied' }).nodes();
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+      });
+  
+      $('#for-validation-table tbody').on('change', 'input[type="checkbox"]', function(){
+        if(!this.checked){
+           var el = $('#select-all').get(0);
+           if(el && el.checked && ('indeterminate' in el)){
+              el.indeterminate = true;
+           }
+        }
+     });
+  
+        }
+
+        function fetchSecretarySchedule(mainschedulebranch){
+
+          var tbl_for_validation = $('#datatable-secretary-schedule').DataTable({
+    
+              processing: true,
+              serverSide: true,
+    
+              ajax:{
+               url: "secretary-schedule-data",
+               data:{
+                mainschedulebranch:mainschedulebranch
+                },
+              },
+    
+    
+          //    columnDefs: [{
+          //     targets: [2,3],
+          //     orderable: true,
+          //     changeLength: true,
+          //     className: 'dt-body-center',
+          //     render: function (data, type, full, meta){
+          //         return '₱'+data;
+          //     }
+          //  }],
+    
+              columns:[
+                {data: 'name', name: 'name'},
+                {data: 'specialty', name: 'specialty'},
+                {data: 'branchname', name: 'branchname'},
+                {data: 'doctor_schedule_date', name: 'doctor_schedule_date'},
+                {data: 'doctor_schedule_day', name: 'doctor_schedule_day'},
+                {data: 'doctor_schedule_start_time', name: 'doctor_schedule_start_time'},
+                {data: 'doctor_schedule_end_time', name: 'doctor_schedule_end_time'},
+                {data: 'status', name: 'status'},
+                // { data: 'BIR_file', name: 'BIR_file',
+                //         render: function( data, type, full, meta ) {
+                //             return "<img src=\"/storage/BIR/" + data + "\" height=\"50\"id=\"trigger\"/>";
+                //           // return '<div align="center"><a href="/storage/jobposts/" """><img src="{{ asset("siteicons/Info_Box_Blue.png") }}" id="trigger" onclick="ShowSlider(0)"></a></div>';
+                //         }
+                //     },
+                {data: 'action', name: 'action', orderable:false}
+              ],
+               order: [[1, 'asc']],
+            });
+    
+    
+       $('#select-all').on('click', function(){
+        var rows = tbl_for_validation.rows({ 'search': 'applied' }).nodes();
+        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+        });
+    
+        $('#for-validation-table tbody').on('change', 'input[type="checkbox"]', function(){
+          if(!this.checked){
+             var el = $('#select-all').get(0);
+             if(el && el.checked && ('indeterminate' in el)){
+                el.indeterminate = true;
+             }
+          }
+       });
+    
+          }
+
       $('#schedulebranch').change(function()
       {
           let schedulebranch = $('#schedulebranch').val()
@@ -88,6 +217,13 @@ $(document).ready(function(){
         let editschedulebranch = $('#editschedulebranch').val()
         console.log(editschedulebranch);
         fetchDoctorName(editschedulebranch);
+      });
+      $('#mainschedulebranch').change(function()
+      {
+          let mainschedulebranch = $('#mainschedulebranch').val()
+          console.log(mainschedulebranch);
+          $('#datatable-adminschedule').DataTable().destroy();
+          fetchSchedule(mainschedulebranch);
       });
 
     var date = new Date();
@@ -255,6 +391,8 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn_service_delete').text('Yes');
               $('#datatable-adminschedule').DataTable().ajax.reload();
+              $('#datatable-doctor-schedule').DataTable().ajax.reload();
+              $('#datatable-secretary-schedule').DataTable().ajax.reload();
               setTimeout(function(){
               $('.existservice-success').fadeOut('slow');
             },2000);
@@ -268,6 +406,8 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn_service_delete').text('Yes');
               $('#datatable-adminschedule').DataTable().ajax.reload();
+              $('#datatable-doctor-schedule').DataTable().ajax.reload();
+              $('#datatable-secretary-schedule').DataTable().ajax.reload();
               setTimeout(function(){
               $('.delete-success').fadeOut('slow');
               $('#scheduleproconfirmModal').modal('toggle');
@@ -306,6 +446,8 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn-edit-save-schedule').text('Edit');
               $('#datatable-adminschedule').DataTable().ajax.reload();
+              $('#datatable-doctor-schedule').DataTable().ajax.reload();
+              $('#datatable-secretary-schedule').DataTable().ajax.reload();
               setTimeout(function(){
               $('.existservice-success').fadeOut('slow');
             },2000);
@@ -319,9 +461,13 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn-edit-save-schedule').text('Edit');
               $('#datatable-adminschedule').DataTable().ajax.reload();
+              $('#datatable-doctor-schedule').DataTable().ajax.reload();
+              $('#datatable-secretary-schedule').DataTable().ajax.reload();
               setTimeout(function(){
               $('.update-success-validation').fadeOut('slow');
               $('#EditScheduleModal').modal('toggle');
+              $('#DoctorEditScheduleModal').modal('toggle');
+              $('#SecretaryEditScheduleModal').modal('toggle');
 
             },2000);
             }

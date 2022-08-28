@@ -5,9 +5,18 @@ $(document).ready(function(){
         }
       });
 
-      fetchProduct();
+      load_data()
 
-      function fetchProduct(){
+      function load_data()  {
+        let mainproductbranch = $('#mainproductbranch').val()
+        console.log(mainproductbranch);
+        fetchProduct(mainproductbranch);
+        fetchDoctorProduct(mainproductbranch);
+        fetchSecretaryProduct(mainproductbranch);
+
+    }
+
+      function fetchProduct(mainproductbranch){
 
       var tbl_for_validation = $('#datatable-product').DataTable({
 
@@ -16,7 +25,12 @@ $(document).ready(function(){
 
           ajax:{
            url: "product-data",
+           data:{
+            mainproductbranch:mainproductbranch
+            },
           },
+
+          
 
           columnDefs: [{
             targets: 0,
@@ -75,6 +89,162 @@ $(document).ready(function(){
    });
 
       }
+
+      function fetchDoctorProduct(mainproductbranch){
+
+        var tbl_for_validation = $('#datatable-doctor-product').DataTable({
+  
+            processing: true,
+            serverSide: true,
+  
+            ajax:{
+             url: "doctor-product-data",
+             data:{
+              mainproductbranch:mainproductbranch
+              },
+            },
+  
+            columnDefs: [{
+              targets: 0,
+              searchable: false,
+              orderable: true,
+              changeLength: true,
+              className: 'dt-body-center',
+              render: function (data, type, full, meta){
+                  return 'P-'+data;
+              }
+           },
+           {
+            targets: [6,7],
+            orderable: true,
+            changeLength: true,
+            className: 'dt-body-center',
+            render: function (data, type, full, meta){
+                return '₱'+data;
+            }
+         }],
+  
+            columns:[
+              {data: 'id', name: 'id'},
+              {data: 'productname', name: 'productname'},
+              {data: 'branchname', name: 'branchname'},
+              {data: 'qty', name: 'qty'},
+              {data: 'reorder', name: 'reorder'},
+              {data: 'name', name: 'name'},
+              {data: 'orig_price', name: 'orig_price'},
+              {data: 'selling_price', name: 'selling_price'},
+              {data: 'markup', name: 'markup'},
+              // { data: 'BIR_file', name: 'BIR_file',
+              //         render: function( data, type, full, meta ) {
+              //             return "<img src=\"/storage/BIR/" + data + "\" height=\"50\"id=\"trigger\"/>";
+              //           // return '<div align="center"><a href="/storage/jobposts/" """><img src="{{ asset("siteicons/Info_Box_Blue.png") }}" id="trigger" onclick="ShowSlider(0)"></a></div>';
+              //         }
+              //     },
+              {data: 'action', name: 'action', orderable:false}
+            ],
+             order: [[1, 'asc']],
+          });
+  
+  
+     $('#select-all').on('click', function(){
+      var rows = tbl_for_validation.rows({ 'search': 'applied' }).nodes();
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+      });
+  
+      $('#for-validation-table tbody').on('change', 'input[type="checkbox"]', function(){
+        if(!this.checked){
+           var el = $('#select-all').get(0);
+           if(el && el.checked && ('indeterminate' in el)){
+              el.indeterminate = true;
+           }
+        }
+     });
+  
+        }
+
+        function fetchSecretaryProduct(mainproductbranch){
+
+          var tbl_for_validation = $('#datatable-secretary-product').DataTable({
+    
+              processing: true,
+              serverSide: true,
+    
+              ajax:{
+               url: "secretary-product-data",
+               data:{
+                mainproductbranch:mainproductbranch
+                },
+              },
+    
+              columnDefs: [{
+                targets: 0,
+                searchable: false,
+                orderable: true,
+                changeLength: true,
+                className: 'dt-body-center',
+                render: function (data, type, full, meta){
+                    return 'P-'+data;
+                }
+             },
+             {
+              targets: [6,7],
+              orderable: true,
+              changeLength: true,
+              className: 'dt-body-center',
+              render: function (data, type, full, meta){
+                  return '₱'+data;
+              }
+           }],
+    
+              columns:[
+                {data: 'id', name: 'id'},
+                {data: 'productname', name: 'productname'},
+                {data: 'branchname', name: 'branchname'},
+                {data: 'qty', name: 'qty'},
+                {data: 'reorder', name: 'reorder'},
+                {data: 'name', name: 'name'},
+                {data: 'orig_price', name: 'orig_price'},
+                {data: 'selling_price', name: 'selling_price'},
+                {data: 'markup', name: 'markup'},
+                // { data: 'BIR_file', name: 'BIR_file',
+                //         render: function( data, type, full, meta ) {
+                //             return "<img src=\"/storage/BIR/" + data + "\" height=\"50\"id=\"trigger\"/>";
+                //           // return '<div align="center"><a href="/storage/jobposts/" """><img src="{{ asset("siteicons/Info_Box_Blue.png") }}" id="trigger" onclick="ShowSlider(0)"></a></div>';
+                //         }
+                //     },
+                {data: 'action', name: 'action', orderable:false}
+              ],
+               order: [[1, 'asc']],
+            });
+    
+    
+       $('#select-all').on('click', function(){
+        var rows = tbl_for_validation.rows({ 'search': 'applied' }).nodes();
+        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+        });
+    
+        $('#for-validation-table tbody').on('change', 'input[type="checkbox"]', function(){
+          if(!this.checked){
+             var el = $('#select-all').get(0);
+             if(el && el.checked && ('indeterminate' in el)){
+                el.indeterminate = true;
+             }
+          }
+       });
+    
+          }
+
+      //   setInterval( function () {
+      //     $('#datatable-product').DataTable().ajax.reload();
+      // }, 1000 );
+
+      $('#mainproductbranch').change(function()
+      {
+          let mainproductbranch = $('#mainproductbranch').val()
+          console.log(mainproductbranch);
+          $('#datatable-product').DataTable().destroy();
+          fetchProduct(mainproductbranch);
+      });
 
 
       $(document).on('click', '#btn-edit-product', function(){
@@ -191,6 +361,8 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn_product_delete').text('Yes');
               $('#datatable-product').DataTable().ajax.reload();
+              $('#datatable-doctor-product').DataTable().ajax.reload();
+              $('#datatable-secretary-product').DataTable().ajax.reload();
               setTimeout(function(){
               $('.existproduct-success').fadeOut('slow');
             },2000);
@@ -204,6 +376,8 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn_product_delete').text('Yes');
               $('#datatable-product').DataTable().ajax.reload();
+              $('#datatable-doctor-product').DataTable().ajax.reload();
+              $('#datatable-secretary-product').DataTable().ajax.reload();
               setTimeout(function(){
               $('.delete-success').fadeOut('slow');
               $('#proconfirmModal').modal('toggle');
@@ -237,6 +411,8 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn-edit-save-product').text('Edit');
               $('#datatable-product').DataTable().ajax.reload();
+              $('#datatable-doctor-product').DataTable().ajax.reload();
+              $('#datatable-secretary-product').DataTable().ajax.reload();
               setTimeout(function(){
               $('.existproduct-success').fadeOut('slow');
             },2000);
@@ -250,9 +426,13 @@ $(document).ready(function(){
               $('.loader').css('display', 'none');
               $('#btn-edit-save-product').text('Edit');
               $('#datatable-product').DataTable().ajax.reload();
+              $('#datatable-doctor-product').DataTable().ajax.reload();
+              $('#datatable-secretary-product').DataTable().ajax.reload();
               setTimeout(function(){
               $('.update-success-validation').fadeOut('slow');
               $('#EditProductModal').modal('toggle');
+              $('#DoctorEditProductModal').modal('toggle');
+              $('#SecretaryEditProductModal').modal('toggle');
 
             },2000);
             }

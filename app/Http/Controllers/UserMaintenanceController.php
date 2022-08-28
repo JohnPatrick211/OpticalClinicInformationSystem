@@ -318,7 +318,23 @@ class UserMaintenanceController extends Controller
             'specialty' => $specialization,
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
-        ]);
+            ]);
+
+            DB::table('tbl_doctorschedule')
+                ->where('doctor_id', $id)
+                ->update([
+                'branch_id' => $branch,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ]);
+
+            DB::table('tbl_certification')
+                ->where('doctor_id', $id)
+                ->update([
+                'branch_id' => $branch,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ]);
             
              $getname = Session::get('Name');
             $getusertype = Session::get('User-Type');
@@ -428,6 +444,22 @@ class UserMaintenanceController extends Controller
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
         ]);
+
+        DB::table('tbl_doctorschedule')
+        ->where('doctor_id', $id)
+        ->update([
+        'branch_id' => $branch,
+        'created_at' => \Carbon\Carbon::now(),
+        'updated_at' => \Carbon\Carbon::now(),
+    ]);
+
+    DB::table('tbl_certification')
+        ->where('doctor_id', $id)
+        ->update([
+        'branch_id' => $branch,
+        'created_at' => \Carbon\Carbon::now(),
+        'updated_at' => \Carbon\Carbon::now(),
+    ]);
             
              $getname = Session::get('Name');
             $getusertype = Session::get('User-Type');

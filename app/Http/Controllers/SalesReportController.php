@@ -35,6 +35,49 @@ class SalesReportController extends Controller
 
          }
     }
+
+    public function DoctorSalesReportView(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users5 = Login::orderBy('id', 'ASC')->where('user_role','=','Doctor')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+             //$users3 = User::where('role','employer')->get();
+             return view('doctor-sales-report', $data)->with('users4',$users4)->with('users5',$users5);
+
+
+         }
+    }
+
+    public function SecretarySalesReportView(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users5 = Login::orderBy('id', 'ASC')->where('user_role','=','Doctor')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+             //$users3 = User::where('role','employer')->get();
+             return view('secretary-sales-report', $data)->with('users4',$users4)->with('users5',$users5);
+
+
+         }
+    }
+
     public function SalesReportData(Request $request)
     {
         $getEm = $this->getSalesReport($request->date_from, $request->date_to, $request-> salesreportbranch);
@@ -222,11 +265,19 @@ class SalesReportController extends Controller
              ';
              if($data){
                  foreach ($data as $datas) {
+                    if($datas->product_id[0] ==1)
+                    {
+                        $p = 'P-';
+                    }
+                    else
+                    {
+                        $p = 'S-';
+                    }
                      
                                  $output .='
                          <tr class="align-text">                             
                              <td>INV-'. $datas->invoice_no .'</td>  
-                             <td>P/S-'. $datas->product_id .'</td>
+                             <td>'. $p . $datas->product_id .'</td>
                              <td>'. $datas->productname .'</td>   
                              <td>'. $datas->branchname .'</td>
                              <td><span class = "peso">&#8369;</span>'. $datas->selling_price .'</td>

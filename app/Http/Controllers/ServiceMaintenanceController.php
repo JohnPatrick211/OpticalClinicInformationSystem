@@ -28,6 +28,48 @@ class ServiceMaintenanceController extends Controller
              return view('maintenance-service', $data)->with('users4',$users4);
          }
     }
+
+    public function DoctorServiceMaintenance(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+            //  $users3 = Category::all();
+            //   $users4 = Category::all();
+            //   $users5 = Region::orderBy('region', 'ASC')->get();
+            //  $users6 = Employer::orderBy('name', 'ASC')->get();
+             return view('doctor-maintenance-service', $data)->with('users4',$users4);
+         }
+    }
+
+    public function SecretaryServiceMaintenance(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+            //  $users3 = Category::all();
+            //   $users4 = Category::all();
+            //   $users5 = Region::orderBy('region', 'ASC')->get();
+            //  $users6 = Employer::orderBy('name', 'ASC')->get();
+             return view('secretary-maintenance-service', $data)->with('users4',$users4);
+         }
+    }
     
     // public function pesostaffCategoryMaintenance(){
     //     if(Session::has('LoggedUser')){
@@ -131,9 +173,9 @@ class ServiceMaintenanceController extends Controller
         // }
     }
 
-    public function ServiceData()
+    public function ServiceData(Request $request)
     {
-        $getEm = $this->getService();
+        $getEm = $this->getService($request->mainservicebranch);
          if(request()->ajax())
              {
                 return datatables()->of($getEm)
@@ -151,15 +193,69 @@ class ServiceMaintenanceController extends Controller
              }
     }
 
-    public function getService()
+    public function DoctorServiceData(Request $request)
     {
-        $getservice = DB::table('tbl_service')
-        ->select('tbl_service.*','tbl_branch.branchname')
-        ->leftJoin('tbl_branch', 'tbl_service.branch_id', '=', 'tbl_branch.id')
-        ->where('tbl_service.status', '1')
-        ->get();
+        $getEm = $this->getService($request->mainservicebranch);
+         if(request()->ajax())
+             {
+                return datatables()->of($getEm)
+                ->addColumn('action', function($getEm){
+                $button = '<a class="btn btn-sm btn-success m-1" id="btn-edit-service" employer-id='. $getEm->id .' data-toggle="modal" data-target="#DoctorEditServiceModal">
+                    <i class="fa fa-edit"></i></a>';
+                    $button .= '<a class="btn btn-sm btn-danger m-1" id="btn-delete-service" employer-id='. $getEm->id .' data-toggle="modal" data-target="#proconfirmModal">
+                    <i class="fa fa-archive"></i></a>';
 
-        return $getservice;
+
+                return $button;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+             }
+    }
+
+    public function SecretaryServiceData(Request $request)
+    {
+        $getEm = $this->getService($request->mainservicebranch);
+         if(request()->ajax())
+             {
+                return datatables()->of($getEm)
+                ->addColumn('action', function($getEm){
+                $button = '<a class="btn btn-sm btn-success m-1" id="btn-edit-service" employer-id='. $getEm->id .' data-toggle="modal" data-target="#SecretaryEditServiceModal">
+                    <i class="fa fa-edit"></i></a>';
+                    $button .= '<a class="btn btn-sm btn-danger m-1" id="btn-delete-service" employer-id='. $getEm->id .' data-toggle="modal" data-target="#proconfirmModal">
+                    <i class="fa fa-archive"></i></a>';
+
+
+                return $button;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+             }
+    }
+
+    public function getService($mainservicebranch)
+    {
+        if($mainservicebranch == 'All Branches')
+        {
+            $getservice = DB::table('tbl_service')
+            ->select('tbl_service.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_service.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_service.status', '1')
+            ->get();
+
+            return $getservice;
+        }
+        else
+        {
+            $getservice = DB::table('tbl_service')
+            ->select('tbl_service.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_service.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_service.status', '1')
+            ->where('tbl_service.branch_id',$mainservicebranch)
+            ->get();
+
+            return $getservice;
+        }
     }
 
     public function getServiceData($id)

@@ -32,6 +32,48 @@ class InventoryController extends Controller
          }
     }
 
+    public function DoctorInventory(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users3 = Category::orderBy('name', 'ASC')->get();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+             //$users3 = User::where('role','employer')->get();
+             return view('doctor-inventory', $data)->with('users3',$users3)->with('users4',$users4);
+
+
+         }
+    }
+
+    public function SecretaryInventory(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users3 = Category::orderBy('name', 'ASC')->get();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+             //$users3 = User::where('role','employer')->get();
+             return view('secretary-inventory', $data)->with('users3',$users3)->with('users4',$users4);
+
+
+         }
+    }
+
     public function InventoryDisplay(Request $request)
     {
         $getEm = $this->getProduct($request->inventorybranch);
