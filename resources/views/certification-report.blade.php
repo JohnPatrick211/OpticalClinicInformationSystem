@@ -42,7 +42,7 @@
 
 
                                 <div class="col-sm-2 mb-3">
-                            <select class="form-control" style="width:auto;" name="certificationreportbranch" id="certificationreportbranch">
+                            <select class="form-control" style="width:160%;" name="certificationreportbranch" id="certificationreportbranch">
                                                 <option value="All Branches">All Branches</option>
                                                 @foreach($users4 as $item)
                                                     <option value="{{$item->id}}">{{$item->branchname}}</option>
