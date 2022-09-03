@@ -1,12 +1,12 @@
-@include('modals.reorder_modals')
-@extends('layouts.secretary')
+@include('modals.appointmentprescription_modals')
+@extends('layouts.staff')
 
 @section('content')
 
 
+
                     <!-- Page Heading -->
-                     <h1 class="h3 mb-2 text-gray-800">Inventory</h1>
-                     
+                     <h1 class="h3 mb-2 text-gray-800">Appointment List For Today</h1>
                     {{-- <div class="update-success-validation mr-auto ml-3" style="display: none">
                         <label class="label text-success">Employer is successfully Approved</label>
                       </div>
@@ -16,68 +16,49 @@
 
                 </div>
 
+                
                 <div class="row mb-2">
 
+                <div class="col-sm-2 mb-3">
+                              <input data-column="9" type="date" class="form-control" id="appointmentlisttoday" value="{{ date('Y-m-d') }}" readonly>
+                              </div>
+                                <div class="col-sm-4 ">
+                                <h6 class="h6 mt-2 text-gray-800" style="min-width: 350px;">{{$users6->branchname}}</h6>
+                              <input type="hidden" name="appointmentlistbranch" id="appointmentlistbranch" value="{{$LoggedUserInfo -> branch_id}}">
+                              <!-- <input type="hidden"name="appointmentlistdoctorname" id="appointmentlistdoctorname" value="{{$LoggedUserInfo -> id}}"> -->
+                    </div>
+                    <div class="col-sm-2 mb-3">
+                              <select class="form-control" name="appointmentlistdoctorname" id="appointmentlistdoctorname">
+                              @foreach($users5 as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                              @endforeach
+                              </select>
+                              </div>
 
-
-                            <div class="col-sm-2 mb-3">
-                            <select class="form-control" style="width:auto;" name="branch" id="inventorybranch">
+                            <!-- <div class="col-sm-2 mb-3">
+                            <select class="form-control" style="width:auto;" name="appointmentlistbranch" id="appointmentlistbranch">
                                                 <option value="All Branches">All Branches</option>
                                                 @foreach($users4 as $item)
                                                     <option value="{{$item->id}}">{{$item->branchname}}</option>
                                                 @endforeach
                                                 </select>
-                              <!-- <h6 class="h6 mt-2 text-gray-800">{{$users6->branchname}}</h6> -->
-                              <!-- <input type="hidden" name="branch" id="inventorybranch" value="{{$LoggedUserInfo -> branch_id}}"> -->
+                              </div> -->
+
                               </div>
-
-                              <!-- <div class="mt-2">
-                                -
-                                </div> -->
-
-                              <!-- <div class="col-sm-2 mb-3">
-                                <input data-column="9" type="date" class="form-control" id="vacantdate_to" value="{{ date('Y-m-d') }}">
-                                </div>
-                                    
-                                    <div class="mt-2">
-                                </div> -->
-
-                             </div>
-
-                
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <div class="table-responsive">
-
-                          <ul class="nav nav-tabs" id="myTab" role="tablist">
-
-                            <li class="nav-item">
-                              <a class="nav-link  active" id="validation-tab" data-toggle="tab" href="#validationtab" role="tab" aria-controls="contact" aria-selected="true">Products
-
-                              </a>
-                             </li>
-                              <li class="nav-item">
-                                  <a class="nav-link" id="verified-tab" data-toggle="tab" href="#verifiedtab" role="tab" aria-controls="home" aria-selected="false">Reorder
-
-                                  </a>
-                              </li>
-
-                          </ul>
-                          <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade active show" id="validationtab" role="tabpanel" aria-labelledby="validation-tab">
-
-                              <table class="table responsive table-bordered table-hover" id="inventory-table" width="100%" cellspacing="0">
+                              <table class="table responsive table-bordered table-hover" id="appointment-list-table" width="100%" cellspacing="0">
                                 <thead>
                                   <tr>
-                                            <th style="min-width: 5px">Product Code</th>
-                                            <th>Name</th>
-                                            <th style="min-width: 200px">Branch</th>
-                                            <th>Qty</th>
-                                            <th>Reorder</th>
-                                            <th>Category</th>
-                                            <th>Original Price</th>
-                                            <th>Selling Price</th>
-                                            <th>Markup</th>
+                                            <th>Patient Name</th>
+                                            <th>Doctor Name</th>
+                                            <th>Branch</th>
+                                            <th>Appointment Date</th>
+                                            <th>Appointment Day</th>
+                                            <th>Available Time</th>
+                                            <th>End Time</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
                                   </tr>
                               </thead>
 
@@ -88,34 +69,6 @@
                                 <label class="label text-success">Customer is successfully added validate</label>
                               </div>
                               <img src="../../assets/loader.gif" class="loader" alt="loader" style="display: none">-->
-
-
-                            </div>
-                            <div class="tab-pane fade" id="verifiedtab" role="tabpanel" aria-labelledby="verified-tab">
-
-                              <table class="table responsive table-bordered table-hover" id="reorder-table" width="100%">
-                                <thead>
-                                  <tr>
-                                            <th style="min-width: 5px">Product Code</th>
-                                            <th>Name</th>
-                                            <th style="min-width: 200px">Branch</th>
-                                            <th>Qty</th>
-                                            <th>Reorder</th>
-                                            <th>Category</th>
-                                            <th>Original Price</th>
-                                            <th>Selling Price</th>
-                                            <th>Markup</th>
-                                            <th>Action</th>
-                                  </tr>
-                              </thead>
-
-                              </table>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
                 <!-- Debug Table Content -->
                 {{-- <div class="container-fluid">
 

@@ -193,11 +193,21 @@ Route::get('doctor-schedule-data',[App\Http\Controllers\ScheduleController::clas
 
 //STAFF INTERFACE
 Route::get('staff-dashboard', [App\Http\Controllers\LoginController::class, 'staff'])->middleware('Islogged');
+//staff Patient Information
+Route::get('staff-patient-information',[App\Http\Controllers\PatientInformationController::class, 'StaffPatientInformationView'])->middleware('Islogged');
+//staff Patient Approval
+Route::get('staff-patient-approval',[App\Http\Controllers\PatientApprovalController::class, 'StaffPatientApprovalView'])->middleware('Islogged');
+//staff Appointment Approval
+Route::get('staff-appointment-approval',[App\Http\Controllers\AppointmentApprovalController::class, 'StaffAppointmentApprovalView'])->middleware('Islogged');
+//staff Appointment List
+Route::get('staff-appointment-list',[App\Http\Controllers\AppointmentListController::class, 'StaffAppointmentListView'])->middleware('Islogged');
 
 //SECRETARY INTERFACE
 Route::get('secretary-dashboard', [App\Http\Controllers\LoginController::class, 'secretary'])->middleware('Islogged');
 //secretary Patient Information
 Route::get('secretary-patient-information',[App\Http\Controllers\PatientInformationController::class, 'SecretaryPatientInformationView'])->middleware('Islogged');
+Route::get('addpatient',[App\Http\Controllers\RegisterController::class, 'addpatient'])->middleware('Islogged');
+Route::post('registerpatient',[App\Http\Controllers\RegisterController::class, 'registerpatient'])->middleware('Islogged');
 //secretary Patient Approval
 Route::get('secretary-patient-approval',[App\Http\Controllers\PatientApprovalController::class, 'SecretaryPatientApprovalView'])->middleware('Islogged');
 //secretary Appointment Approval

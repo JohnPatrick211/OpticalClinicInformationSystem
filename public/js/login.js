@@ -30,4 +30,16 @@ var check = function() {
     }
   }
 
+  var check2 = function() {
+    if (document.getElementById('registerpassword').value ==
+      document.getElementById('registerconfirm_password').value) {
+      $('.registerprofile-success').css('display', 'inline');
+      $('.registerprofile-fail').css('display', 'none');
+    }if(document.getElementById('registerpassword').value !=
+    document.getElementById('registerconfirm_password').value){
+      $('.registerprofile-fail').css('display', 'inline');
+      $('.registerprofile-success').css('display', 'none');
+    }
+  }
+
 

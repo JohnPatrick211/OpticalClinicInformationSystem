@@ -73,6 +73,26 @@ class AppointmentApprovalController extends Controller
 
          }
     }
+    public function StaffAppointmentApprovalView(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users5 = Login::orderBy('id', 'ASC')->where('user_role','=','Doctor')->where('branch_id','=',session('Branch'))->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+             //$users3 = User::where('role','employer')->get();
+             return view('staff-appointment-approval', $data)->with('users4',$users4)->with('users5',$users5);
+
+
+         }
+    }
     public function AppointmentApproval(Request $request)
     {
         $getEm = $this->getAppointmentApproval($request->date_from,$request->date_to,$request->approvalappointmentbranch,$request->appointmentapprovaldoctorname);

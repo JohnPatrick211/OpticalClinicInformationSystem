@@ -91,9 +91,9 @@ class InventoryController extends Controller
              }
     }
 
-    public function ReorderDisplay(Request $request)
+    public function ReorderDisplay()
     {
-        $getEm = $this->getReorder($request->inventorybranch);
+        $getEm = $this->getReorder();
          if(request()->ajax())
              {
                 return datatables()->of($getEm)
@@ -134,9 +134,9 @@ class InventoryController extends Controller
         }   
     }
 
-    public function getReorder($inventorybranch)
+    public function getReorder()
     {
-        if($inventorybranch == 'All Branches')
+        if(session('User-Type') == 'System Admin')
         {
             $getproduct = DB::table('tbl_product')
             ->select('tbl_product.*','tbl_category.name','tbl_branch.branchname')
@@ -154,7 +154,7 @@ class InventoryController extends Controller
             ->leftJoin('tbl_category', 'tbl_product.category_id', '=', 'tbl_category.id')
             ->leftJoin('tbl_branch', 'tbl_product.branch_id', '=', 'tbl_branch.id')
             ->where('tbl_product.status', '1')
-            ->where('tbl_product.branch_id',$inventorybranch)
+            ->where('tbl_product.branch_id',session('Branch'))
             ->whereColumn('tbl_product.reorder','>=', 'tbl_product.qty')
             ->get();
 

@@ -121,6 +121,45 @@ class RegisterController extends Controller
             ];
             return view('patient-editprofile', $data);
     }
+    public function addpatient()
+    {
+            $staff = Login:: where('id','=', session('LoggedUser'))->first();
+            $data = [
+                'LoggedUserInfo' => $staff,
+            ];
+            return view('secretary-addpatient', $data);
+    }
+    public function registerpatient(Request $request)
+    {
+        $registerpatient = new Login();
+        $validatepatient =  Login::where('name','=', $request->input('registerfullname'))->first();
+        if($validatepatient)
+        {
+            return back()->with('danger', 'Patient Already Exist');
+        }
+        else
+        {
+        $registerpatient->name = $request->input('registerfullname');
+        $registerpatient->username = $request->input('registerusername');
+        $registerpatient->password = $request->input('registerpassword');
+        $registerpatient->user_role = 'Patient';
+        $registerpatient->email = $request->input('registeremail');
+        $registerpatient->contactno = $request->input('registerphone_no');
+        $registerpatient->address = $request->input('registeraddress');
+        $registerpatient->age = $request->input('registerage');
+        $registerpatient->birthdate = $request->input('registerbirthdate');
+        $registerpatient->gender = $request->input('registergender');
+        $registerpatient->civilstatus = $request->input('registercivilstatus');
+        $registerpatient->status = 'Approved';
+        $registerpatient->archive_status = 'no';
+        $registerpatient->save();
+        $getname = Session::get('Name');
+        $getusertype = Session::get('User-Type');
+        base::recordAction( $getname, $getusertype,'Patient Registration', 'Patient Registration Successfully');
+        // return redirect('maintenance-category')->with('success', 'Category Saved');
+         return back()->with('success', 'Patient Registration is Successfully Saved');
+        }
+    }
     public function saveeditprofile(Request $request)
     {
         $id =  $request->input('editid');

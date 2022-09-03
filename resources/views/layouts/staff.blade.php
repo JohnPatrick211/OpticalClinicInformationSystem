@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Optical Clinic</title>
-    <link rel="icon" href="/img/logo2.png"/>
+    <link rel="icon" href="/img/initial_logo.png"/>
     <!-- Custom fonts for this template-->
     <link href="/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -17,6 +17,13 @@
     <!-- Custom styles for this page -->
     <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style type="text/css">
+        .ui-datepicker {
+            background: #333;
+            border: 1px solid #555;
+            color: #EEE;
+}
+</style>
 </head>
 <body id="page-top">
 
@@ -32,7 +39,7 @@
                     <!--<i class="fas fa-laugh-wink"></i>-->
                     <img src ="/img/initial_logo.png" width="55px" height="55px">
                 <!--</div>-->
-                <div class="sidebar-brand-text mx-3">PESO BALAYAN</div>
+                <div class="sidebar-brand-text mx-3">OPTICAL CLINIC</div>
             </a>
 
             <!-- Divider -->
@@ -40,7 +47,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="pesostaff-dashboard">
+                <a class="nav-link" href="staff-dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span id="content-dashboard">Dashboard</span></a>
             </li>
@@ -58,52 +65,27 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Reports</span>
+                    <span>Patient Record</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="pesostaff-applicant-reports">Applicant's Reports</a>
-                        <a class="collapse-item" href="pesostaff-vacant-reports">Vacant's Solicitor</a>
+                        <a class="collapse-item" href="staff-patient-information">Patient Information</a>
+                        <a class="collapse-item" href="staff-patient-approval">Patient Approval</a>
                     </div>
                 </div>
             </li>
 
-            {{-- <li class="nav-item active">
-                <a class="nav-link" href="employer-approval">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Employer Approval</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="employer-approval">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Job Approval </span></a>
-            </li> --}}
 
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseApproval"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAppointmentApproval"
                     aria-expanded="true" aria-controls="collapseApproval">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Approval</span>
+                    <span>Appointment</span>
                 </a>
-                <div id="collapseApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseAppointmentApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="pesostaff-employer-approval">Employer Approval</a>
-                        <a class="collapse-item" href="pesostaff-employer-job-approval">Job Approval</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMaintenance"
-                    aria-expanded="true" aria-controls="collapseMaintenance">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Maintenance</span>
-                </a>
-                <div id="collapseMaintenance" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="pesostaff-maintenance-category">Category Maintenance</a>
-                        <a class="collapse-item" href="pesostaff-maintenance-employer">Employer Maintenance</a>
-                        <a class="collapse-item" href="pesostaff-maintenance-job">Job Maintenance</a>
+                    <a class="collapse-item" href="staff-appointment-approval">Appointment Approval</a>
+                        <a class="collapse-item" href="staff-appointment-list">Appointment List</a>
                     </div>
                 </div>
             </li>
@@ -362,18 +344,35 @@
     <!-- Page level custom scripts -->
     <script src="js/datatables-demo.js"></script>
     <!-- ajax action edit employer -->
-     <script src="js/peso-staff--archive.js"></script>
+    <script src="js/peso-staff--archive.js"></script>
+    <script src="js/verify_appointment.js"></script>
     <script src="js/employer.js"></script>
     <script src="js/jobvacancy.js"></script>
-    <script src="js/verify_employer.js"></script>
+    <script src="js/verify_patient.js"></script>
     <script src="js/verify_job.js"></script>
     <script src="js/borrowed.js"></script>
+    <script src="js/branch.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/product.js"></script>
     <script src="js/category.js"></script>
+    <script src="js/cashiering.js"></script>
     <script src="js/vacantreport.js"></script>
     <script src="js/user.js"></script>
     <script src="js/audit-trail.js"></script>
     <script src="js/archive.js"></script>
     <script src="js/region.js"></script>
+    <script src="js/inventory.js"></script>
+    <script src="js/schedule.js"></script>
+    <script src="js/appointmentlist.js"></script>
+    <script src="js/appointmentreport.js"></script>
+    <script src="js/certificationreport.js"></script>
+    <script src="js/salesreport.js"></script>
+    <script src="js/patientinformation.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/require-2.3.5.min.js"></script>
+    <script src="js/bootstrap-multiselect.js"></script>
+    <script src="js/adminlte.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js" integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
 

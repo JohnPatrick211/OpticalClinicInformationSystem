@@ -136,9 +136,7 @@ $(document).ready(function(){
           let inventorybranch = $('#inventorybranch').val()
           console.log(inventorybranch);
           $('#inventory-table').DataTable().destroy();
-          $('#reorder-table').DataTable().destroy();
           fetchInventoryProduct(inventorybranch);
-          fetchReorderProduct(inventorybranch);
       });
       
 

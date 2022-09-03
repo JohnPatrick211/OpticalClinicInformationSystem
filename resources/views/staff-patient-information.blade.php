@@ -1,5 +1,5 @@
 @include('modals.patientinformation_modals')
-@extends('layouts.secretary')
+@extends('layouts.staff')
 
 @section('content')
 
@@ -13,13 +13,6 @@
                 <!-- Debug Table Content -->
                 <div class="row">
 
-                </div>
-
-                <div class="row mb-3">
-
-                <div class="col-12 mt-2">
-                              <a href="addpatient" class="btn btn-sm btn-primary">Register Patient</a>
-                </div>
                 </div>
 
 

@@ -420,6 +420,7 @@
    <!-- Page level custom scripts -->
    <script src="js/datatables-demo.js"></script>
     <!-- ajax action edit employer -->
+   
     <script src="js/peso-staff--archive.js"></script>
     <script src="js/verify_appointment.js"></script>
     <script src="js/employer.js"></script>
@@ -444,6 +445,7 @@
     <script src="js/certificationreport.js"></script>
     <script src="js/salesreport.js"></script>
     <script src="js/patientinformation.js"></script>
+    <script src="js/login.js"></script>
     <script src="js/require-2.3.5.min.js"></script>
     <script src="js/bootstrap-multiselect.js"></script>
     <script src="js/adminlte.js"></script>  

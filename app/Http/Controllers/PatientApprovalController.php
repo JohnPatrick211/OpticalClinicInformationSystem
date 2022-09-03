@@ -49,18 +49,18 @@ class PatientApprovalController extends Controller
 
          }
     }
-    // public function pesostaffEmployerApprovalView(){
-    //     if(Session::has('LoggedUser')){
-    //         $users2 = DB::table('staff')->where('id','=', session('LoggedUser'))->first();
-    //          $data = [
-    //              'LoggedUserInfo' => $users2
-    //          ];
-    //          //$users3 = User::where('role','employer')->get();
-    //          return view('pesostaff-employer-approval', $data);
+    public function StaffPatientApprovalView(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+             $data = [
+                 'LoggedUserInfo' => $users2
+             ];
+             //$users3 = User::where('role','employer')->get();
+             return view('staff-patient-approval', $data);
 
 
-    //      }
-    // }
+         }
+    }
     public function PatientApproval()
     {
         $getEm = $this->getPatient();
