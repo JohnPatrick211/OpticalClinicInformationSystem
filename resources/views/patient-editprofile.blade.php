@@ -77,6 +77,9 @@
                             <select class="form-control" name="editcivilstatus" id="editcivilstatus" value="{{$LoggedUserInfo -> civilstatus}}">
                             <option value="Single" {{ ( $LoggedUserInfo -> civilstatus == "Single") ? 'selected' : '' }}>Single</option>
                             <option value="Married" {{ ( $LoggedUserInfo -> civilstatus == "Married") ? 'selected' : '' }}>Married</option>
+                            <option value="Widowed" {{ ( $LoggedUserInfo -> civilstatus == "Widowed") ? 'selected' : '' }}>Widowed</option>
+                            <option value="Separated" {{ ( $LoggedUserInfo -> civilstatus == "Separated") ? 'selected' : '' }}>Separated</option>
+                            <option value="Divorced" {{ ( $LoggedUserInfo -> civilstatus == "Divorced") ? 'selected' : '' }}>Divorced</option>
                              </select>
                         </div>
 

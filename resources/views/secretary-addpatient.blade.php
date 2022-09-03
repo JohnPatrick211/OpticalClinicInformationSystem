@@ -75,6 +75,9 @@
                             <select class="form-control" name="registercivilstatus" id="registercivilstatus" value="">
                             <option value="Single">Single</option>
                             <option value="Married" >Married</option>
+                            <option value="Widowed">Widowed</option>
+                            <option value="Separated">Separated</option>
+                            <option value="Divorced">Divorced</option>
                              </select>
                         </div>
 
