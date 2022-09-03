@@ -248,6 +248,11 @@ Route::get('patient-history', [App\Http\Controllers\PatientHistoryController::cl
 Route::get('patienthistory-data',[App\Http\Controllers\PatientHistoryController::class, 'PatientHistoryData'])->middleware('Islogged');
 Route::get('/patienthistory/getpatienthistoryinfo/{invoice_no}', [App\Http\Controllers\PatientHistoryController::class, 'getPatientHistoryData']);
 Route::get('patienthistory/preview-invoice/{wholesale_discount_amount}/{senior_pwd_discount_amount}/{billingbranch}/{patientname}/{invoice_no}', [App\Http\Controllers\PatientHistoryController::class, 'patienthistorypreviewInvoice']);
+//PATIENT CERTIFICATION
+Route::get('patient-certification', [App\Http\Controllers\PatientCertificationController::class, 'CertificationView'])->middleware('Islogged');
+Route::get('patientcertification-data',[App\Http\Controllers\PatientCertificationController::class, 'PatientCertificationData'])->middleware('Islogged');
+Route::get('/patientcertification/getpatientcertificationinfo/{id}', [App\Http\Controllers\PatientCertificationController::class, 'getPatientCertificationData']);
+Route::get('previewcertification/print/{id}/{patient_id}/{doctor_id}/{branch_id}', [App\Http\Controllers\PatientCertificationController::class, 'patientcertificationpreview']);
 //PATIENT BOOK APPOINTMENT
 Route::get('patient-book-appointment', [App\Http\Controllers\BookAppointmentController::class, 'BookAppointmentView'])->middleware('Islogged');
 Route::get('bookappointment-data',[App\Http\Controllers\BookAppointmentController::class, 'BookAppointmentData'])->middleware('Islogged');
