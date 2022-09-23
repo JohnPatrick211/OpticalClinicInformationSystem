@@ -174,6 +174,7 @@ class BillingController extends Controller
             else{
                 $c = new Billing;
                 $c->product_id = $product_code;
+                $c->user_id = session('LoggedUser');
                 $c->qty = $qty;
                 $c->amount = $amount;
                 $c->save();
@@ -192,7 +193,7 @@ class BillingController extends Controller
     }
 
     public function isProductExists($product_code){
-        $p = DB::table('tbl_billingtray')->where('product_id', $product_code);
+        $p = DB::table('tbl_billingtray')->where('product_id', $product_code)->where('user_id', session('LoggedUser'));
         if($p->count() > 0){
             return true;
         }
@@ -529,8 +530,9 @@ class BillingController extends Controller
     }
 
     public function removeAllTrayProducts() {
-        $cashiering = new Billing;
-        $cashiering->truncate();
+        // $cashiering = new Billing;
+        // $cashiering->truncate();
+        DB::table('tbl_billingtray')->where('user_id', session('LoggedUser'))->delete();
     }
 
     public function getUsernameData($id)

@@ -100,17 +100,17 @@ class AppointmentReportController extends Controller
                 ->whereBetween('BR.date', [$date_from, date('Y-m-d', strtotime($date_to. ' + 1 days'))])
                 ->get();
         }
-        // if($appointmentreportbranch == 'All Branches')
-        // {
-        //     return DB::table('tbl_appointmentreport AS BR')
-        //     ->select('BR.*','tbl_branch.branchname','tbl_user.name AS U','tbl_doctor.name AS D')
-        //     ->leftJoin('tbl_branch', 'BR.branch_id', '=', 'tbl_branch.id')
-        //     ->leftJoin('tbl_user', 'BR.patient_id', '=', 'tbl_user.id')
-        //     ->leftJoin('tbl_doctor', 'BR.doctor_id', '=', 'tbl_doctor.doctor_id')
-        //         ->whereBetween('BR.date', [$date_from, date('Y-m-d', strtotime($date_to. ' + 1 days'))])
-        //         ->where('BR.doctor_id',$appointmentreportdoctorname)
-        //         ->get();
-        // }
+        if($appointmentreportbranch == 'All Branches')
+        {
+            return DB::table('tbl_appointmentreport AS BR')
+            ->select('BR.*','tbl_branch.branchname','tbl_user.name AS U','tbl_doctor.name AS D')
+            ->leftJoin('tbl_branch', 'BR.branch_id', '=', 'tbl_branch.id')
+            ->leftJoin('tbl_user', 'BR.patient_id', '=', 'tbl_user.id')
+            ->leftJoin('tbl_doctor', 'BR.doctor_id', '=', 'tbl_doctor.doctor_id')
+                ->whereBetween('BR.date', [$date_from, date('Y-m-d', strtotime($date_to. ' + 1 days'))])
+                ->where('BR.doctor_id',$appointmentreportdoctorname)
+                ->get();
+        }
         if($appointmentreportdoctorname == 'All Doctors')
         {
             return DB::table('tbl_appointmentreport AS BR')
