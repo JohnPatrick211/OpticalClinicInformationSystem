@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Models\Login;
 use Illuminate\Support\Facades\Hash;
@@ -19,9 +18,9 @@ use App\Models\MailVerify;
 use Mail;
 use App\Helpers\base; 
 
-class SalesReportController extends Controller
+class ServicesReportController extends Controller
 {
-    public function SalesReportView(){
+    public function ServicesReportView(){
         if(Session::has('LoggedUser')){
             $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
             $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
@@ -30,13 +29,13 @@ class SalesReportController extends Controller
                  'LoggedUserInfo' => $users2
              ];
              //$users3 = User::where('role','employer')->get();
-             return view('sales-report', $data)->with('users4',$users4)->with('users5',$users5);
+             return view('services-report', $data)->with('users4',$users4)->with('users5',$users5);
 
 
          }
     }
 
-    public function DoctorSalesReportView(){
+    public function DoctorServicesReportView(){
         if(Session::has('LoggedUser')){
             $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
             $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
@@ -51,13 +50,13 @@ class SalesReportController extends Controller
                  'users6' =>  $users6,
              ];
              //$users3 = User::where('role','employer')->get();
-             return view('doctor-sales-report', $data)->with('users4',$users4)->with('users5',$users5);
+             return view('doctor-services-report', $data)->with('users4',$users4)->with('users5',$users5);
 
 
          }
     }
 
-    public function SecretarySalesReportView(){
+    public function SecretaryServicesReportView(){
         if(Session::has('LoggedUser')){
             $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
             $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
@@ -72,15 +71,14 @@ class SalesReportController extends Controller
                  'users6' =>  $users6,
              ];
              //$users3 = User::where('role','employer')->get();
-             return view('secretary-sales-report', $data)->with('users4',$users4)->with('users5',$users5);
+             return view('secretary-services-report', $data)->with('users4',$users4)->with('users5',$users5);
 
 
          }
     }
-
-    public function SalesReportData(Request $request)
+    public function ServicesReportData(Request $request)
     {
-        $getEm = $this->getSalesReport($request->date_from, $request->date_to, $request-> salesreportbranch);
+        $getEm = $this->getServiceReport($request->date_from, $request->date_to, $request-> servicesreportbranch);
          if(request()->ajax())
              {  
                 return datatables()->of($getEm)
@@ -88,17 +86,17 @@ class SalesReportController extends Controller
              }
     }
 
-    public function getSalesReport($date_from, $date_to, $salesreportbranch)
+    public function getServiceReport($date_from, $date_to, $servicesreportbranch)
     {
 
-        if($salesreportbranch == 'All Branches')
+        if($servicesreportbranch == 'All Branches')
         {
              return DB::table('tbl_sales AS BR')
                 ->select('BR.*','tbl_branch.branchname')
                 ->selectRaw('ROUND(BR.amount / BR.qty, 2) AS selling_price')
                 ->leftJoin('tbl_branch', 'BR.branch_id', '=', 'tbl_branch.id')
                 ->leftJoin('tbl_product', 'BR.product_id', '=', 'tbl_product.id')
-                ->where('BR.product_id', 'LIKE', '1%')
+                ->where('BR.product_id', 'LIKE', '2%')
                 ->whereBetween('BR.created_at', [$date_from, date('Y-m-d', strtotime($date_to. ' + 1 days'))])
                 ->get();
         }
@@ -109,19 +107,20 @@ class SalesReportController extends Controller
                 ->selectRaw('ROUND(BR.amount / BR.qty, 2) AS selling_price')
                 ->leftJoin('tbl_branch', 'BR.branch_id', '=', 'tbl_branch.id')
                 ->leftJoin('tbl_product', 'BR.product_id', '=', 'tbl_product.id')
-                ->where('BR.product_id', 'LIKE', '1%')
+                ->where('BR.product_id', 'LIKE', '2%')
                 ->whereBetween('BR.created_at', [$date_from, date('Y-m-d', strtotime($date_to. ' + 1 days'))])
-                ->where('BR.branch_id',$salesreportbranch)
+                ->where('BR.branch_id',$servicesreportbranch)
                 ->get();
         }
     }
-    public function previewSalesReport($date_from, $date_to, $salesreportbranch){
+
+    public function previewServicesReport($date_from, $date_to, $servicesreportbranch){
 
         // $selectedbranch =  ClinicBranch::select('branchname')->where('id',$appointmentreportbranch)->get();
-         $selectedbranch =  ClinicBranch::find($salesreportbranch);
+         $selectedbranch =  ClinicBranch::find($servicesreportbranch);
  
-         $data= $this->getSalesReports($date_from, $date_to, $salesreportbranch);
-         $output = $this->generateSalesReport($data, $date_from, $date_to, $salesreportbranch, $selectedbranch);
+         $data= $this->getServicesReports($date_from, $date_to, $servicesreportbranch);
+         $output = $this->generateServicesReport($data, $date_from, $date_to, $servicesreportbranch, $selectedbranch);
  
  
          $pdf = \App::make('dompdf.wrapper');
@@ -131,16 +130,16 @@ class SalesReportController extends Controller
          return $pdf->stream();
      }
  
-     public function getSalesReports($date_from, $date_to, $salesreportbranch)
+     public function getServicesReports($date_from, $date_to, $servicesreportbranch)
      {
-        if($salesreportbranch == 'All Branches')
+        if($servicesreportbranch == 'All Branches')
         {
              return DB::table('tbl_sales AS BR')
                 ->select('BR.*','tbl_branch.branchname')
                 ->selectRaw('ROUND(BR.amount / BR.qty, 2) AS selling_price')
                 ->leftJoin('tbl_branch', 'BR.branch_id', '=', 'tbl_branch.id')
                 ->leftJoin('tbl_product', 'BR.product_id', '=', 'tbl_product.id')
-                ->where('BR.product_id', 'LIKE', '1%')
+                ->where('BR.product_id', 'LIKE', '2%')
                 ->whereBetween('BR.created_at', [$date_from, date('Y-m-d', strtotime($date_to. ' + 1 days'))])
                 ->get();
         }
@@ -151,20 +150,20 @@ class SalesReportController extends Controller
                 ->selectRaw('ROUND(BR.amount / BR.qty, 2) AS selling_price')
                 ->leftJoin('tbl_branch', 'BR.branch_id', '=', 'tbl_branch.id')
                 ->leftJoin('tbl_product', 'BR.product_id', '=', 'tbl_product.id')
-                ->where('BR.product_id', 'LIKE', '1%')
+                ->where('BR.product_id', 'LIKE', '2%')
                 ->whereBetween('BR.created_at', [$date_from, date('Y-m-d', strtotime($date_to. ' + 1 days'))])
-                ->where('BR.branch_id',$salesreportbranch)
+                ->where('BR.branch_id',$servicesreportbranch)
                 ->get();
         }
      }
-     public function generateSalesReport($data, $date_from, $date_to, $salesreportbranch, $selectedbranch)
+     public function generateServicesReport($data, $date_from, $date_to, $servicesreportbranch, $selectedbranch)
      {
         $sales = new Sales;
-        $total_sales = $sales->computeTotalSales($date_from, $date_to, $salesreportbranch);
+        $total_sales = $sales->computeTotalServices($date_from, $date_to, $servicesreportbranch);
          $add = '';
          $add2 = '';
          $add3 = '';
-         if($salesreportbranch == 'All Branches')
+         if($servicesreportbranch == 'All Branches')
          {
              $add = 'All Optical Clinic';
          }
@@ -243,7 +242,7 @@ class SalesReportController extends Controller
          
          <h2 class="p-name">'.$add.'</h2>
          <p class="p-details address">'. $add3 .'</p>
-         <h2 style="text-align:center;">Sales Report</h2>
+         <h2 style="text-align:center;">Service Report</h2>
          <h2 style="text-align:center;">For the Month of '.date("F", strtotime($date_from)).' '.date("Y", strtotime($date_from)).'</h2>
          <p style="text-align:right;">Date: '. date("M/d/Y", strtotime($date_from)) .' - '. date("M/d/Y", strtotime($date_to)).'</p>
          <p style="text-align:left;">Total sales: <span class = "peso">&#8369;</span> <b>'. number_format($total_sales,2,'.',',') .'</b></p>
@@ -256,7 +255,7 @@ class SalesReportController extends Controller
              <thead>
                  <tr>
                     <th>Invoice No.</th>
-                    <th>Product/Service Code</th>
+                    <th>Service Code</th>
                     <th>Name</th>
                     <th>Branch</th>
                     <th>Price</th>
@@ -298,15 +297,14 @@ class SalesReportController extends Controller
          
          return $output;
      }
-     public function computeSales(Request $request) {
+     public function computeServices(Request $request) {
 
         $input = $request->all();
         $date_from = $input['date_from'];
         $date_to = $input['date_to'];
-        $salesreportbranch = $input['salesreportbranch'];
+        $salesreportbranch = $input['servicesreportbranch'];
 
         $data = new Sales;
-        return $data->computeTotalSales($date_from, $date_to, $salesreportbranch);
+        return $data->computeTotalServices($date_from, $date_to, $salesreportbranch);
     }
-
 }

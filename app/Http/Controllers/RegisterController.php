@@ -15,11 +15,17 @@ class RegisterController extends Controller
 {
     public function signUp(Request $request){
 
-        $fullname =  $request->input('fullname');
+        $firstname =  $request->input('firstname');
+        $middlename =  $request->input('middlename');
+        $lastname =  $request->input('lastname');
         $phone_no =  $request->input('phone_no');
         $password =  $request->input('password');
         $email =  $request->input('email');
-        $address =  $request->input('address');
+        $houseno =  $request->input('houseno');
+        $street =  $request->input('street');
+        $barangay =  $request->input('barangay');
+        $city =  $request->input('city');
+        $province =  $request->input('province');
         $username =  $request->input('username');
         $birthdate =  $request->input('birthdate');
         $gender =  $request->input('gender');
@@ -27,9 +33,22 @@ class RegisterController extends Controller
         $civilstatus =  $request->input('civilstatus');
         
         $patient_acc = new Login;
-        $patient_acc->name = $fullname;
+        $patient_acc->firstname = $firstname;
+        if(empty($middlename)){
+            $patient_acc->name = $firstname . " " . $lastname ;
+        }
+        else{
+            $patient_acc->name = $firstname . " " . $middlename . " " . $lastname ;
+        }
+        $patient_acc->middlename = $middlename;
+        $patient_acc->lastname = $lastname;
         $patient_acc->contactno = $phone_no;
-        $patient_acc->address = $address;
+        $patient_acc->address = $houseno . ", " . $street . ", " .$barangay . ", " . $city . ", " . $province;
+        $patient_acc->houseno = $houseno;
+        $patient_acc->street = $street;
+        $patient_acc->barangay = $barangay;
+        $patient_acc->city = $city;
+        $patient_acc->province = $province;
         $patient_acc->email = $email;
         $patient_acc->age = $age;
         $patient_acc->gender = $gender;
@@ -50,7 +69,7 @@ class RegisterController extends Controller
         Session::forget('otp');
 
         $message =  "<p>From: " . "Optical Clinic"  . "</p>" .
-                    "<p>Patient Name: " .  $fullname  . "</p>" .
+                    "<p>Patient Name: " .  $firstname  . "</p>" .
                     "<p>Message: " . "Good Day, Your Registration Has been sent to the approval list, Please Wait for the email result for the verification of your credentials" . "</p>";
 
         Mail::to($email)->send(new MailVerify($message));
@@ -78,8 +97,10 @@ class RegisterController extends Controller
 
     public function sendOTP(Request $request){
         $phone_no =  $request->input('phone_no');
+        //Cladie main account
         $basic  = new \Vonage\Client\Credentials\Basic("9898a37c", "RWnDn3sbvaz1YQ5J");
-        //$basic  = new \Vonage\Client\Credentials\Basic("534ad896", "2qI43TOV5XsNSPd4");
+        //test account
+        // $basic  = new \Vonage\Client\Credentials\Basic("534ad896", "2qI43TOV5XsNSPd4");
         $client = new \Vonage\Client($basic);
 
         $otp = rand(1000,9999);
@@ -139,13 +160,26 @@ class RegisterController extends Controller
         }
         else
         {
-        $registerpatient->name = $request->input('registerfullname');
+        $registerpatient->firstname =$request->input('registerfirstname');
+        $registerpatient->middlename = $request->input('registermiddlename');
+        if(empty($request->input('registermiddlename'))){
+            $registerpatient->name = $request->input('registerfirstname') . " " . $request->input('registerlastname');
+        }
+        else{
+            $registerpatient->name = $request->input('registerfirstname') . " " . $request->input('registermiddlename') . " " . $request->input('registerlastname');
+        }
+        $registerpatient->lastname = $request->input('registerlastname');
         $registerpatient->username = $request->input('registerusername');
         $registerpatient->password = $request->input('registerpassword');
         $registerpatient->user_role = 'Patient';
         $registerpatient->email = $request->input('registeremail');
         $registerpatient->contactno = $request->input('registerphone_no');
-        $registerpatient->address = $request->input('registeraddress');
+        $registerpatient->address = $request->input('registerhouseno') . ", " . $request->input('registerstreet') . ", " .$request->input('registerbarangay') . ", " . $request->input('registercity') . ", " . $request->input('registerprovince');
+        $registerpatient->houseno = $request->input('registerhouseno');
+        $registerpatient->street = $request->input('registerstreet');
+        $registerpatient->barangay = $request->input('registerbarangay');
+        $registerpatient->city = $request->input('registercity');
+        $registerpatient->province = $request->input('registerprovince');
         $registerpatient->age = $request->input('registerage');
         $registerpatient->birthdate = $request->input('registerbirthdate');
         $registerpatient->gender = $request->input('registergender');
@@ -163,16 +197,31 @@ class RegisterController extends Controller
     public function saveeditprofile(Request $request)
     {
         $id =  $request->input('editid');
-        $fullname =  $request->input('editfullname');
+        $firstname =  $request->input('editfirstname');
+        $middlename =  $request->input('editmiddlename');
+        $lastname =  $request->input('editlastname');
         $phone_no =  $request->input('editphone_no');
         $password =  $request->input('editpassword');
         $email =  $request->input('editemail');
-        $address =  $request->input('editaddress');
+        $houseno =  $request->input('edithouseno');
+        $street =  $request->input('editstreet');
+        $barangay =  $request->input('editbarangay');
+        $city =  $request->input('editcity');
+        $province =  $request->input('editprovince');
         $username =  $request->input('editusername');
         $birthdate =  $request->input('editbirthdate');
         $gender =  $request->input('editgender');
         $age =  $request->input('editage');
         $civilstatus =  $request->input('editcivilstatus');
+
+        $address = $houseno . ", " . $street . ", " .$barangay . ", " . $city . ", " . $province;
+
+        if(empty($middlename)){
+            $fullname = $firstname . " " . $lastname ;
+        }
+        else{
+            $fullname = $firstname . " " . $middlename . " " . $lastname ;
+        }
 
         if($password == "")
         {
@@ -180,8 +229,16 @@ class RegisterController extends Controller
             ->where('id', $id)
             ->update([
                 'name' =>  $fullname,
+                'firstname' =>  $firstname,
+                'middlename' =>  $middlename,
+                'lastname' =>  $lastname,
                 'email' => $email,
                 'address' => $address,
+                'houseno' => $houseno,
+                'street' => $street,
+                'barangay' => $barangay,
+                'city' => $city,
+                'province' => $province,
                 'contactno' => $phone_no,
                 'username' => $username,
                 'age' => $age,
@@ -199,8 +256,16 @@ class RegisterController extends Controller
             ->where('id', $id)
             ->update([
                 'name' =>  $fullname,
+                'firstname' =>  $firstname,
+                'middlename' =>  $middlename,
+                'lastname' =>  $lastname,
                 'email' => $email,
                 'address' => $address,
+                'houseno' => $houseno,
+                'street' => $street,
+                'barangay' => $barangay,
+                'city' => $city,
+                'province' => $province,
                 'contactno' => $phone_no,
                 'username' => $username,
                 'age' => $age,

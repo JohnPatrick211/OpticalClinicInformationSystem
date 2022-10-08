@@ -123,6 +123,7 @@
                 <div id="ReportscollapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="secretary-sales-reports">Sales Reports</a>
+                        <a class="collapse-item" href="secretary-services-reports">Service Reports</a>
                         <a class="collapse-item" href="secretary-appointment-reports">Appointment Report</a>
                         <a class="collapse-item" href="secretary-certification-reports">Certification Report</a>
                     </div>
@@ -443,6 +444,7 @@
     <script src="js/appointmentlist.js"></script>
     <script src="js/appointmentreport.js"></script>
     <script src="js/certificationreport.js"></script>
+    <script src="js/salesreport.js"></script>
     <script src="js/salesreport.js"></script>
     <script src="js/patientinformation.js"></script>
     <script src="js/login.js"></script>

@@ -7,11 +7,17 @@ $(document).ready(function(){
     
     $('#btn-signup').click(function(){
 
-        var fullname = $('#fullname').val();
+        var firstname = $('#firstname').val();
+        var middlename = $('#middlename').val();
+        var lastname = $('#lastname').val();
         var phone_no = $('#phone_no').val();
         var password = $('#password').val();
         var email = $('#email').val();
-        var address = $('#address').val();
+        var houseno = $('#houseno').val();
+        var street = $('#street').val();
+        var barangay = $('#barangay').val();
+        var city = $('#city').val();
+        var province = $('#province').val();
         var username = $('#username').val();
         var age = $('#age').val();
         var birthdate = $('#birthdate').val();
@@ -19,11 +25,17 @@ $(document).ready(function(){
         var civilstatus = $('#civilstatus').val();
         var validid = $('#validid').prop('files')[0];
         var form = new FormData();
-        form.append('fullname',fullname);
+        form.append('firstname',firstname);
+        form.append('middlename',middlename);
+        form.append('lastname',lastname);
         form.append('phone_no',phone_no);
         form.append('password',password);
         form.append('email',email);
-        form.append('address',address);
+        form.append('houseno',houseno);
+        form.append('street',street);
+        form.append('barangay',barangay);
+        form.append('city',city);
+        form.append('province',province);
         form.append('username',username);
         form.append('validid',validid);
         form.append('age',age);
@@ -32,7 +44,7 @@ $(document).ready(function(){
         form.append('civilstatus',civilstatus);
 
 
-        var is_valid = validateInputs(fullname, phone_no, password,email,address,username,age,gender,birthdate);
+        var is_valid = validateInputs(firstname, lastname, phone_no, password,email,houseno, street, barangay, city, province,username,age,gender,birthdate);
         
         if(is_valid){
             signUp(form);
@@ -40,16 +52,21 @@ $(document).ready(function(){
       
     });
 
-    function validateInputs(fullname, phone_no, password, confirm_password,email,address,username,age,gender,birthdate) {
-        var fullname = $('#fullname').val();
+    function validateInputs(firstname, lastname, phone_no, password,email,houseno, street, barangay, city, province,username,age,gender,birthdate) {
+        var firstname = $('#firstname').val();
+        var lastname = $('#lastname').val();
         var phone_no = $('#phone_no').val();
         var password = $('#password').val();
         var confirm_password = $('#confirm_password').val();
         var email = $('#email').val();
-        var address = $('#address').val();  
+        var houseno = $('#houseno').val();
+        var street = $('#street').val();
+        var barangay = $('#barangay').val();
+        var city = $('#city').val();
+        var province = $('#province').val();  
         var username = $('#username').val();
 
-        if(birthdate == '' || gender == '' || age == '' || fullname == '' || phone_no == '' || password == '' || email == '' || address == '' || username == ''){
+        if(birthdate == '' || gender == '' || age == '' || firstname == '' || lastname == '' || phone_no == '' || password == '' || email == '' || houseno == '' || street == '' || barangay == '' || city == '' || province == '' || username == ''){
             alert('Please input all of your credentials!');
         }
         else{

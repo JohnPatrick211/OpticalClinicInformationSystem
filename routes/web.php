@@ -100,6 +100,11 @@ Route::get('sales-reports',[App\Http\Controllers\SalesReportController::class, '
 Route::get('sales-report-data',[App\Http\Controllers\SalesReportController::class, 'SalesReportData'])->middleware('Islogged');
 Route::get('sales-report/print/{date_from}/{date_to}/{salesreportbranch}', [App\Http\Controllers\SalesReportController::class, 'previewSalesReport'])->middleware('Islogged');
 Route::get('/compute-total-sales', [App\Http\Controllers\SalesReportController::class, 'computeSales']);
+//Services Reports
+Route::get('services-reports',[App\Http\Controllers\ServicesReportController::class, 'ServicesReportView'])->middleware('Islogged');
+Route::get('services-report-data',[App\Http\Controllers\ServicesReportController::class, 'ServicesReportData'])->middleware('Islogged');
+Route::get('services-report/print/{date_from}/{date_to}/{servicessreportbranch}', [App\Http\Controllers\ServicesReportController::class, 'previewServicesReport'])->middleware('Islogged');
+Route::get('/compute-total-services', [App\Http\Controllers\ServicesReportController::class, 'computeServices']);
 //UTILITIES
 //User Maintenance
 Route::get('user-maintenance',[App\Http\Controllers\UserMaintenanceController::class, 'usermaintenance'])->middleware('Islogged');
@@ -176,6 +181,8 @@ Route::get('doctor-billing', [App\Http\Controllers\BillingController::class, 'do
 Route::get('doctor-inventory',[App\Http\Controllers\InventoryController::class, 'DoctorInventory'])->middleware('Islogged');
 //doctor Sales Reports 
 Route::get('doctor-sales-reports',[App\Http\Controllers\SalesReportController::class, 'DoctorSalesReportView'])->middleware('Islogged');
+//doctor Services Reports
+Route::get('doctor-services-reports',[App\Http\Controllers\ServicesReportController::class, 'DoctorServicesReportView'])->middleware('Islogged');
 //doctor Appointment Reports
 Route::get('doctor-appointment-reports',[App\Http\Controllers\AppointmentReportController::class, 'DoctorAppointmentReportView'])->middleware('Islogged');
 //doctor Certification Reports
@@ -220,6 +227,8 @@ Route::get('secretary-billing', [App\Http\Controllers\BillingController::class, 
 Route::get('secretary-inventory',[App\Http\Controllers\InventoryController::class, 'SecretaryInventory'])->middleware('Islogged');
 //secretary Sales Reports 
 Route::get('secretary-sales-reports',[App\Http\Controllers\SalesReportController::class, 'SecretarySalesReportView'])->middleware('Islogged');
+//doctor Services Reports
+Route::get('secretary-services-reports',[App\Http\Controllers\ServicesReportController::class, 'SecretaryServicesReportView'])->middleware('Islogged');
 //secretary Appointment Reports
 Route::get('secretary-appointment-reports',[App\Http\Controllers\AppointmentReportController::class, 'SecretaryAppointmentReportView'])->middleware('Islogged');
 //secretary Certification Reports

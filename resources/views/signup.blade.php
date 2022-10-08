@@ -16,7 +16,7 @@
 
         <div class="row mt-2 p-4">
 
-            <div class="card col-md-5 m-auto">
+            <div class="card col-md-9 m-auto">
                 
                 <div class="card-body">
 
@@ -28,23 +28,33 @@
                         <div class="col-md-12 mb-3">
                             <h4 style="color: #555555">Create your account</h4>
                         </div> 
-    
-                        <div class="col-md-6 mb-3">
-                            <label class="label-small">Fullname</label>
-                            <input type="text" class="form-control" id="fullname" placeholder="First Last">
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">First Name</label>
+                            <input type="text" class="form-control" id="firstname" placeholder="firstname">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Middle Name</label>
+                            <input type="text" class="form-control" id="middlename" placeholder="middlename">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" placeholder="lastname">
                         </div>
                         
-                        <div class="col-md-6 mb-6">
+                        <div class="col-md-3 mb-6">
                             <label class="label-small">Username</label>
                             <input type="text" class="form-control" id="username" placeholder=" ">
                         </div> 
 
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label class="label-small">Email</label>
                             <input type="text" class="form-control" id="email" placeholder="Email Address">
                         </div>
                         
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-2 mb-3">
                             <label class="label-small">Age</label>
                             <input type="text" class="form-control" id="age" placeholder="Age">
                         </div> 
@@ -68,9 +78,29 @@
                              </select>
                         </div>
 
-                        <div class="col-md-9 mb-3">
-                            <label class="label-small">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="Address">
+                        <div class="col-md-2 mb-3">
+                            <label class="label-small">House No.</label>
+                            <input type="text" class="form-control" id="houseno" placeholder="House No.">
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label class="label-small">Street</label>
+                            <input type="text" class="form-control" id="street" placeholder="Street">
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label class="label-small">Barangay</label>
+                            <input type="text" class="form-control" id="barangay" placeholder="Barangay">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">City</label>
+                            <input type="text" class="form-control" id="city" placeholder="City">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Province</label>
+                            <input type="text" class="form-control" id="province" placeholder="Province">
                         </div>
                         
                         <div class="col-md-6 mb-3">

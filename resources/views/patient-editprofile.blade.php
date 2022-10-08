@@ -43,22 +43,32 @@
  
                         <input type="hidden" name= "editid" id="editid" value="{{$LoggedUserInfo -> id}}">
 
-                        <div class="col-md-6 mb-3">
-                            <label class="label-small">Fullname</label>
-                            <input type="text" class="form-control" name= "editfullname" id="editfullname" placeholder="First Last" value="{{$LoggedUserInfo -> name}}">
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">First Name</label>
+                            <input type="text" class="form-control" name= "editfirstname" id="editfirstname" placeholder="First Name" value="{{$LoggedUserInfo -> firstname}}">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Middle Name</label>
+                            <input type="text" class="form-control" name= "editmiddlename" id="editmiddlename" placeholder="Middle Name" value="{{$LoggedUserInfo -> middlename}}">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Last Name</label>
+                            <input type="text" class="form-control" name= "editlastname" id="editlastname" placeholder="Last Name" value="{{$LoggedUserInfo -> lastname}}">
                         </div>
                         
-                        <div class="col-md-6 mb-6">
+                        <div class="col-md-3 mb-6">
                             <label class="label-small">Username</label>
                             <input type="text" class="form-control" name= "editusername" id="editusername" placeholder=" " value="{{$LoggedUserInfo -> username}}">
                         </div> 
 
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label class="label-small">Email</label>
                             <input type="text" class="form-control" name="editemail" id="editemail" placeholder="Email Address" value="{{$LoggedUserInfo -> email}}">
                         </div>
                         
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-2 mb-3">
                             <label class="label-small">Age</label>
                             <input type="text" class="form-control" name="editage" id="editage" placeholder="Age" value="{{$LoggedUserInfo -> age}}">
                         </div> 
@@ -83,9 +93,29 @@
                              </select>
                         </div>
 
-                        <div class="col-md-9 mb-3">
-                            <label class="label-small">Address</label>
-                            <input type="text" class="form-control" name="editaddress" id="editaddress" placeholder="Address" value="{{$LoggedUserInfo -> address}}">
+                        <div class="col-md-2 mb-3">
+                            <label class="label-small">House No.</label>
+                            <input type="text" class="form-control" name="edithouseno" id="edithouseno" placeholder="House No." value="{{$LoggedUserInfo -> houseno}}">
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label class="label-small">Street</label>
+                            <input type="text" class="form-control" name="editstreet" id="editstreet" placeholder="Street" value="{{$LoggedUserInfo -> street}}">
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label class="label-small">Barangay</label>
+                            <input type="text" class="form-control" name="editbarangay" id="editbarangay" placeholder="Barangay" value="{{$LoggedUserInfo -> barangay}}">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">City</label>
+                            <input type="text" class="form-control" name="editcity" id="editcity" placeholder="City" value="{{$LoggedUserInfo -> city}}">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Province</label>
+                            <input type="text" class="form-control" name="editprovince" id="editprovince" placeholder="Province" value="{{$LoggedUserInfo -> province}}">
                         </div>
                         
                         <div class="col-md-6 mb-3">

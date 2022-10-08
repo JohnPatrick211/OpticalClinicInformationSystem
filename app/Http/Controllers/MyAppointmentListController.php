@@ -14,6 +14,7 @@ use App\Models\Sales;
 use App\Models\ClinicBranch;
 use App\Models\BookAppointment;
 use App\Models\MailMessageAppointment;
+use App\Models\MailCancelAppointment;
 use App\Helpers\base;
 use Mail; 
 
@@ -226,18 +227,51 @@ class MyAppointmentListController extends Controller
     public function CancelMyAppointment($id)
     {
         $exists = DB::table('tbl_appointment')->where('id',$id)
-        ->whereIn('status',['Approved','In Process'])
+        ->where('status','In Process')
         ->first();
+
+        $status = DB::table('tbl_appointment')->where('id',$id)->where('status','Approved');
         
         if($exists == null)
         {
-            DB::table('tbl_appointment')
-            ->where('id', $id)
-            ->delete();
-             $getname = Session::get('Name');
-            $getusertype = Session::get('User-Type');
-            base::recordAction( $getname, $getusertype,'Patient Appointment List', 'Cancel Appointment');
-            return response()->json(['status'=>0,'success'=>$exists]);
+            if($status->count() == 1){
+
+                $getSecretaryBranch = DB::table('tbl_appointment')
+                ->select('tbl_branch.id')
+                ->leftJoin('tbl_doctorschedule', 'tbl_appointment.doctor_schedule_id', '=', 'tbl_doctorschedule.id')
+                ->leftJoin('tbl_branch', 'tbl_doctorschedule.branch_id', '=', 'tbl_branch.id')
+                ->where('tbl_appointment.id', $id)
+                ->get();
+
+                
+                $sec_id = str_replace(['{','}',':','"','id'],'',json_encode($getSecretaryBranch[0]));
+                $message =  "Good Day!<br><br>"."<p>One of the Approved Appointments is canceled by the patient<p>";
+    
+                $email = DB::table('tbl_user')->select('tbl_user.email')->where('branch_id', $sec_id)->where('user_role','Secretary')->get();
+                foreach ($email as $mail)
+                {
+                    Mail::to($email)->send(new MailCancelAppointment($message));
+                };
+
+                DB::table('tbl_appointment')
+                ->where('id', $id)
+                ->delete();
+    
+                $getname = Session::get('Name');
+                $getusertype = Session::get('User-Type');
+                base::recordAction( $getname, $getusertype,'Patient Appointment List', 'Cancel Approved Appointment');
+                return response()->json(['status'=>0,'success'=>$exists]);
+            }
+            else{
+                DB::table('tbl_appointment')
+                ->where('id', $id)
+                ->delete();
+                $getname = Session::get('Name');
+                $getusertype = Session::get('User-Type');
+                base::recordAction( $getname, $getusertype,'Patient Appointment List', 'Cancel Appointment');
+                return response()->json(['status'=>0,'success'=>$exists]);
+            }
+
         }
         else
         {

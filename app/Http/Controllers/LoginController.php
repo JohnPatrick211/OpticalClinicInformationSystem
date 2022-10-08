@@ -167,6 +167,7 @@ class LoginController extends Controller
 
                $sales = DB::table('tbl_sales')
                ->where('status', 1)
+               ->where('tbl_sales.product_id', 'LIKE', '1%')
                ->where(DB::raw('DATE(created_at)'), \Carbon\Carbon::now()->format('Y-m-d'))
                ->sum('amount');
 
@@ -243,6 +244,7 @@ class LoginController extends Controller
              ->select('tbl_sales.*','tbl_branch.*')
              ->leftJoin('tbl_branch', 'tbl_sales.branch_id', '=', 'tbl_branch.id')
              ->where('status', 1)
+             ->where('tbl_sales.product_id', 'LIKE', '1%')
              ->where(DB::raw('DATE(tbl_sales.created_at)'), \Carbon\Carbon::now()->format('Y-m-d'))
              ->where('tbl_branch.id','=', session('Branch'))
              ->sum('amount');
@@ -317,6 +319,7 @@ class LoginController extends Controller
          ->select('tbl_sales.*','tbl_branch.*')
          ->leftJoin('tbl_branch', 'tbl_sales.branch_id', '=', 'tbl_branch.id')
          ->where('status', 1)
+         ->where('tbl_sales.product_id', 'LIKE', '1%')
          ->where(DB::raw('DATE(tbl_sales.created_at)'), \Carbon\Carbon::now()->format('Y-m-d'))
          ->where('tbl_branch.id','=', session('Branch'))
          ->sum('amount');
@@ -391,6 +394,7 @@ class LoginController extends Controller
          ->select('tbl_sales.*','tbl_branch.*')
          ->leftJoin('tbl_branch', 'tbl_sales.branch_id', '=', 'tbl_branch.id')
          ->where('status', 1)
+         ->where('tbl_sales.product_id', 'LIKE', '1%')
          ->where(DB::raw('DATE(tbl_sales.created_at)'), \Carbon\Carbon::now()->format('Y-m-d'))
          ->where('tbl_branch.id','=', session('Branch'))
          ->sum('amount');

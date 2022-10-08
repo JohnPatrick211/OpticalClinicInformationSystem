@@ -40,6 +40,7 @@ class Sales extends Model
         {
             return DB::table('tbl_sales')
             ->where('status', 1)
+            ->where('tbl_sales.product_id', 'LIKE', '1%')
             ->whereBetween(DB::raw('DATE(created_at)'), [$date_from, $date_to])
             ->sum('amount');
         }
@@ -47,6 +48,26 @@ class Sales extends Model
             return DB::table('tbl_sales')
             ->where('status', 1)
             ->where('branch_id',$salesreportbranch)
+            ->where('tbl_sales.product_id', 'LIKE', '1%')
+            ->whereBetween(DB::raw('DATE(created_at)'), [$date_from, $date_to])
+            ->sum('amount');
+        }
+    }
+
+    public function computeTotalServices($date_from, $date_to, $servicesreportbranch){
+        if($servicesreportbranch == 'All Branches')
+        {
+            return DB::table('tbl_sales')
+            ->where('status', 1)
+            ->where('tbl_sales.product_id', 'LIKE', '2%')
+            ->whereBetween(DB::raw('DATE(created_at)'), [$date_from, $date_to])
+            ->sum('amount');
+        }
+        else{
+            return DB::table('tbl_sales')
+            ->where('status', 1)
+            ->where('branch_id',$servicesreportbranch)
+            ->where('tbl_sales.product_id', 'LIKE', '2%')
             ->whereBetween(DB::raw('DATE(created_at)'), [$date_from, $date_to])
             ->sum('amount');
         }

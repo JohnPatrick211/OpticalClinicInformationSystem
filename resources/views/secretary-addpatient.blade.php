@@ -41,22 +41,32 @@
                         <div class="row">
                         {{ csrf_field() }}
 
-                        <div class="col-md-6 mb-3">
-                            <label class="label-small">Fullname</label>
-                            <input type="text" class="form-control" name= "registerfullname" id="registerfullname" placeholder="First Last" value="">
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">First Name</label>
+                            <input type="text" class="form-control" name= "registerfirstname" id="registerfirstname" placeholder="First Name" value="">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Middle Name</label>
+                            <input type="text" class="form-control" name= "registermiddlename" id="registermiddlename" placeholder="Middle Name" value="">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Last Name</label>
+                            <input type="text" class="form-control" name= "registerlastname" id="registerlastname" placeholder="Last Name" value="">
                         </div>
                         
-                        <div class="col-md-6 mb-6">
+                        <div class="col-md-3 mb-6">
                             <label class="label-small">Username</label>
                             <input type="text" class="form-control" name= "registerusername" id="registerusername" placeholder=" " value="">
                         </div> 
 
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <label class="label-small">Email</label>
                             <input type="text" class="form-control" name="registeremail" id="registeremail" placeholder="Email Address" value="">
                         </div>
                         
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-2 mb-3">
                             <label class="label-small">Age</label>
                             <input type="text" class="form-control" name="registerage" id="registerage" placeholder="Age" value="">
                         </div> 
@@ -81,9 +91,29 @@
                              </select>
                         </div>
 
-                        <div class="col-md-9 mb-3">
-                            <label class="label-small">Address</label>
-                            <input type="text" class="form-control" name="registeraddress" id="registeraddress" placeholder="Address" value="">
+                        <div class="col-md-2 mb-3">
+                            <label class="label-small">House No.</label>
+                            <input type="text" class="form-control" name="registerhouseno" id="registerhouseno" placeholder="House No." value="">
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label class="label-small">Street</label>
+                            <input type="text" class="form-control" name="registerstreet" id="registerstreet" placeholder="Street" value="">
+                        </div>
+
+                        <div class="col-md-2 mb-3">
+                            <label class="label-small">Barangay</label>
+                            <input type="text" class="form-control" name="registerbarangay" id="registerbarangay" placeholder="Barangay" value="">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">City</label>
+                            <input type="text" class="form-control" name="registercity" id="registercity" placeholder="City" value="">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Province</label>
+                            <input type="text" class="form-control" name="registerprovince" id="registerprovince" placeholder="Province" value="">
                         </div>
                         
                         <div class="col-md-6 mb-3">
