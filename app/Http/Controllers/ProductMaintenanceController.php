@@ -82,7 +82,7 @@ class ProductMaintenanceController extends Controller
     public function storeproduct(Request $request)
     {
         $product = new Product();
-        $validateproduct =  Product::where('productname','=', $request->input('productname'))->first();
+        $validateproduct =  Product::where('productname','=', $request->input('productname'))->where('branch_id','=', $request->input('branch_id'))->first();
         if($validateproduct)
         {
             return back()->with('danger', 'Product Already Exist');
