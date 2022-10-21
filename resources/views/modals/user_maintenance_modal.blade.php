@@ -38,7 +38,7 @@
                    </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-5">
                     <label class="col-form-label">Email</label>
                     <input type="text" class="form-control" name="email" id="email"  required>
                     <div class="empty-reject-email mr-auto ml-3" style="display: none">
@@ -62,7 +62,7 @@
                   </select>
                 </div>
 
-                <div class="col-2">
+                <div class="col-3">
                   <label class="col-form-label">Civil Status</label>
                   <select class="form-control" name="civilstatus" id="civilstatus">
                       <option value="Single">Single</option>
@@ -73,14 +73,14 @@
                   </select>
                 </div>
 
-                <div class="col-4">
+                <div class="col-6">
                   <label class="col-form-label">Birthday</label>
                   <input type="date" class="form-control" id="birthdate" placeholder="birthdate" required>
                 </div>
 
                 <div class="col-6">
                   <label class="col-form-label">Contact Number</label>
-                  <input type="number" class="form-control" name="contact_no" id="contact_no" required>
+                  <input type="text" class="form-control" name="contact_no" id="contact_no" required>
                   <div class="empty-reject-contact_no mr-auto ml-3" style="display: none">
                     <label class="label text-danger">Please input the contact number</label>
                    </div>
@@ -183,7 +183,7 @@
                    </div>
                 </div>
 
-              <div class="col-6">
+              <div class="col-5">
                   <label class="col-form-label">Email</label>
                   <input type="text" class="form-control" name="email" id="eemail" required>
                 </div>
@@ -204,7 +204,7 @@
                   </select>
                 </div>
 
-                <div class="col-2">
+                <div class="col-3">
                   <label class="col-form-label">Civil Status</label>
                   <select class="form-control" name="civilstatus" id="ecivilstatus">
                       <option value="Single">Single</option>
@@ -215,7 +215,7 @@
                   </select>
                 </div>
 
-                <div class="col-4">
+                <div class="col-6">
                   <label class="col-form-label">Birthday</label>
                   <input type="date" class="form-control" id="ebirthdate" placeholder="ebirthdate" required>
                 </div>

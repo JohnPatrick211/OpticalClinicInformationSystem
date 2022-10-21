@@ -14,22 +14,9 @@ use App\Models\Sales;
 use App\Models\ClinicBranch;
 use App\Helpers\base;
 
-class PatientHistoryController extends Controller
+class StaffPatientHistoryController extends Controller
 {
     public function HistoryView(){
-        if(Session::has('LoggedUser')){
-            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
-             $data = [
-                 'LoggedUserInfo' => $users2
-             ];
-             //$users3 = User::where('role','employer')->get();
-             return view('patient-history', $data);
-
-
-         }
-    }
-
-    public function StaffHistoryView(){
         if(Session::has('LoggedUser')){
             $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
              $data = [
@@ -65,7 +52,7 @@ class PatientHistoryController extends Controller
         $gethistory = DB::table('tbl_sales')
         ->select('tbl_sales.*', 'tbl_branch.branchname')
         ->leftJoin('tbl_branch', 'tbl_sales.branch_id', '=', 'tbl_branch.id')
-        ->where('user_id',Session::get('LoggedUser'))
+        ->where('branch_id',Session::get('Branch'))
         ->groupBy('tbl_sales.invoice_no')
         ->get();
 
@@ -94,7 +81,7 @@ class PatientHistoryController extends Controller
         ->select("C.*", 'S.*' ,'S.selling_price as selling_price2','P.*','C.qty as qty_order', 'C.id as id')
         ->leftJoin('tbl_product as P', 'C.product_id', '=', 'P.id')
         ->leftJoin('tbl_service as S', 'C.product_id', '=', 'S.id')
-        ->where('C.user_id',Session::get('LoggedUser'))
+        ->where('C.branch_id',Session::get('Branch'))
         ->where('C.invoice_no',$invoice_no)
         ->get();
         $output = $this->generateSalesInvoice($data, $wholesale_discount_amount, $senior_pwd_discount_amount, $selectedbranch,  $selectedpatientname);

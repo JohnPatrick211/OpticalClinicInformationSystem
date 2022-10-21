@@ -203,7 +203,17 @@ Route::get('staff-dashboard', [App\Http\Controllers\LoginController::class, 'sta
 //staff Patient Information
 Route::get('staff-patient-information',[App\Http\Controllers\PatientInformationController::class, 'StaffPatientInformationView'])->middleware('Islogged');
 //staff Patient Approval
-Route::get('staff-patient-approval',[App\Http\Controllers\PatientApprovalController::class, 'StaffPatientApprovalView'])->middleware('Islogged');
+// Route::get('staff-patient-approval',[App\Http\Controllers\PatientApprovalController::class, 'StaffPatientApprovalView'])->middleware('Islogged');
+//staff Patient History
+Route::get('staff-patient-history',[App\Http\Controllers\StaffPatientHistoryController::class, 'HistoryView'])->middleware('Islogged');
+Route::get('staffpatienthistory-data',[App\Http\Controllers\StaffPatientHistoryController::class, 'PatientHistoryData'])->middleware('Islogged');
+Route::get('/staffpatienthistory/getpatienthistoryinfo/{invoice_no}', [App\Http\Controllers\StaffPatientHistoryController::class, 'getPatientHistoryData']);
+Route::get('staffpatienthistory/preview-invoice/{wholesale_discount_amount}/{senior_pwd_discount_amount}/{billingbranch}/{patientname}/{invoice_no}', [App\Http\Controllers\StaffPatientHistoryController::class, 'patienthistorypreviewInvoice']);
+//staff PATIENT PRESCRIPTION
+Route::get('staff-patient-prescription', [App\Http\Controllers\PatientPrescriptionController::class, 'staffPrescriptionView'])->middleware('Islogged');
+Route::get('staffpatientprescription-data',[App\Http\Controllers\PatientPrescriptionController::class, 'staffPatientPrescriptionData'])->middleware('Islogged');
+Route::get('/staffpatientprescription/getpatientprescriptioninfo/{id}', [App\Http\Controllers\PatientPrescriptionController::class, 'staffgetPatientPrescriptionData']);
+Route::get('staffpatientprescription/preview-prescription/{doctorname}/{branchname}/{date}/{time}/{patient_id}/{prescription}', [App\Http\Controllers\PatientPrescriptionController::class, 'staffpatientprescriptionpreview']);
 //staff Appointment Approval
 Route::get('staff-appointment-approval',[App\Http\Controllers\AppointmentApprovalController::class, 'StaffAppointmentApprovalView'])->middleware('Islogged');
 //staff Appointment List
