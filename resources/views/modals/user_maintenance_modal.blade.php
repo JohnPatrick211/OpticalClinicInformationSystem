@@ -24,7 +24,7 @@
 
               <div class="col-8 mb-2">
                   <label class="col-form-label">Name</label>
-                  <input type="text" class="form-control" name="name" id="name" required>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="First, Middle, Last Name" required>
                   <div class="empty-reject-name mr-auto ml-3" style="display: none">
                     <label class="label text-danger">Please input the name</label>
                    </div>
@@ -91,7 +91,7 @@
 
                 <div class="col-12">
                   <label class="col-form-label">Address</label>
-                  <input type="text" class="form-control" name="address" id="address" required>
+                  <input type="text" class="form-control" name="address" id="address" placeholder="House Number, Street, Barangay, City, Province" required>
                   <div class="empty-reject-address mr-auto ml-3" style="display: none">
                     <label class="label text-danger">Please input the address</label>
                    </div>
@@ -172,7 +172,7 @@
 
             <div class="col-8 mb-2">
                 <label class="col-form-label">Name</label>
-                <input type="text" class="form-control" name="name" id="ename" required>
+                <input type="text" class="form-control" name="name" id="ename" placeholder="First, Middle, Last Name" required>
               </div>
 
               <div class="ehide-specialization col-12 mb-2" style="display: none">
@@ -227,7 +227,7 @@
 
               <div class="col-12">
                 <label class="col-form-label">Address</label>
-                <input type="text" class="form-control" name="address" id="eaddress" required>
+                <input type="text" class="form-control" name="address" id="eaddress" placeholder="House Number, Street, Barangay, City, Province" required>
               </div>
 
               <div class="col-12">

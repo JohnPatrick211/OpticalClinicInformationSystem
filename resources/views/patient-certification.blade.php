@@ -5,7 +5,7 @@
 
 
                     <!-- Page Heading -->
-                     <h1 class="h3 mb-2 text-gray-800">Patient Certificate</h1>
+                     <h1 class="h3 mb-2 text-gray-800">My Certificate</h1>
                     {{-- <div class="update-success-validation mr-auto ml-3" style="display: none">
                         <label class="label text-success">Employer is successfully Approved</label>
                       </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Login;
+use App\Models\ClinicBranch;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
@@ -59,9 +60,12 @@ class LoginController extends Controller
                 }
                 else if($staff->user_role == 'Doctor')
                 {
+                   
+                    $branch = ClinicBranch::where('id','=',$staff->branch_id)->first();
                     $request->session()->put('LoggedUser',$staff->id);
                     Session::put('LoggedUser',$staff->id);
                     Session::put('Branch',$staff->branch_id);
+                    Session::put('BranchName',$branch->branchname);
                     Session::put('Name',$staff->name);
                     Session::put('User-Type',$staff->user_role);
                         $getname = Session::get('Name');
@@ -71,9 +75,11 @@ class LoginController extends Controller
                 }
                 else if($staff->user_role == 'Secretary')
                 {
+                    $branch = ClinicBranch::where('id','=',$staff->branch_id)->first();
                     $request->session()->put('LoggedUser',$staff->id);
                     Session::put('LoggedUser',$staff->id);
                     Session::put('Branch',$staff->branch_id);
+                    Session::put('BranchName',$branch->branchname);
                     Session::put('Name',$staff->name);
                     Session::put('User-Type',$staff->user_role);
                         $getname = Session::get('Name');
@@ -83,9 +89,11 @@ class LoginController extends Controller
                 }
                 else if($staff->user_role == 'Staff')
                 {
+                    $branch = ClinicBranch::where('id','=',$staff->branch_id)->first();
                     $request->session()->put('LoggedUser',$staff->id);
                     Session::put('LoggedUser',$staff->id);
                     Session::put('Branch',$staff->branch_id);
+                    Session::put('BranchName',$branch->branchname);
                     Session::put('Name',$staff->name);
                     Session::put('User-Type',$staff->user_role);
                         $getname = Session::get('Name');

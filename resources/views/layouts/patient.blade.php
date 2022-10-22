@@ -58,13 +58,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatientApproval"
                     aria-expanded="true" aria-controls="collapseApproval">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Patient Record</span>
+                    <span>My Record</span>
                 </a>
                 <div id="collapsePatientApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="patient-prescription">Patient Prescription</a>
-                        <a class="collapse-item" href="patient-history">Patient History</a>
-                        <a class="collapse-item" href="patient-certification">Patient Certificate</a>
+                        <a class="collapse-item" href="patient-prescription">My Prescription</a>
+                        <a class="collapse-item" href="patient-history">My History</a>
+                        <a class="collapse-item" href="patient-certification">My Certificate</a>
                     </div>
                 </div>
             </li>
