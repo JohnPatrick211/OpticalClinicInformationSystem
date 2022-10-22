@@ -108,7 +108,7 @@ class RegisterController extends Controller
         $message = $client->message()->send([
             'to' => '63'.$phone_no,
             'from' => 'Optical Clinic',
-            'text' =>'NEVER SHARE YOUR OTP. To allow this account to gain access to the system. Your OTP is ' . $otp. '. Use this OTP to validate your login. If you DID NOT make this request, please ignore this message. Thank you!'
+            'text' =>'NEVER SHARE YOUR OTP. To allow this account to gain access to the system. Your OTP is ' . $otp. ' from Optical Clinic. Use this OTP to validate your login. If you DID NOT make this request, please ignore this message. Thank you!'
             
         ]);
         Session::put('otp', $otp);
