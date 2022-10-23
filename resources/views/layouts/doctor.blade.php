@@ -64,7 +64,7 @@
             <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-address-book"></i>
                     <span>Patient Record</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -89,7 +89,7 @@
             <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAppointmentApproval"
                     aria-expanded="true" aria-controls="collapseApproval">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-calendar-check"></i>
                     <span>Appointment</span>
                 </a>
                 <div id="collapseAppointmentApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -103,7 +103,7 @@
             <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseApproval"
                     aria-expanded="true" aria-controls="collapseApproval">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-money-bill"></i>
                     <span>Sales</span>
                 </a>
                 <div id="collapseApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -117,7 +117,7 @@
             <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ReportscollapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-chart-pie"></i>
                     <span>Reports</span>
                 </a>
                 <div id="ReportscollapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">

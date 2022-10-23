@@ -107,8 +107,8 @@
                         </div>
 
                         <div class="col-md-3 mb-3">
-                            <label class="label-small">City</label>
-                            <input type="text" class="form-control" name="registercity" id="registercity" placeholder="City" value="">
+                            <label class="label-small">City/Municipality</label>
+                            <input type="text" class="form-control" name="registercity" id="registercity" placeholder="City/Municipality" value="">
                         </div>
 
                         <div class="col-md-3 mb-3">

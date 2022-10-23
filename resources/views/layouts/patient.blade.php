@@ -57,7 +57,7 @@
             <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatientApproval"
                     aria-expanded="true" aria-controls="collapseApproval">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-address-book"></i>
                     <span>My Record</span>
                 </a>
                 <div id="collapsePatientApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -72,7 +72,7 @@
             <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseApproval"
                     aria-expanded="true" aria-controls="collapseApproval">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-calendar-check"></i>
                     <span>Appointment</span>
                 </a>
                 <div id="collapseApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">

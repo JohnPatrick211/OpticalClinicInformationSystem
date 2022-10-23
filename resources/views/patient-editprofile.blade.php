@@ -109,8 +109,8 @@
                         </div>
 
                         <div class="col-md-3 mb-3">
-                            <label class="label-small">City</label>
-                            <input type="text" class="form-control" name="editcity" id="editcity" placeholder="City" value="{{$LoggedUserInfo -> city}}">
+                            <label class="label-small">City/Municipality</label>
+                            <input type="text" class="form-control" name="editcity" id="editcity" placeholder="City/Municipality" value="{{$LoggedUserInfo -> city}}">
                         </div>
 
                         <div class="col-md-3 mb-3">

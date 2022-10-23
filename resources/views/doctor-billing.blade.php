@@ -173,7 +173,7 @@
                                                 </select> -->
                                                 <!-- <input type="text"  name="branch" id="billingbranch" value="{{$LoggedUserInfo -> branch_id}}"> -->
                                                 <input class="form-control form-control-navbar" name="branch" id="billingbranch" type="hidden" aria-label="Search" value="{{$LoggedUserInfo -> branch_id}}">
-                                                <input class="form-control form-control-navbar" style="min-width: 280px" name="branch" id="billingbranch" type="text" aria-label="Search" value="{{$users6->branchname}}"  disabled>
+                                                <input class="form-control form-control-navbar" style="min-width: 285px" name="branch" id="billingbranch" type="text" aria-label="Search" value="{{$users6->branchname}}"  disabled>
                                         </div>
                                     </div>
                                 </form>

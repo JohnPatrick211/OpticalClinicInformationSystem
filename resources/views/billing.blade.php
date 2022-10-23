@@ -166,7 +166,7 @@
                                 <form action="">
                                     <div class="form-inline ml-0 mb-6 form-search-product float-left">
                                         <div class="input-group input-group-sm">
-                                                <select class="form-control" style="width:250px;" name="branch" id="billingbranch">
+                                                <select class="form-control" style="width:285px;" name="branch" id="billingbranch">
                                                 @foreach($users4 as $item)
                                                     <option value="{{$item->id}}">{{$item->branchname}}</option>
                                                 @endforeach
