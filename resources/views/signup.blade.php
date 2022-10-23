@@ -1,3 +1,4 @@
+@include('modals.termsandcondition_modals')
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,7 +139,9 @@
                         <div class="col-md-12">
                             <input type="button" class="btn" id="btn-signup" value="SIGN UP">
                             <span class="label-small m-0">By clicking "SIGN UP"; I agree to Optical Clinic 
-                                <a href="/terms_and_condition" target="_blank">Terms of Use</a> and <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+                                <a href="" data-toggle="modal" data-target="#TermsandConditionsModal" id="btn-add-categoryproduct">Terms of Use</a> and <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+                                <!-- <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#CategoryProductModal" id="btn-add-categoryproduct"><span class='fa fa-plus'></span> Add Category</a> -->
+
                             </span>	
                         </div>
 
