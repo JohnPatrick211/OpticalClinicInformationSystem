@@ -160,7 +160,7 @@ class UserMaintenanceController extends Controller
         }
     }
 
-    public function insertUser($user_role, $name, $email, $contact_no, $address, $username,$password,$age,$birthdate,$gender,$civilstatus,$branch,$specialization)
+    public function insertUser(Request $request)
     {
 
         $doctor = new Login();
@@ -183,51 +183,53 @@ class UserMaintenanceController extends Controller
         //     'created_at' => \Carbon\Carbon::now(),
         //     'updated_at' => \Carbon\Carbon::now(),
         // ]);
-        if($specialization == 'none' && $user_role != 'Doctor')
+        if($request->input('specialization') && $request->input('user_type') != 'Doctor')
         {
-            $doctor->user_role =  $user_role;
-            $doctor->name =  $name;
-            $doctor->email =  $email;
-            $doctor->address =  $address;
-            $doctor->contactNo =  $contact_no;
-            $doctor->username =  $username;
-            $doctor->password =  $password;
+            $doctor->user_role =  $request->input('user_type');
+            $doctor->name =  $request->input('name');
+            $doctor->email =  $request->input('email');
+            $doctor->address =  $request->input('address');
+            $doctor->contactNo =  $request->input('contact_no');
+            $doctor->username =  $request->input('username');
+            $doctor->password =  $request->input('password');
             $doctor->archive_status =  'no';
-            $doctor->branch_id =  $branch;
-            $doctor->age=  $age;
-            $doctor->gender =  $gender;
-            $doctor->birthdate =  $birthdate;
-            $doctor->password =  $password;
-            $doctor->civilstatus =  $civilstatus;
+            $doctor->branch_id =  $request->input('branch');
+            $doctor->age=  $request->input('age');
+            $doctor->gender =  $request->input('gender');
+            $doctor->birthdate =  $request->input('birthdate');
+            $doctor->password =  $request->input('password');
+            $doctor->civilstatus =  $request->input('civilstatus');
             $doctor->save();
         }
         else{
-            $doctor->user_role =  $user_role;
-            $doctor->name =  $name;
-            $doctor->email =  $email;
-            $doctor->address =  $address;
-            $doctor->contactNo =  $contact_no;
-            $doctor->username =  $username;
-            $doctor->password =  $password;
+            $doctor->user_role =  $request->input('user_type');
+            $doctor->name =  $request->input('name');
+            $doctor->email =  $request->input('email');
+            $doctor->address =  $request->input('address');
+            $doctor->contactNo =  $request->input('contact_no');
+            $doctor->username =  $request->input('username');
+            $doctor->password =  $request->input('password');
             $doctor->archive_status =  'no';
-            $doctor->branch_id =  $branch;
-            $doctor->age=  $age;
-            $doctor->gender =  $gender;
-            $doctor->birthdate =  $birthdate;
-            $doctor->password =  $password;
-            $doctor->civilstatus =  $civilstatus;
+            $doctor->branch_id =  $request->input('branch');
+            $doctor->age=  $request->input('age');
+            $doctor->gender =  $request->input('gender');
+            $doctor->birthdate =  $request->input('birthdate');
+            $doctor->password =  $request->input('password');
+            $doctor->civilstatus =  $request->input('civilstatus');
             $doctor->save();
             $id = $doctor->id;
             
             DB::table('tbl_doctor')
             ->insert([
             'doctor_id' => $id,
-            'name' => $name,
-            'specialty' => $specialization,
+            'name' => $request->input('name'),
+            'specialty' => $request->input('specialization'),
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
             ]);
         }
+
+        return redirect('user-maintenance')->with('success', 'User Saved');
   
 
 
@@ -238,28 +240,29 @@ class UserMaintenanceController extends Controller
             base::recordAction( $getname, $getusertype,'User Maintenance', 'Add');
     }
 
-    public function AddUser(Request $request,$user_role, $name, $email, $contact_no, $address, $username,$password,$age,$birthdate,$gender,$civilstatus,$branch,$specialization)
-    {
+    // public function AddUser(Request $request,$user_role, $name, $email, $contact_no, $address, $username,$password,$age,$birthdate,$gender,$civilstatus,$branch,$specialization)
+    // {
+        public function AddUser(Request $request)
+        {
 
-            if($user_role == 'System Admin'){
-                if($this->isAdminExist($user_role))
+            if($request->input('user_type') == 'System Admin'){
+                if($this->isAdminExist($request->input('user_type')))
                 {
-                    return response()->json(['status'=>0,'error'=>'error']);
+                    return back()->with('danger', 'Admin already exist');
                 }
                 else{
-                    $this->insertUser($user_role, $name, $email, $contact_no, $address, $username,$password,$age,$birthdate,$gender,$civilstatus,$branch,$specialization);
-                    return response()->json(['status'=>1,'success'=>'success']);
+                    return $this->insertUser($request);
                 }
             }
             else{
-                if($this->isUserExist($name))
+                if($this->isUserExist($request->input('name')))
                 {
-                     return response()->json(['status'=>0,'error'=>'error']);
+                    return back()->with('danger', 'User already exist');
                 }
                 else{
 
-                    $this->insertUser($user_role, $name, $email, $contact_no, $address, $username,$password,$age,$birthdate,$gender,$civilstatus,$branch,$specialization);
-                    return response()->json(['status'=>1,'success'=>'success']);
+                    return $this->insertUser($request);
+                    // return response()->json(['status'=>1,'success'=>'success']);
                 }
             }
 
@@ -418,48 +421,48 @@ class UserMaintenanceController extends Controller
         }
         else if($user_role == 'Doctor')
         {
-            DB::table('tbl_user')
-            ->where('id', $id)
-            ->update([
-                'name' => $name,
-                'email' => $email,
-                'address' => $address,
-                'contactNo' => $contact_no,
-                'username' => $username,
-                'archive_status' => 'no',
+                    DB::table('tbl_user')
+                    ->where('id', $id)
+                    ->update([
+                        'name' => $name,
+                        'email' => $email,
+                        'address' => $address,
+                        'contactNo' => $contact_no,
+                        'username' => $username,
+                        'archive_status' => 'no',
+                        'branch_id' => $branch,
+                        'age' => $age,
+                        'birthdate' => $birthdate,
+                        'gender' => $gender,
+                        'civilstatus' => $civilstatus,
+                        'created_at' => \Carbon\Carbon::now(),
+                        'updated_at' => \Carbon\Carbon::now(),
+                    ]);
+
+                    DB::table('tbl_doctor')
+                    ->where('doctor_id', $id)
+                    ->update([
+                    'name' => $name,
+                    'specialty' => $specialization,
+                    'created_at' => \Carbon\Carbon::now(),
+                    'updated_at' => \Carbon\Carbon::now(),
+                ]);
+
+                DB::table('tbl_doctorschedule')
+                ->where('doctor_id', $id)
+                ->update([
                 'branch_id' => $branch,
-                'age' => $age,
-                'birthdate' => $birthdate,
-                'gender' => $gender,
-                'civilstatus' => $civilstatus,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
             ]);
 
-            DB::table('tbl_doctor')
+            DB::table('tbl_certification')
             ->where('doctor_id', $id)
             ->update([
-            'name' => $name,
-            'specialty' => $specialization,
+            'branch_id' => $branch,
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
-        ]);
-
-        DB::table('tbl_doctorschedule')
-        ->where('doctor_id', $id)
-        ->update([
-        'branch_id' => $branch,
-        'created_at' => \Carbon\Carbon::now(),
-        'updated_at' => \Carbon\Carbon::now(),
-    ]);
-
-    DB::table('tbl_certification')
-        ->where('doctor_id', $id)
-        ->update([
-        'branch_id' => $branch,
-        'created_at' => \Carbon\Carbon::now(),
-        'updated_at' => \Carbon\Carbon::now(),
-    ]);
+            ]);
             
              $getname = Session::get('Name');
             $getusertype = Session::get('User-Type');

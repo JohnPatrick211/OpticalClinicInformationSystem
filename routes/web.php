@@ -116,7 +116,8 @@ Route::get('user-maintenance-details/{id}',[App\Http\Controllers\UserMaintenance
 Route::post('usermaintenance/edituser/{id}/{user_type}/{name}/{email}/{contact_no}/{address}/{username}/{password}/{age}/{birthdate}/{gender}/{civilstatus}/{branch}/{specialization}', [App\Http\Controllers\UserMaintenanceController::class, 'updateUser'])->middleware('Islogged');
 Route::post('usermaintenance/edituserwithoutpassword/{id}/{user_type}/{name}/{email}/{contact_no}/{address}/{username}/{age}/{birthdate}/{gender}/{civilstatus}/{branch}/{specialization}', [App\Http\Controllers\UserMaintenanceController::class, 'updateUserWithoutPassword'])->middleware('Islogged');
 Route::post('usermaintenance/archiveuser/{id}', [App\Http\Controllers\UserMaintenanceController::class, 'ArchiveUser']);
-Route::post('usermaintenance/adduser/{user_type}/{name}/{email}/{contact_no}/{address}/{username}/{password}/{age}/{birthdate}/{gender}/{civilstatus}/{branch}/{specialization}', [App\Http\Controllers\UserMaintenanceController::class, 'AddUser'])->middleware('Islogged');
+// Route::post('usermaintenance/adduser/{user_type}/{name}/{email}/{contact_no}/{address}/{username}/{password}/{age}/{birthdate}/{gender}/{civilstatus}/{branch}/{specialization}', [App\Http\Controllers\UserMaintenanceController::class, 'AddUser'])->middleware('Islogged');
+Route::post('AddUser', [App\Http\Controllers\UserMaintenanceController::class, 'AddUser']);
 //Branch maintenance
 Route::get('maintenance-branch',[App\Http\Controllers\BranchMaintenanceController::class, 'BranchMaintenance'])->middleware('Islogged');
 Route::post('storebranch', [App\Http\Controllers\BranchMaintenanceController::class, 'storebranch']);

@@ -10,8 +10,10 @@
           </button>
         </div>
         <div class="modal-body">
+          
+        <form action="AddUser" method="POST" enctype="multipart/form-data">
             <div class="row">
-
+            {{ csrf_field() }}
               <div class="col-4">
                   <label class="col-form-label">User type</label>
                   <select class="form-control" name="user_type" id="user_type">
@@ -128,7 +130,6 @@
                     <label class="label text-danger">Please input the password</label>
                    </div>
                 </div>
-
             </div>
 
         </div>
@@ -267,7 +268,6 @@
                 <button type="button" class="btn btn-sm btn-secondary" id="ebtn-close" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-sm btn-primary" id="ebtn-update" >Update</button>
         </div>
-      </form>
       </div>
     </div>
   </div>
@@ -297,7 +297,6 @@
                    <img src="../../assets/loader.gif" class="loader" alt="loader" style="display: none">
             <button class="btn btn-sm btn-outline-dark" type="submit" id="btn_archive_user">Yes</button>
             <button class="btn btn-sm btn-danger cancel-delete" data-dismiss="modal">Cancel</button>
-          </form>
           </div>
         </div>
       </div>
