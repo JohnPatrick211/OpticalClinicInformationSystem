@@ -92,6 +92,22 @@
                 </div>
             </li>
 
+            <li class="nav-item active">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ReportscollapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-chart-pie"></i>
+                    <span>Reports</span>
+                </a>
+                <div id="ReportscollapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="staff-sales-reports">Sales Reports</a>
+                        <a class="collapse-item" href="staff-services-reports">Service Reports</a>
+                        <a class="collapse-item" href="staff-appointment-reports">Appointment Report</a>
+                        <a class="collapse-item" href="staff-certification-reports">Certification Report</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             {{-- <hr class="sidebar-divider">
 
@@ -364,6 +380,7 @@
     <script src="js/appointmentreport.js"></script>
     <script src="js/certificationreport.js"></script>
     <script src="js/salesreport.js"></script>
+    <script src="js/servicesreport.js"></script>
     <script src="js/patientinformation.js"></script>
     <script src="js/staffpatienthistory.js"></script>
     <script src="js/staffpatientprescription.js"></script>

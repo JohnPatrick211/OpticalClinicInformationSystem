@@ -79,7 +79,7 @@
                                             <th>Category</th>
                                             <th>Original Price</th>
                                             <th>Selling Price</th>
-                                            <th>Markup</th>
+                                            <th>Markup Rate</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

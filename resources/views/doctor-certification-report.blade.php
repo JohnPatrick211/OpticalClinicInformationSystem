@@ -42,7 +42,7 @@
 
 
                                 <div class="col-sm-4 mb-3">
-                                <h6 class="h6 mt-2 text-gray-800">{{$users6->branchname}}</h6>
+                                <!-- <h6 class="h6 mt-2 text-gray-800">{{$users6->branchname}}</h6> -->
                               <input type="hidden" name="certificationreportbranch" id="certificationreportbranch" value="{{$LoggedUserInfo -> branch_id}}">
                               <input type="hidden" name="certificationreportdoctorname" id="certificationreportdoctorname" value="{{$LoggedUserInfo -> id}}">
                               </div>

@@ -172,6 +172,16 @@ Route::get('doctor-dashboard', [App\Http\Controllers\LoginController::class, 'do
 Route::get('doctor-patient-information',[App\Http\Controllers\PatientInformationController::class, 'DoctorPatientInformationView'])->middleware('Islogged');
 //doctor Patient Approval
 Route::get('doctor-patient-approval',[App\Http\Controllers\PatientApprovalController::class, 'DoctorPatientApprovalView'])->middleware('Islogged');
+//doctor Patient History
+Route::get('doctor-patient-history',[App\Http\Controllers\DoctorPatientHistoryController::class, 'HistoryView'])->middleware('Islogged');
+Route::get('doctorpatienthistory-data',[App\Http\Controllers\DoctorPatientHistoryController::class, 'PatientHistoryData'])->middleware('Islogged');
+Route::get('/doctorpatienthistory/getpatienthistoryinfo/{invoice_no}', [App\Http\Controllers\DoctorPatientHistoryController::class, 'getPatientHistoryData']);
+Route::get('doctorpatienthistory/preview-invoice/{wholesale_discount_amount}/{senior_pwd_discount_amount}/{billingbranch}/{patientname}/{invoice_no}', [App\Http\Controllers\DoctorPatientHistoryController::class, 'patienthistorypreviewInvoice']);
+//doctor PATIENT PRESCRIPTION
+Route::get('doctor-patient-prescription', [App\Http\Controllers\PatientPrescriptionController::class, 'doctorPrescriptionView'])->middleware('Islogged');
+Route::get('doctorpatientprescription-data',[App\Http\Controllers\PatientPrescriptionController::class, 'doctorPatientPrescriptionData'])->middleware('Islogged');
+Route::get('/doctorpatientprescription/getpatientprescriptioninfo/{id}', [App\Http\Controllers\PatientPrescriptionController::class, 'doctorgetPatientPrescriptionData']);
+Route::get('doctorpatientprescription/preview-prescription/{doctorname}/{branchname}/{date}/{time}/{patient_id}/{prescription}', [App\Http\Controllers\PatientPrescriptionController::class, 'doctorpatientprescriptionpreview']);
 //doctor Appointment Approval
 Route::get('doctor-appointment-approval',[App\Http\Controllers\AppointmentApprovalController::class, 'DoctorAppointmentApprovalView'])->middleware('Islogged');
 //doctor Appointment List
@@ -219,6 +229,14 @@ Route::get('staffpatientprescription/preview-prescription/{doctorname}/{branchna
 Route::get('staff-appointment-approval',[App\Http\Controllers\AppointmentApprovalController::class, 'StaffAppointmentApprovalView'])->middleware('Islogged');
 //staff Appointment List
 Route::get('staff-appointment-list',[App\Http\Controllers\AppointmentListController::class, 'StaffAppointmentListView'])->middleware('Islogged');
+//doctor Sales Reports 
+Route::get('staff-sales-reports',[App\Http\Controllers\SalesReportController::class, 'StaffSalesReportView'])->middleware('Islogged');
+//doctor Services Reports
+Route::get('staff-services-reports',[App\Http\Controllers\ServicesReportController::class, 'StaffServicesReportView'])->middleware('Islogged');
+//doctor Appointment Reports
+Route::get('staff-appointment-reports',[App\Http\Controllers\AppointmentReportController::class, 'StaffAppointmentReportView'])->middleware('Islogged');
+//doctor Certification Reports
+Route::get('staff-certification-reports',[App\Http\Controllers\CertificationReportController::class, 'StaffCertificationReportView'])->middleware('Islogged');
 
 //SECRETARY INTERFACE
 Route::get('secretary-dashboard', [App\Http\Controllers\LoginController::class, 'secretary'])->middleware('Islogged');
@@ -228,6 +246,16 @@ Route::get('addpatient',[App\Http\Controllers\RegisterController::class, 'addpat
 Route::post('registerpatient',[App\Http\Controllers\RegisterController::class, 'registerpatient'])->middleware('Islogged');
 //secretary Patient Approval
 Route::get('secretary-patient-approval',[App\Http\Controllers\PatientApprovalController::class, 'SecretaryPatientApprovalView'])->middleware('Islogged');
+//secretary Patient History
+Route::get('secretary-patient-history',[App\Http\Controllers\SecretaryPatientHistoryController::class, 'HistoryView'])->middleware('Islogged');
+Route::get('secretarypatienthistory-data',[App\Http\Controllers\SecretaryPatientHistoryController::class, 'PatientHistoryData'])->middleware('Islogged');
+Route::get('/secretarypatienthistory/getpatienthistoryinfo/{invoice_no}', [App\Http\Controllers\SecretaryPatientHistoryController::class, 'getPatientHistoryData']);
+Route::get('secretarypatienthistory/preview-invoice/{wholesale_discount_amount}/{senior_pwd_discount_amount}/{billingbranch}/{patientname}/{invoice_no}', [App\Http\Controllers\SecretaryPatientHistoryController::class, 'patienthistorypreviewInvoice']);
+//secretary PATIENT PRESCRIPTION
+Route::get('secretary-patient-prescription', [App\Http\Controllers\PatientPrescriptionController::class, 'secretaryPrescriptionView'])->middleware('Islogged');
+Route::get('secretarypatientprescription-data',[App\Http\Controllers\PatientPrescriptionController::class, 'secretaryPatientPrescriptionData'])->middleware('Islogged');
+Route::get('/secretarypatientprescription/getpatientprescriptioninfo/{id}', [App\Http\Controllers\PatientPrescriptionController::class, 'secretarygetPatientPrescriptionData']);
+Route::get('secretarypatientprescription/preview-prescription/{doctorname}/{branchname}/{date}/{time}/{patient_id}/{prescription}', [App\Http\Controllers\PatientPrescriptionController::class, 'secretarypatientprescriptionpreview']);
 //secretary Appointment Approval
 Route::get('secretary-appointment-approval',[App\Http\Controllers\AppointmentApprovalController::class, 'SecretaryAppointmentApprovalView'])->middleware('Islogged');
 //secretary Appointment List
@@ -253,6 +281,7 @@ Route::get('secretary-product-data',[App\Http\Controllers\ProductMaintenanceCont
 //secretary Schedule Maintenance
 Route::get('secretary-maintenance-schedule',[App\Http\Controllers\ScheduleController::class, 'Secretaryschedule'])->middleware('Islogged');
 Route::get('secretary-schedule-data',[App\Http\Controllers\ScheduleController::class, 'SecretaryScheduleData'])->middleware('Islogged');
+Route::get('staff-patient-information',[App\Http\Controllers\PatientInformationController::class, 'StaffPatientInformationView'])->middleware('Islogged');
 
 //PATIENT INTERFACE
 Route::get('patient-dashboard', [App\Http\Controllers\LoginController::class, 'patient'])->middleware('Islogged');

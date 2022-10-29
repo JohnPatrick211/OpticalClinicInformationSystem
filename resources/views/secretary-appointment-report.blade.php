@@ -34,8 +34,8 @@
                                     <div class="mt-2">
                                 </div>
 
-                                <div class="col-sm-2 mb-3">
-                                <h6 class="h6 mt-2 text-gray-800">{{$users6->branchname}}</h6>
+                                <!-- <div class="col-sm-2 mb-3"> -->
+                                <!-- <h6 class="h6 mt-2 text-gray-800">{{$users6->branchname}}</h6> -->
                               <input type="hidden" name="appointmentreportbranch" id="appointmentreportbranch" value="{{$LoggedUserInfo -> branch_id}}">
                               <!-- <input type="hidden" name="appointmentreportdoctorname" id="appointmentreportdoctorname" value="{{$LoggedUserInfo -> id}}"> -->
                             <!-- <select class="form-control" style="width:auto;" name="appointmentreportbranch" id="appointmentreportbranch">
@@ -44,11 +44,11 @@
                                                     <option value="{{$item->id}}">{{$item->branchname}}</option>
                                                 @endforeach
                                                 </select> -->
-                              </div>
+                              <!-- </div> -->
 
-                              <div class="mt-2">
+                              <!-- <div class="mt-2">
                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                </div>
+                                </div> -->
                                 
                         
 

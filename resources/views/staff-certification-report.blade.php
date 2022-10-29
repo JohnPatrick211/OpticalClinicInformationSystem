@@ -1,10 +1,10 @@
-@include('modals.doctor_product_modals')
-@extends('layouts.doctor')
+@include('modals.staff_certification_modals')
+@extends('layouts.staff')
 
 @section('content')
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Product Maintenance</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Certification Report</h1>
                      @if(count($errors)>0)
                     <div class="alert alert-danger">
                         <ul>
@@ -32,55 +32,48 @@
                       {{ \Session::get('danger') }}
                     </div>
                     @endif
-                    <div class="row">
 
-                        <div class="col-sm-2 col-md-2 col-lg-10 mb-3">
-                          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#DoctorProductModal" id="btn-add-product"><span class='fa fa-plus'></span> Add Product</button>
+                        <div class="row mb-2">
+
+                        <div class="col-sm-2 mb-3">
+                          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#StaffCertificationModal" id="btn-add-certification"><span class='fa fa-plus'></span> Add Medical Certificate</button>
 
                           </div>
-                        </div>
-                        <!-- <div class="row mb-2"> -->
 
 
+                                <!-- <div class="col-sm-4 mb-3"> -->
+                                <!-- <h6 class="h6 mt-2 text-gray-800">{{$users6->branchname}}</h6> -->
+                              <input type="hidden" name="certificationreportbranch" id="certificationreportbranch" value="{{$LoggedUserInfo -> branch_id}}">
+                              <!-- <input type="hidden" name="certificationreportdoctorname" id="certificationreportdoctorname" value="{{$LoggedUserInfo -> id}}"> -->
+                              <!-- </div> -->
 
-                        <div class="col-sm-2">
-                        <input type="hidden" name="branch" id="mainproductbranch" value="{{$LoggedUserInfo -> branch_id}}">
-                        <!-- <select class="form-control" style="width:auto;" name="branch" id="mainproductbranch">
-                                            <option value="All Branches">All Branches</option>
-                                            @foreach($users4 as $item)
-                                                <option value="{{$item->id}}">{{$item->branchname}}</option>
-                                            @endforeach
-                                            </select>
-                        </div>
+                              <!-- <div class="mt-2">
+                              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                </div>
+                                 -->
+                        
 
-                        <div class="mt-2">
-                            -
-                            </div> -->
+                                <div class="col-sm-2 mb-3">
+                              <select class="form-control" name="certificationreportdoctorname" id="certificationreportdoctorname">
+                              @foreach($users5 as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                              @endforeach
+                              </select>
+                              </div>                 
 
-                        <!-- <div class="col-sm-2 mb-3">
-                            <input data-column="9" type="date" class="form-control" id="vacantdate_to" value="{{ date('Y-m-d') }}">
-                            </div>
-                                
-                                <div class="mt-2">
-                            </div> -->
-
-                        </div>
+                              </div>
+                        
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="datatable-doctor-product" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="datatable-certification" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Product Code</th>
-                                            <th>Name</th>
+                                            <th>Patient Name</th>
+                                            <th>Doctor Name</th>
                                             <th>Branch</th>
-                                            <th>Qty</th>
-                                            <th>Reorder</th>
-                                            <th>Category</th>
-                                            <th>Original Price</th>
-                                            <th>Selling Price</th>
-                                            <th>Markup Rate</th>
+                                            <th>Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

@@ -78,6 +78,27 @@ class SalesReportController extends Controller
          }
     }
 
+    public function StaffSalesReportView(){
+        if(Session::has('LoggedUser')){
+            $users2 = DB::table('tbl_user')->where('id','=', session('LoggedUser'))->first();
+            $users4 = ClinicBranch::orderBy('id', 'ASC')->get();
+            $users5 = Login::orderBy('id', 'ASC')->where('user_role','=','Doctor')->get();
+            $users6 = DB::table('tbl_user')
+            ->select('tbl_user.*','tbl_branch.branchname')
+            ->leftJoin('tbl_branch', 'tbl_user.branch_id', '=', 'tbl_branch.id')
+            ->where('tbl_user.id','=', session('LoggedUser'))
+            ->first();
+             $data = [
+                 'LoggedUserInfo' => $users2,
+                 'users6' =>  $users6,
+             ];
+             //$users3 = User::where('role','employer')->get();
+             return view('staff-sales-report', $data)->with('users4',$users4)->with('users5',$users5);
+
+
+         }
+    }
+
     public function SalesReportData(Request $request)
     {
         $getEm = $this->getSalesReport($request->date_from, $request->date_to, $request-> salesreportbranch);

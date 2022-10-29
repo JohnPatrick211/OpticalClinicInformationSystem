@@ -46,6 +46,43 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-4 col-md-6 mb-4 h-100">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-sm font-weight-bold text-primary text-uppercase mb-3">
+                                        No. of Appointment Completed</div>
+                                    <div class="h3 mb-0 font-weight-bold text-gray-800">{{ $completeappointment }}
+                                     <br><br>
+                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="staff-appointment-reports">Click Here to See More</a></div></div>
+                                    
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-thumbs-up fa-3x text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-danger shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-sm font-weight-bold text-danger text-uppercase mb-3">
+                                        Total Sales for Today</div>
+                                    <div class="h3 mb-0 font-weight-bold text-gray-800"><span style="font-size: 28px;">&#8369;</span> {{number_format($sales, 2, '.',',')}}
+                                     <br><br>   
+                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><a href="staff-sales-reports">Click Here to See More</a></div></div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-money-bill fa-3x text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                  <!-- <div class="col-xl-4 col-md-6 mb-4">
                     <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">

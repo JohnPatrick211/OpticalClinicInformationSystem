@@ -26,7 +26,7 @@
 
               <div class="col-8 mb-2">
                   <label class="col-form-label">Name</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="First, Middle, Last Name" required>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Last Name, First Name, Middle Name" required>
                   <div class="empty-reject-name mr-auto ml-3" style="display: none">
                     <label class="label text-danger">Please input the name</label>
                    </div>
@@ -58,7 +58,7 @@
 
                   <div class="col-2">
                   <label class="col-form-label">Gender</label>
-                  <select class="form-control" name="gender" id="gender">
+                  <select class="form-control" name="gender" id="gender" required>
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
                   </select>
@@ -66,7 +66,7 @@
 
                 <div class="col-3">
                   <label class="col-form-label">Civil Status</label>
-                  <select class="form-control" name="civilstatus" id="civilstatus">
+                  <select class="form-control" name="civilstatus" id="civilstatus" required>
                       <option value="Single">Single</option>
                       <option value="Married">Married</option>
                       <option value="Widowed">Widowed</option>

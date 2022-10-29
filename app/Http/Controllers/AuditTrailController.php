@@ -61,7 +61,7 @@ class AuditTrailController extends Controller
     {
         return DB::table('tbl_audit_trail AS A')
         ->select('A.*')
-        ->whereBetween('A.created_at', [$date_from, date('Y-m-d', strtotime($date_to . " + 1 day"))])
+        ->whereBetween('A.created_at', [$date_to, date('Y-m-d', strtotime($date_from . " + 1 day"))])
         ->get();
     }
 }

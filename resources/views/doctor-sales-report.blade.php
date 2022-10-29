@@ -34,23 +34,23 @@
                                     <div class="mt-2">
                                 </div>
 
-                                <div class="col-sm-3 mb-2">
+                                <!-- <div class="col-sm-3 mb-2"> -->
                             <!-- <select class="form-control" style="width:auto;" name="salesreportbranch" id="salesreportbranch">
                                                 <option value="All Branches">All Branches</option>
                                                 @foreach($users4 as $item)
                                                     <option value="{{$item->id}}">{{$item->branchname}}</option>
                                                 @endforeach
                                                 </select> -->
-                                                <h6 class="h6 mt-2 text-gray-800">{{$users6->branchname}}</h6>
+                                                <!-- <h6 class="h6 mt-2 text-gray-800">{{$users6->branchname}}</h6> -->
                               <input type="hidden"  name="salesreportbranch" id="salesreportbranch" value="{{$LoggedUserInfo -> branch_id}}">
                               <!-- <input type="hidden" name="appointmentapprovaldoctorname" id="appointmentapprovaldoctorname" value="{{$LoggedUserInfo -> id}}"> -->
-                              </div>
+                              <!-- </div> -->
 
                               <!-- <div class="mt-2">
                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                 </div> -->
 
-                              <div class="col-sm-4 mb-2">
+                              <div class="col-sm-2 mb-2">
                               <p>Total sales: <span style="font-size: 21px;">&#8369; <b id="txt-total-sales"></b></span></p>
                           </div>
 

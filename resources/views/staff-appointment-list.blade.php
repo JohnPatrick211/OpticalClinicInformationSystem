@@ -23,7 +23,7 @@
                               <input data-column="9" type="date" class="form-control" id="appointmentlisttoday" value="{{ date('Y-m-d') }}" readonly>
                               </div>
                                 <div class="col-sm-4 ">
-                                <h6 class="h6 mt-2 text-gray-800" style="min-width: 350px;">{{$users6->branchname}}</h6>
+                                <!-- <h6 class="h6 mt-2 text-gray-800" style="min-width: 350px;">{{$users6->branchname}}</h6> -->
                               <input type="hidden" name="appointmentlistbranch" id="appointmentlistbranch" value="{{$LoggedUserInfo -> branch_id}}">
                               <!-- <input type="hidden"name="appointmentlistdoctorname" id="appointmentlistdoctorname" value="{{$LoggedUserInfo -> id}}"> -->
                     </div>

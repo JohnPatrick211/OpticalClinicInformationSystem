@@ -41,7 +41,7 @@
                                 <option value="{{$item->id}}">{{$item->name}}</option>
                               @endforeach
                               </select> -->
-                              <h6 class="h6 mt-2 text-gray-800">{{$users6->branchname}}</h6>
+                              <!-- <h6 class="h6 mt-2 text-gray-800">{{$users6->branchname}}</h6> -->
                               <input type="hidden" name="approvalappointmentbranch" id="approvalappointmentbranch" value="{{$LoggedUserInfo -> branch_id}}">
                               <input type="hidden" name="appointmentapprovaldoctorname" id="appointmentapprovaldoctorname" value="{{$LoggedUserInfo -> id}}">
                               <!-- <h6 class="h6 mt-2 text-gray-800" name="appointmentapprovaldoctorname" id="appointmentapprovaldoctorname">{{$LoggedUserInfo -> id}}</h6> -->
