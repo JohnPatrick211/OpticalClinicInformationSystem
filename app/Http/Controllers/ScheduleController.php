@@ -193,7 +193,7 @@ class ScheduleController extends Controller
 
     public function DoctorScheduleData(Request $request)
     {
-        $getEm = $this->getSchedule($request->mainschedulebranch);
+        $getEm = $this->getDoctorSchedule($request->mainschedulebranch);
          if(request()->ajax())
              {
                 return datatables()->of($getEm)
@@ -241,6 +241,7 @@ class ScheduleController extends Controller
             ->leftJoin('tbl_branch', 'tbl_doctorschedule.branch_id', '=', 'tbl_branch.id')
             ->leftJoin('tbl_user', 'tbl_doctorschedule.doctor_id', '=', 'tbl_user.id')
             ->leftJoin('tbl_doctor', 'tbl_doctorschedule.doctor_id', '=', 'tbl_doctor.doctor_id')
+            ->where('tbl_doctorschedule.doctor_id', session('LoggedUser'))
             ->get();
 
             return $getschedule;
@@ -253,6 +254,35 @@ class ScheduleController extends Controller
             ->leftJoin('tbl_user', 'tbl_doctorschedule.doctor_id', '=', 'tbl_user.id')
             ->leftJoin('tbl_doctor', 'tbl_doctorschedule.doctor_id', '=', 'tbl_doctor.doctor_id')
             ->where('tbl_doctorschedule.branch_id',$mainschedulebranch)
+            ->get();
+
+            return $getschedule;
+        }
+    }
+
+    public function getDoctorSchedule($mainschedulebranch)
+    {
+        if($mainschedulebranch == 'All Branches')
+        {
+            $getschedule = DB::table('tbl_doctorschedule')
+            ->select('tbl_doctorschedule.*','tbl_branch.branchname','tbl_user.name','tbl_doctor.specialty')
+            ->leftJoin('tbl_branch', 'tbl_doctorschedule.branch_id', '=', 'tbl_branch.id')
+            ->leftJoin('tbl_user', 'tbl_doctorschedule.doctor_id', '=', 'tbl_user.id')
+            ->leftJoin('tbl_doctor', 'tbl_doctorschedule.doctor_id', '=', 'tbl_doctor.doctor_id')
+            ->where('tbl_doctorschedule.doctor_id', session('LoggedUser'))
+            ->get();
+
+            return $getschedule;
+        }
+        else
+        {
+            $getschedule = DB::table('tbl_doctorschedule')
+            ->select('tbl_doctorschedule.*','tbl_branch.branchname','tbl_user.name','tbl_doctor.specialty')
+            ->leftJoin('tbl_branch', 'tbl_doctorschedule.branch_id', '=', 'tbl_branch.id')
+            ->leftJoin('tbl_user', 'tbl_doctorschedule.doctor_id', '=', 'tbl_user.id')
+            ->leftJoin('tbl_doctor', 'tbl_doctorschedule.doctor_id', '=', 'tbl_doctor.doctor_id')
+            ->where('tbl_doctorschedule.branch_id',$mainschedulebranch)
+            ->where('tbl_doctorschedule.doctor_id', session('LoggedUser'))
             ->get();
 
             return $getschedule;

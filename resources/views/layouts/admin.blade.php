@@ -74,6 +74,8 @@
                 <div id="collapsePatientApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="patient-information">Patient Information</a>
+                        <a class="collapse-item" href="admin-patient-history">Patient History</a>
+                        <a class="collapse-item" href="admin-patient-prescription">Patient Prescription</a>
                         <a class="collapse-item" href="patient-approval">Patient Approval</a>
                     </div>
                 </div>
@@ -448,6 +450,8 @@
     <script src="js/certificationreport.js"></script>
     <script src="js/salesreport.js"></script>
     <script src="js/servicesreport.js"></script>
+    <script src="js/adminpatienthistory.js"></script>
+    <script src="js/adminpatientprescription.js"></script>
     <script src="js/patientinformation.js"></script>
     <script src="js/require-2.3.5.min.js"></script>
     <script src="js/bootstrap-multiselect.js"></script>

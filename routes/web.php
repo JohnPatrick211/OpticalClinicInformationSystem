@@ -31,6 +31,16 @@ Route::get('/signup/validate-otp/{otp}', [App\Http\Controllers\RegisterControlle
 Route::get('patient-information',[App\Http\Controllers\PatientInformationController::class, 'PatientInformationView'])->middleware('Islogged');
 Route::get('patientinformation-data',[App\Http\Controllers\PatientInformationController::class, 'PatientInformation'])->middleware('Islogged');
 Route::get('/patientinformation/getpatientinfo/{id}', [App\Http\Controllers\PatientInformationController::class, 'getPatientInfo']);
+//Admin Patient History
+Route::get('admin-patient-history',[App\Http\Controllers\AdminPatientHistoryController::class, 'HistoryView'])->middleware('Islogged');
+Route::get('adminpatienthistory-data',[App\Http\Controllers\AdminPatientHistoryController::class, 'PatientHistoryData'])->middleware('Islogged');
+Route::get('/adminpatienthistory/getpatienthistoryinfo/{invoice_no}', [App\Http\Controllers\AdminPatientHistoryController::class, 'getPatientHistoryData']);
+Route::get('adminpatienthistory/preview-invoice/{wholesale_discount_amount}/{senior_pwd_discount_amount}/{billingbranch}/{patientname}/{invoice_no}', [App\Http\Controllers\AdminPatientHistoryController::class, 'patienthistorypreviewInvoice']);
+//Admin PATIENT PRESCRIPTION
+Route::get('admin-patient-prescription', [App\Http\Controllers\PatientPrescriptionController::class, 'adminPrescriptionView'])->middleware('Islogged');
+Route::get('adminpatientprescription-data',[App\Http\Controllers\PatientPrescriptionController::class, 'adminPatientPrescriptionData'])->middleware('Islogged');
+Route::get('/adminpatientprescription/getpatientprescriptioninfo/{id}', [App\Http\Controllers\PatientPrescriptionController::class, 'admingetPatientPrescriptionData']);
+Route::get('adminpatientprescription/preview-prescription/{doctorname}/{branchname}/{date}/{time}/{patient_id}/{prescription}', [App\Http\Controllers\PatientPrescriptionController::class, 'adminpatientprescriptionpreview']);
 //Patient Approval
 Route::get('patient-approval-data',[App\Http\Controllers\PatientApprovalController::class, 'PatientApproval'])->middleware('Islogged');
 Route::get('patient-approval-data-approved',[App\Http\Controllers\PatientApprovalController::class, 'PatientApproved'])->middleware('Islogged');

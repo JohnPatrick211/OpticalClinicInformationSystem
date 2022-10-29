@@ -151,10 +151,8 @@ class PatientApprovalController extends Controller
             ->where('tbl_user.id',$id)
             ->get();
 
-
-            $message =  "<p>From: " . "Optical Clinic"  . "</p>" .
-                    "<p>Patient Name: " . $users->name  . "</p>" .
-                    "<p>Message: " . "Good day, your registration has been approved. You can proceed to use our services in this platform. Our service platform is for online optical patient scheduling. We make people realize a good vision and having no bad sight. We serve a best service you are looking for and meet your expectations." . "</p>";
+            $message =  "<p>" . "Good day " . $users->name  . "your account has been verified according to your submitted information. You may proceed using our system and also you can change your profile anytime as you requested. Have a Nice Day!
+            Have a Nice Day!" . "</p>";
 
         Mail::to($email)->send(new MailVerify($message));
         $getname = Session::get('Name');
@@ -169,8 +167,15 @@ class PatientApprovalController extends Controller
         ->where('tbl_user.id', $id)
         ->delete();
 
+        $name = DB::table('tbl_user')
+        ->select('tbl_user.name')
+        ->where('tbl_user.id',$id)
+        ->get();
+
+        $users = Login::where('id', '=', $id)->first();
+
         $email = $request->input('email');
-              $message =  "Good Day!<br><br>"."<p>We really appreciate the effort you put into this. Unfortunately, We are unable to approve your account at this time. We received and have reviewed the content of your information. At this moment, we would encourage you to check and re-arrange the details herein. You may sign up again in our website<p>";
+              $message =  "Good Day" . $users->name  . "<br><br>"."<p>We really appreciate the effort you put into this. Unfortunately, We are unable to approve your account at this time. We received and have reviewed the content of your information. At this moment, we would encourage you to check and re-arrange the details herein. You may sign up again in our website. <br><br>Have a Nice Day!<p>";
 
         Mail::to($email)->send(new MailVerify($message));
         $getname = Session::get('Name');

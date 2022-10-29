@@ -134,7 +134,7 @@ class BookAppointmentController extends Controller
             ->get();
 
 
-            $message =  "<p> Good Day " . $users->name  . ", Your Appointment has been add on the Pending List. Please wait for the Approval Result on your email or You can check your status in your account and please check your schedule according to your time, We serve a best service you are looking for and meet your expectations.</p>";
+            $message =  "<p> Hello " . $users->name  . ", Your Appointment has been add on the Pending List. Please wait for the Approval Result on your email or You can check your status in your account and please check your schedule according to your time, We serve a best service you are looking for and meet your expectations.<br><br> Have a Nice Day!</p>";
 
                     Mail::to($email)->send(new MailMessageAppointment($message));
 

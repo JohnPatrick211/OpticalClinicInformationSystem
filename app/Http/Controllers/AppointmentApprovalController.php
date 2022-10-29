@@ -324,7 +324,7 @@ class AppointmentApprovalController extends Controller
             ->get();
 
 
-    $message =  "<p>Message: " . "Good day, your appointment has been approved." . "</p>";
+    $message =  "<p>"."Good day " . $users->name  . " , your appointment schedule has been approved. <br><br> Have a Nice Day!" . "</p>";
 
     Mail::to($email)->send(new MailVerify($message));
     $getname = Session::get('Name');
