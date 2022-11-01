@@ -318,6 +318,8 @@ class AppointmentApprovalController extends Controller
             'status' => 'Approved',
         ]);
 
+        $users = Login::where('id', '=',  $patient_id)->first();
+
         $email = DB::table('tbl_user')
             ->select('tbl_user.email')
             ->where('tbl_user.id',$patient_id)
@@ -338,6 +340,10 @@ class AppointmentApprovalController extends Controller
         ->where('tbl_appointment.id', $id)
         ->delete();
 
+        $users = Login::where('id', '=',  $patient_id)->first();
+
+
+
         $email = DB::table('tbl_user')
             ->select('tbl_user.email')
             ->where('tbl_user.id',$patient_id)
@@ -348,7 +354,7 @@ class AppointmentApprovalController extends Controller
         Mail::to($email)->send(new MailVerify($message));
         $getname = Session::get('Name');
             $getusertype = Session::get('User-Type');
-            base::recordAction( $getname, $getusertype,'Appointment Approval', 'Appointment Rejected, Patient Name'.$name);
+            base::recordAction( $getname, $getusertype,'Appointment Approval', 'Appointment Rejected, Patient Name: '.$users->name);
     }
 
 }
