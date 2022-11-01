@@ -28,7 +28,7 @@ $(document).ready(function()
             {data: 'user_type', name: 'user_type'},
             {data: 'module', name: 'module'},
             {data: 'action', name: 'action', orderable:false},
-            {data: 'created_at', name: 'created_at'},
+            {data: 'formatteddate', name: 'formatteddate'},
            ],
           order: [[0, 'desc']],
 

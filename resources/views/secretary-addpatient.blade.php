@@ -40,11 +40,6 @@
                         <form action="registerpatient" method="POST" enctype="multipart/form-data">
                         <div class="row">
                         {{ csrf_field() }}
-
-                        <div class="col-md-3 mb-3">
-                            <label class="label-small">Last Name</label>
-                            <input type="text" class="form-control" name= "registerlastname" id="registerlastname" placeholder="Last Name" value="">
-                        </div>
                         <div class="col-md-3 mb-3">
                             <label class="label-small">First Name</label>
                             <input type="text" class="form-control" name= "registerfirstname" id="registerfirstname" placeholder="First Name" value="">
@@ -53,6 +48,10 @@
                         <div class="col-md-3 mb-3">
                             <label class="label-small">Middle Name</label>
                             <input type="text" class="form-control" name= "registermiddlename" id="registermiddlename" placeholder="Middle Name" value="">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Last Name</label>
+                            <input type="text" class="form-control" name= "registerlastname" id="registerlastname" placeholder="Last Name" value="">
                         </div>                      
                         <div class="col-md-3 mb-6">
                             <label class="label-small">Username</label>

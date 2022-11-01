@@ -60,7 +60,7 @@ class AuditTrailController extends Controller
     public function getAuditTrail($date_from, $date_to)
     {
         return DB::table('tbl_audit_trail AS A')
-        ->select('A.*')
+        ->select('A.*', DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d %h:%i:%s") as formatteddate'))
         ->whereBetween('A.created_at', [$date_to, date('Y-m-d', strtotime($date_from . " + 1 day"))])
         ->get();
     }

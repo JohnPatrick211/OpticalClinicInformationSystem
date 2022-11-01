@@ -26,7 +26,7 @@
 
               <div class="col-8 mb-2">
                   <label class="col-form-label">Name</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="Last Name, First Name, Middle Name" required>
+                  <input type="text" class="form-control" name="name" id="name" placeholder="First, Middle, Last Name" required>
                   <div class="empty-reject-name mr-auto ml-3" style="display: none">
                     <label class="label text-danger">Please input the name</label>
                    </div>
@@ -93,7 +93,7 @@
 
                 <div class="col-12">
                   <label class="col-form-label">Address</label>
-                  <input type="text" class="form-control" name="address" id="address" placeholder="House Number, Street, Barangay, City, Province" required>
+                  <input type="text" class="form-control" name="address" id="address" placeholder="House Number, Street, Barangay, City/Municipality, Province" required>
                   <div class="empty-reject-address mr-auto ml-3" style="display: none">
                     <label class="label text-danger">Please input the address</label>
                    </div>

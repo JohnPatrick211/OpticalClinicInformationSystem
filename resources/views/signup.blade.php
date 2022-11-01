@@ -29,20 +29,20 @@
                         <div class="col-md-12 mb-3">
                             <h4 style="color: #555555">Create your account</h4>
                         </div>
-                        
-                        <div class="col-md-3 mb-3">
-                            <label class="label-small">Last Name</label>
-                            <input type="text" class="form-control" id="lastname" placeholder="lastname">
-                        </div>
 
                         <div class="col-md-3 mb-3">
                             <label class="label-small">First Name</label>
-                            <input type="text" class="form-control" id="firstname" placeholder="firstname">
+                            <input type="text" class="form-control" id="firstname" placeholder="First Name">
                         </div>
 
                         <div class="col-md-3 mb-3">
                             <label class="label-small">Middle Name</label>
-                            <input type="text" class="form-control" id="middlename" placeholder="middlename">
+                            <input type="text" class="form-control" id="middlename" placeholder="Middle Name">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="label-small">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" placeholder="Last Name">
                         </div>
                         
                         <div class="col-md-3 mb-6">
