@@ -42,17 +42,21 @@
 
 
 
-                            <div class="col-sm-2 mb-3">
-                              <input data-column="9" type="date" class="form-control" id="audit-date_from" value="{{ date('Y-m-d') }}">
-                              </div>
+                            
+
+                              <div class="col-sm-2 mb-3">
+                                <input data-column="9" type="date" class="form-control" id="audit-date_to" value="{{ date('Y-m-d') }}">
+                                </div>
 
                               <div class="mt-2">
                                 -
                                 </div>
 
-                              <div class="col-sm-2 mb-3">
-                                <input data-column="9" type="date" class="form-control" id="audit-date_to" value="{{ date('Y-m-d') }}">
-                                </div>
+                                <div class="col-sm-2 mb-3">
+                              <input data-column="9" type="date" class="form-control" id="audit-date_from" value="{{ date('Y-m-d') }}">
+                              </div>
+
+                            
 
 
                              </div>

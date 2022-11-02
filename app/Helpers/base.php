@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Helpers;
-use DB, Auth, Session;
+use DB, Auth, Session, Carbon\Carbon;
 class base
 {
     public static function getName()
@@ -94,7 +94,7 @@ class base
                 'user_type' => $user_type,
                 'module' => $module,
                 'action' => $action,
-                'created_at' => date('Y-m-d h:m:s')
+                'created_at' => Carbon::now()
             ]);
     }
 

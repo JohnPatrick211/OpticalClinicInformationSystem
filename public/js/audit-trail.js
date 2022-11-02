@@ -49,7 +49,7 @@ $(document).ready(function()
       $('#audit-date_to').change(function()
       {
         let date_from = $('#audit-date_from').val()
-        let date_to = $('#date_to').val();
+        let date_to = $('#audit-date_to').val();
          console.log(date_from);
          console.log(date_to);
          $('#audit-table').DataTable().destroy();
