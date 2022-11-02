@@ -87,7 +87,7 @@ class ServiceMaintenanceController extends Controller
     public function storeservice(Request $request)
     {
         $service = new Service();
-        $validateservice =  Service::where('servicename','=', $request->input('servicename'))->first();
+        $validateservice =  Service::where('servicename','=', $request->input('servicename'))->where('branch_id','=', $request->input('servicebranch'))->first();
         if($validateservice)
         {
             return back()->with('danger', 'Service Already Exist');
