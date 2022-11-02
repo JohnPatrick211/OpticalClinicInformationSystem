@@ -140,11 +140,28 @@ class BillingController extends Controller
         $key3 = $data['type'];
         if($key3 == 'Product')
         {
-            return DB::table('tbl_product')
-            ->select("tbl_product.*")
-            ->where('tbl_product.status', 1)
-            ->where('tbl_product.productname', 'LIKE', '%'.$key.'%')
-            ->where('tbl_product.branch_id', $key2)
+            // return DB::table('tbl_product')
+            // ->select("tbl_product.*")
+            // ->where('tbl_product.status', 1)
+            // ->where('tbl_product.productname', 'LIKE', '%'.$key.'%')
+            // ->where('tbl_product.branch_id', $key2)
+            // ->get();
+
+            return DB::table('tbl_product as P')
+            ->select("P.*", 'P.id as product_code',
+                    'productname',
+                    'reorder', 
+                    'orig_price', 
+                    'selling_price', 
+                    'qty', 
+                    'C.name as category',
+                    'B.branchname'
+                    )
+            ->leftJoin('tbl_category as C', 'C.id', '=', 'P.category_id')
+            ->leftJoin('tbl_branch as B', 'B.id', '=', 'P.branch_id')
+            ->where('P.status', 1)
+            ->where('P.productname', 'LIKE', '%'.$key.'%')
+            ->where('P.branch_id', $key2)
             ->get();
         }
         if($key3 == 'Service')
