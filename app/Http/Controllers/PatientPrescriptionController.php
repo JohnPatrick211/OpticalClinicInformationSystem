@@ -922,14 +922,14 @@ class PatientPrescriptionController extends Controller
          <hr />
 
          <p>Patient Name: '.$selectedpatient->name.'<br>
-            Age: '.$selectedpatient->age.' &nbsp;  Sex: '.$selectedpatient->gender.' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '.date("M/d/Y", strtotime($date)).' <br>
+            Age: '.$selectedpatient->age.' &nbsp;  Sex: '.$selectedpatient->gender.' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '.date("M/d/Y", strtotime($date)).' <br>
            
          </p>
          <div class ="right">
          <img src="img/rx.png" style="width:20%; align:middle;" >
          </div>
          <br><br><br>
-         <p align="justify">'.$prescription.'</p>
+         <p align="justify">'.nl2br($prescription).'</p>
          <p class = "ar">'.$doctorname.', MD</p>
         
 
