@@ -52,20 +52,6 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAppointmentApproval"
-                    aria-expanded="true" aria-controls="collapseApproval">
-                    <i class="fas fa-fw fa-calendar-check"></i>
-                    <span>Appointment</span>
-                </a>
-                <div id="collapseAppointmentApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="admin-appointment-approval">Appointment Approval</a>
-                        <a class="collapse-item" href="admin-appointment-list">Appointment List</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatientApproval"
                     aria-expanded="true" aria-controls="collapseApproval">
                     <i class="fas fa-fw fa-address-book"></i>
@@ -77,6 +63,20 @@
                         <a class="collapse-item" href="admin-patient-history">Patient History</a>
                         <a class="collapse-item" href="admin-patient-prescription">Patient Prescription</a>
                         <a class="collapse-item" href="patient-approval">Patient Approval</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAppointmentApproval"
+                    aria-expanded="true" aria-controls="collapseApproval">
+                    <i class="fas fa-fw fa-calendar-check"></i>
+                    <span>Appointment</span>
+                </a>
+                <div id="collapseAppointmentApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="admin-appointment-approval">Appointment Approval</a>
+                        <a class="collapse-item" href="admin-appointment-list">Appointment List</a>
                     </div>
                 </div>
             </li>

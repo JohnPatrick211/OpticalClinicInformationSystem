@@ -25,12 +25,12 @@ class LoginController extends Controller
     {
         $request->validate([
             'username'=>'required',
-            'password'=>'required|min:5|max:12'
+            'password'=>'required|min:8|max:12'
         ],
          [
         'username.required' => 'Please type your username',
         'password.required' => 'Please type your password',
-        'password.min' => 'Password must have minimum of 5 characters',
+        'password.min' => 'Password must have minimum of 8 characters',
         'password.max' => 'Password must have maximum of 12 characters'
         
     ]);

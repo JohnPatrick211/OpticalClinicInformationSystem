@@ -76,7 +76,7 @@ $(document).ready(function(){
     }
 
     function validatePassword(password, confirm_password) {
-        if(password.replace(/ /g,'').length >= 6){
+        if(password.replace(/ /g,'').length >= 8){
             if(password == confirm_password){
                 return true;
             }

@@ -118,7 +118,7 @@
     
                         <div class="col-md-6 mb-3">
                             <label class="label-small">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Minimum of 8 characters">
+                            <input type="password" onkeyup='check3();' class="form-control" id="password" placeholder="Minimum of 8 characters">
                         </div> 
 
                         <div class="col-md-6">
@@ -128,7 +128,13 @@
 
                         <div class="col-md-6">
                             <label class="label-small">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirm_password">
+                            <input type="password" onkeyup='check3();' class="form-control" id="confirm_password">
+                            <div class="signupprofile-fail" style="display: none;">
+                            <span class="text-danger">Password Does Not Match</span>
+                            </div>
+                            <div class="signupprofile-success" style="display: none;">
+                            <span class="text-success">Password Match</span>
+                            </div>
                         </div>
                         
                         <div class="col-md-4">
@@ -169,6 +175,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
 	<!-- <script src="{{asset('js/admin-login.js')}}"></script> -->
     <script src="js/signup.js"></script>
+    <script src="js/login.js"></script>
 
 </body>
 </html>

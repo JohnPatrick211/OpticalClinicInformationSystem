@@ -94,7 +94,6 @@ class AdminPatientHistoryController extends Controller
         ->select("C.*", 'S.*' ,'S.selling_price as selling_price2','P.*','C.qty as qty_order', 'C.id as id')
         ->leftJoin('tbl_product as P', 'C.product_id', '=', 'P.id')
         ->leftJoin('tbl_service as S', 'C.product_id', '=', 'S.id')
-        ->where('C.branch_id',Session::get('Branch'))
         ->where('C.invoice_no',$invoice_no)
         ->get();
         $output = $this->generateSalesInvoice($data, $wholesale_discount_amount, $senior_pwd_discount_amount, $selectedbranch,  $selectedpatientname);

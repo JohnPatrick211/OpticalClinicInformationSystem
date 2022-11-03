@@ -42,4 +42,16 @@ var check = function() {
     }
   }
 
+  var check3 = function() {
+    if (document.getElementById('password').value ==
+      document.getElementById('confirm_password').value) {
+      $('.signupprofile-success').css('display', 'inline');
+      $('.signupprofile-fail').css('display', 'none');
+    }if(document.getElementById('password').value !=
+    document.getElementById('confirm_password').value){
+      $('.signupprofile-fail').css('display', 'inline');
+      $('.signupprofile-success').css('display', 'none');
+    }
+  }
+
 

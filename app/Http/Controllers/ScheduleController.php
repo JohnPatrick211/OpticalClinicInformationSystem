@@ -241,7 +241,6 @@ class ScheduleController extends Controller
             ->leftJoin('tbl_branch', 'tbl_doctorschedule.branch_id', '=', 'tbl_branch.id')
             ->leftJoin('tbl_user', 'tbl_doctorschedule.doctor_id', '=', 'tbl_user.id')
             ->leftJoin('tbl_doctor', 'tbl_doctorschedule.doctor_id', '=', 'tbl_doctor.doctor_id')
-            ->where('tbl_doctorschedule.doctor_id', session('LoggedUser'))
             ->get();
 
             return $getschedule;
