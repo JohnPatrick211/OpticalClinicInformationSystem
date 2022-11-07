@@ -74,12 +74,12 @@
 
                   <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
                     <label class="col-form-label">Start Time</label>
-                     <input type="text" step=".01" class="form-control" name="doctor_schedule_start_time" id="doctor_schedule_start_time">
+                     <input type="text" step=".01" class="form-control" name="doctor_schedule_start_time" id="doctor_schedule_start_time" required>
                   </div>
         
                   <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
                     <label class="col-form-label">End Time</label>
-                      <input type="text" step=".01" class="form-control" name="doctor_schedule_end_time" id="doctor_schedule_end_time" min="0">
+                      <input type="text" step=".01" class="form-control" name="doctor_schedule_end_time" id="doctor_schedule_end_time" min="0" required>
                   </div>
           </div>
           <br><br>

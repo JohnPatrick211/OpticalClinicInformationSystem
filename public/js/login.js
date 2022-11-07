@@ -35,11 +35,13 @@ var check = function() {
       document.getElementById('registerconfirm_password').value) {
       $('.registerprofile-success').css('display', 'inline');
       $('.registerprofile-fail').css('display', 'none');
+      document.getElementById('btn-register-user').disabled = false;
     }if(document.getElementById('registerpassword').value !=
     document.getElementById('registerconfirm_password').value){
       $('.registerprofile-fail').css('display', 'inline');
       $('.registerprofile-success').css('display', 'none');
-    }
+      document.getElementById('btn-register-user').disabled = true;
+      }     
   }
 
   var check3 = function() {
@@ -53,5 +55,6 @@ var check = function() {
       $('.signupprofile-success').css('display', 'none');
     }
   }
+
 
 

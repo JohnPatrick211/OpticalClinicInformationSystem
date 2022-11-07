@@ -78,6 +78,9 @@
                 <div class="col-6">
                   <label class="col-form-label">Birthday</label>
                   <input type="date" class="form-control" id="birthdate" placeholder="birthdate" required>
+                  <div class="empty-reject-birthday mr-auto ml-3" style="display: none">
+                        <label class="label text-danger">Please input the birthday</label>
+                       </div>
                 </div>
 
                 <div class="col-6">
@@ -122,7 +125,7 @@
 
                 <div class="col-6 mb-2">
                   <label class="col-form-label">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" required>
+                  <input type="password" class="form-control" name="password" id="password" onkeyup='check4();' required>
                   <div class="reject-password mr-auto ml-3" style="display: none">
                     <label class="label text-danger">Password must be 8 characters</label>
                    </div>
@@ -301,5 +304,18 @@
         </div>
       </div>
     </div>
+
+    <script>
+      var check4 = function() {
+        if (document.getElementById('password').value.trim().length <=
+        7) {
+          $('.reject-password').css('display', 'inline');
+          document.getElementById('btn-save-user').disabled = true;
+        }else{
+          $('.reject-password').css('display', 'none');
+          document.getElementById('btn-save-user').disabled = false;
+          }     
+    }
+    </script>
 
 

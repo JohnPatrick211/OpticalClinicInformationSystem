@@ -93,7 +93,7 @@ function getService (data) {
     html += '<div class="grid-item col-sm-6">';
         html += '<div class="card">';
         if (!data.image) {
-            data.image = "no-image.png";
+            data.image = "serviceplac.jpg";
         }
             html += '<div style="background-color:#C4BFC2;"><img class="card-img-top cover" src="../images/productimage/'+ data.image +'" alt="product image"></div>';
             html += '<div class="card-body">';

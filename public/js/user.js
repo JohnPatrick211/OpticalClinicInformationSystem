@@ -7,6 +7,19 @@ $(document).ready(function()
     fetchAdmin();
     LoadSpecialization();
 
+    // var check4 = function() {
+    //   if (document.getElementById('password').value.trim().length <=
+    //    7) {
+    //     $('.reject-password').css('display', 'inline');
+    //     document.getElementById('btn-register-user').disabled = false;
+    //   }if(document.getElementById('registerpassword').value !=
+    //   document.getElementById('registerconfirm_password').value){
+    //     $('.registerprofile-fail').css('display', 'inline');
+    //     $('.registerprofile-success').css('display', 'none');
+    //     document.getElementById('btn-register-user').disabled = true;
+    //     }     
+    // }
+
     function LoadSpecialization()
     {
       let user_type = $('#user_type').val()
@@ -558,6 +571,17 @@ $(document).ready(function()
                             $('.empty-reject-name').css('display', 'inline');
                             $('.loader').css('display', 'none');
                             $('#btn-save-user').text('Save');
+                        }if(age.trim() == '')
+                        {
+                            $('.empty-reject-age').css('display', 'inline');
+                            $('.loader').css('display', 'none');
+                            $('#btn-save-user').text('Save');
+                        }
+                        if(birthdate.trim() == '')
+                        {
+                            $('.empty-reject-birthday').css('display', 'inline');
+                            $('.loader').css('display', 'none');
+                            $('#btn-save-user').text('Save');
                         }
                         if(email.trim() == '')
                         {
@@ -580,6 +604,11 @@ $(document).ready(function()
                         if(contact_no.trim() == '')
                         {
                             $('.empty-reject-contact_no').css('display', 'inline');
+                            $('.loader').css('display', 'none');
+                            $('#btn-save-user').text('Save');
+                        }
+                        if(specialization.trim() == ''){
+                          $('.empty-reject-specialization').css('display', 'inline');
                             $('.loader').css('display', 'none');
                             $('#btn-save-user').text('Save');
                         }

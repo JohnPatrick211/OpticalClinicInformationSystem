@@ -67,9 +67,9 @@
                                 <thead>
                                   <tr>
                                             <th>Invoice No.</th>
-                                            <th>Product</th>
-                                            <th>Name</th>
-                                            <th>Branch</th>
+                                            <th>Product Code</th>
+                                            <th>Product Name</th>
+                                            <th>Branch Name</th>
                                             <th>Price</th>
                                             <th>Qty</th>
                                             <th>Amount</th>

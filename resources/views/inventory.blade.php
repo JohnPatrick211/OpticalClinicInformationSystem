@@ -68,8 +68,8 @@
                                 <thead>
                                   <tr>
                                             <th style="min-width: 5px">Product Code</th>
-                                            <th>Name</th>
-                                            <th style="min-width: 200px">Branch</th>
+                                            <th>Product Name</th>
+                                            <th style="min-width: 200px">Branch Name</th>
                                             <th>Qty</th>
                                             <th>Reorder</th>
                                             <th>Category</th>

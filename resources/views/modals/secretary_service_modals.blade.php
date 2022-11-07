@@ -60,12 +60,12 @@
 
                   <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
                     <label class="col-form-label">Original Price</label>
-                     <input type="number" step=".01" class="form-control" name="originalprice" id="originalprice">
+                     <input type="number" step=".01" class="form-control" name="originalprice" id="originalprice" required>
                   </div>
         
                   <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
                     <label class="col-form-label">Markup</label>
-                      <input type="number" step=".01" class="form-control" name="markup" id="markup" min="0">
+                      <input type="number" step=".01" class="form-control" name="markup" id="markup" min="0" required>
                   </div>
         
                   <div class="col-sm-12 col-md-6 col-lg-4 mt-2">

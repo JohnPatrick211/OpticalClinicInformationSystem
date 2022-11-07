@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Helpers\base;
 use App\Models\MailVerify;
-use Mail; 
+use Mail;
+use RealRashid\SweetAlert\Facades\Alert; 
 
 use Illuminate\Http\Request;
 

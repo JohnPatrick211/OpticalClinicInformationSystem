@@ -60,12 +60,12 @@
 
                   <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
                     <label class="col-form-label">Original Price</label>
-                     <input type="number" step=".01" class="form-control" name="originalprice" id="originalprice">
+                     <input type="number" step=".01" class="form-control" name="originalprice" id="originalprice" required>
                   </div>
         
                   <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
                     <label class="col-form-label">Markup</label>
-                      <input type="number" step=".01" class="form-control" name="markup" id="markup" min="0">
+                      <input type="number" step=".01" class="form-control" name="markup" id="markup" min="0" required>
                   </div>
         
                   <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
@@ -75,7 +75,7 @@
 
                   <div class="col-12">
                             <label class="col-form-label">Branch</label>
-                            <select class="form-control" name="servicebranch" id="servicebranch">
+                            <select class="form-control" name="servicebranch" id="servicebranch" >
                             @foreach($users4 as $item)
                                 <option value="{{$item->id}}">{{$item->branchname}}</option>
                             @endforeach

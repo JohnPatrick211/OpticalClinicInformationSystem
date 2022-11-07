@@ -448,7 +448,8 @@
     <script src="js/login.js"></script>
     <script src="js/require-2.3.5.min.js"></script>
     <script src="js/bootstrap-multiselect.js"></script>
-    <script src="js/adminlte.js"></script>  
+    <script src="js/adminlte.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js" integrity="sha512-zlWWyZq71UMApAjih4WkaRpikgY9Bz1oXIW5G0fED4vk14JjGlQ1UmkGM392jEULP8jbNMiwLWdM8Z87Hu88Fw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
