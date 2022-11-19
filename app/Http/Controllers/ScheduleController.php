@@ -84,7 +84,8 @@ class ScheduleController extends Controller
     {
         $scheduledoctor = new DoctorSchedule();
         $validatescheduledoctor  =  DoctorSchedule::where('doctor_schedule_start_time','=', $request->input('doctor_schedule_start_time'))
-        ->where('doctor_schedule_end_time','=', $request->input('doctor_schedule_end_time'))->where('branch_id','=', $request->input('schedulebranch'))->first();
+        ->where('doctor_schedule_end_time','=', $request->input('doctor_schedule_end_time'))->where('branch_id','=', $request->input('schedulebranch'))
+        ->where('doctor_id','=', $request->input('scheduledoctorname'))->first();
         if($validatescheduledoctor)
         {
             return back()->with('danger', 'Schedule Already Exist');

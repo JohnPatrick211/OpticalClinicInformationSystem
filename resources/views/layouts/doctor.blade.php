@@ -102,7 +102,7 @@
                 </div>
             </li>
 
-            <li class="nav-item active">
+            <!-- <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseApproval"
                     aria-expanded="true" aria-controls="collapseApproval">
                     <i class="fas fa-fw fa-money-bill"></i>
@@ -114,7 +114,7 @@
                         <a class="collapse-item" href="doctor-inventory">Inventory</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ReportscollapseTwo"

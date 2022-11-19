@@ -85,7 +85,7 @@
 
                 <div class="col-6">
                   <label class="col-form-label">Contact Number</label>
-                  <input type="text" class="form-control" name="contact_no" id="contact_no" required>
+                  <input type="number" class="form-control" name="contact_no" id="contact_no" required>
                   <div class="empty-reject-contact_no mr-auto ml-3" style="display: none">
                     <label class="label text-danger">Please input the contact number</label>
                    </div>

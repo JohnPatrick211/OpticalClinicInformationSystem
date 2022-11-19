@@ -35,10 +35,10 @@
 
                         <div class="row mb-2">
 
-                        <div class="col-sm-2 mb-3">
+                        <!-- <div class="col-sm-2 mb-3">
                           <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#SecretaryCertificationModal" id="btn-add-certification"><span class='fa fa-plus'></span> Add Medical Certificate</button>
 
-                          </div>
+                          </div> -->
 
 
                                 <!-- <div class="col-sm-4 mb-3"> -->
