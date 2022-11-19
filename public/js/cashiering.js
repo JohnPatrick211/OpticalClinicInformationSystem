@@ -107,7 +107,7 @@ function getService (data) {
                 html += '<div class="card-text"></div>';
                 html += '</div>';
                 html += '<div class="d-flex">';
-                html += '<span>Qty</span><input class="qty-'+data.id+'" type="number" min="1" value="1" style="width:50px; margin-left:5px;">';
+                html += '<span>Qty</span><input class="qty-'+data.id+'" type="number" min="1" max="1" value="1" onKeyPress="if(this.value.length==1) return false;" style="width:50px; margin-left:5px;">';
                 html += '<button class="btn btn-sm btn-outline-success ml-2" data-id="'+data.id+'" data-product-code="'+data.id+'" id="btn-add-to-tray">';
                 html += 'Add to tray</button>';
                 html += '</div>';
