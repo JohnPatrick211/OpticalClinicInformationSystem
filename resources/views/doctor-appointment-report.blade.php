@@ -76,7 +76,7 @@
                                   <tr>
                                             <th>Patient Name</th>
                                             <th>Doctor Name</th>
-                                            <th>Branch</th>
+                                            <th>Branch Name</th>
                                             <th>Appointment Date</th>
                                             <th>Appointment Day</th>
                                             <th>Available Time</th>

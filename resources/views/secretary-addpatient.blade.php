@@ -90,7 +90,7 @@
 
                         <div class="col-md-2 mb-3">
                             <label class="label-small">House No.</label>
-                            <input type="text" class="form-control" name="registerhouseno" id="registerhouseno" placeholder="House No." value="" required>
+                            <input type="number" class="form-control" name="registerhouseno" id="registerhouseno" placeholder="House No." value="" required>
                         </div>
 
                         <div class="col-md-2 mb-3">
@@ -120,7 +120,7 @@
             
                         <div class="col-md-6">
                             <label class="label-small">Phone Number</label>
-                            <input type="text" maxlength="11" class="form-control" name="registerphone_no" id="registerphone_no" value="" required>
+                            <input type="number" maxlength="11" class="form-control" name="registerphone_no" id="registerphone_no" value="" required>
                         </div> 
 
                         <div class="col-md-6 mb-3">

@@ -270,6 +270,7 @@ Route::get('secretarypatientprescription/preview-prescription/{doctorname}/{bran
 Route::get('secretary-appointment-approval',[App\Http\Controllers\AppointmentApprovalController::class, 'SecretaryAppointmentApprovalView'])->middleware('Islogged');
 //secretary Appointment List
 Route::get('secretary-appointment-list',[App\Http\Controllers\AppointmentListController::class, 'SecretaryAppointmentListView'])->middleware('Islogged');
+Route::get('secretaryappointment-list-data',[App\Http\Controllers\AppointmentListController::class, 'SecretaryAppointmentList'])->middleware('Islogged');
 //secretary BILLING
 Route::get('secretary-billing', [App\Http\Controllers\BillingController::class, 'secretarybilling'])->middleware('Islogged');
 //secretary Inventory

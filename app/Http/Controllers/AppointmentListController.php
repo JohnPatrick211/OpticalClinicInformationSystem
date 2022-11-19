@@ -109,6 +109,22 @@ class AppointmentListController extends Controller
             ->make(true);
              }
     }
+    public function SecretaryAppointmentList(Request $request)
+    {
+        $getEm = $this->getAppointmentList($request->date_today,$request->appointmentlistbranch,$request->appointmentlistdoctorname);
+         if(request()->ajax())
+             {
+                return datatables()->of($getEm)
+                ->addColumn('action', function($getEm){
+                    $button = '<button type="button" id="btn-view-appointmentprescription" name="btn-view-appointmentprescription" class="btn btn-primary btn-sm get_appointment" employer-id='. $getEm->P.' branch-id='. $getEm->B.' patient-id='.  $getEm->id.' data-toggle="modal" data-target="#SecretaryAppointmentPrescriptionModal"">View</button>';
+
+
+                return $button;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+             }
+    }
     public function getAppointmentList($date_today,$appointmentlistbranch,$appointmentlistdoctorname)
     {
 

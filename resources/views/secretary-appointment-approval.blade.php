@@ -43,13 +43,15 @@
                               <!-- <h6 class="h6 mt-2 text-gray-800" name="appointmentapprovaldoctorname" id="appointmentapprovaldoctorname">{{$LoggedUserInfo -> id}}</h6> -->
                               <!-- </div> -->
 
-                            <div class="col-sm-2 mb-3">
+                            <!-- <div class="col-sm-2 mb-3">
                             <select class="form-control" name="appointmentapprovaldoctorname" id="appointmentapprovaldoctorname">
                               @foreach($users5 as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>
                               @endforeach
                               </select>
-                              </div>
+                              </div> -->
+
+                              <input type="hidden" name="appointmentapprovaldoctorname" id="appointmentapprovaldoctorname" value="All Doctors">
 
 
                               </div>

@@ -87,7 +87,7 @@
                 <div id="collapseAppointmentApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="staff-appointment-approval">Appointment Approval</a>
-                        <a class="collapse-item" href="staff-appointment-list">Appointment List</a>
+                        <!-- <a class="collapse-item" href="staff-appointment-list">Appointment List</a> -->
                     </div>
                 </div>
             </li>

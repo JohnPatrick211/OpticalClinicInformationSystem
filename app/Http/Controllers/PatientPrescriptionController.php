@@ -219,7 +219,7 @@ class PatientPrescriptionController extends Controller
              {
                 return datatables()->of($getEm)
                 ->addColumn('action', function($getEm){
-                $button = '<a class="btn btn-sm btn-success m-1" id="btn-preview-prescription" employer-id='. $getEm->id .' data-toggle="modal" data-target="#EditCategoryModal">
+                $button = '<a class="btn btn-sm btn-success m-1" id="btn-preview-prescription" employer-id='. $getEm->preid .' data-toggle="modal" data-target="#EditCategoryModal">
                     <i class="fa fa-edit"></i></a>';
 
 
@@ -233,8 +233,9 @@ class PatientPrescriptionController extends Controller
     public function staffgetPrescription()
     {
         $getprescription = DB::table('tbl_prescription')
-        ->select('tbl_prescription.*', 'tbl_branch.branchname')
+        ->select('tbl_prescription.*', 'tbl_user.*', 'tbl_prescription.id AS preid', 'tbl_branch.branchname')
         ->leftJoin('tbl_branch', 'tbl_prescription.branchname', '=', 'tbl_branch.id')
+        ->leftJoin('tbl_user', 'tbl_prescription.patient_id', '=', 'tbl_user.id')
         ->where('tbl_prescription.branchname',Session::get('Branch'))
         ->get();
 
@@ -401,7 +402,7 @@ class PatientPrescriptionController extends Controller
              {
                 return datatables()->of($getEm)
                 ->addColumn('action', function($getEm){
-                $button = '<a class="btn btn-sm btn-success m-1" id="btn-preview-prescription" employer-id='. $getEm->id .' data-toggle="modal" data-target="#EditCategoryModal">
+                $button = '<a class="btn btn-sm btn-success m-1" id="btn-preview-prescription" employer-id='. $getEm->preid .' data-toggle="modal" data-target="#EditCategoryModal">
                     <i class="fa fa-edit"></i></a>';
 
 
@@ -415,8 +416,9 @@ class PatientPrescriptionController extends Controller
     public function secretarygetPrescription()
     {
         $getprescription = DB::table('tbl_prescription')
-        ->select('tbl_prescription.*', 'tbl_branch.branchname')
+        ->select('tbl_prescription.*', 'tbl_user.*', 'tbl_prescription.id AS preid', 'tbl_branch.branchname')
         ->leftJoin('tbl_branch', 'tbl_prescription.branchname', '=', 'tbl_branch.id')
+        ->leftJoin('tbl_user', 'tbl_prescription.patient_id', '=', 'tbl_user.id')
         ->where('tbl_prescription.branchname',Session::get('Branch'))
         ->get();
 
@@ -583,7 +585,7 @@ class PatientPrescriptionController extends Controller
              {
                 return datatables()->of($getEm)
                 ->addColumn('action', function($getEm){
-                $button = '<a class="btn btn-sm btn-success m-1" id="btn-preview-prescription" employer-id='. $getEm->id .' data-toggle="modal" data-target="#EditCategoryModal">
+                $button = '<a class="btn btn-sm btn-success m-1" id="btn-preview-prescription" employer-id='. $getEm->preid .' data-toggle="modal" data-target="#EditCategoryModal">
                     <i class="fa fa-edit"></i></a>';
 
 
@@ -597,8 +599,9 @@ class PatientPrescriptionController extends Controller
     public function doctorgetPrescription()
     {
         $getprescription = DB::table('tbl_prescription')
-        ->select('tbl_prescription.*', 'tbl_branch.branchname')
+        ->select('tbl_prescription.*', 'tbl_user.*', 'tbl_prescription.id AS preid', 'tbl_branch.branchname')
         ->leftJoin('tbl_branch', 'tbl_prescription.branchname', '=', 'tbl_branch.id')
+        ->leftJoin('tbl_user', 'tbl_prescription.patient_id', '=', 'tbl_user.id')
         ->where('tbl_prescription.branchname',Session::get('Branch'))
         ->get();
 
@@ -766,7 +769,7 @@ class PatientPrescriptionController extends Controller
              {
                 return datatables()->of($getEm)
                 ->addColumn('action', function($getEm){
-                $button = '<a class="btn btn-sm btn-success m-1" id="btn-preview-prescription" employer-id='. $getEm->id .' data-toggle="modal" data-target="#EditCategoryModal">
+                $button = '<a class="btn btn-sm btn-success m-1" id="btn-preview-prescription" employer-id='. $getEm->preid .' data-toggle="modal" data-target="#EditCategoryModal">
                     <i class="fa fa-edit"></i></a>';
 
 
@@ -782,16 +785,18 @@ class PatientPrescriptionController extends Controller
         if($patientprescriptionbranch == "All Branches")
         {
             $getprescription = DB::table('tbl_prescription')
-            ->select('tbl_prescription.*', 'tbl_branch.branchname')
+            ->select('tbl_prescription.*', 'tbl_user.*', 'tbl_prescription.id AS preid', 'tbl_branch.branchname')
             ->leftJoin('tbl_branch', 'tbl_prescription.branchname', '=', 'tbl_branch.id')
+            ->leftJoin('tbl_user', 'tbl_prescription.patient_id', '=', 'tbl_user.id')
             ->get();
 
             return $getprescription;
         }
         else{
             $getprescription = DB::table('tbl_prescription')
-            ->select('tbl_prescription.*', 'tbl_branch.branchname')
+            ->select('tbl_prescription.*', 'tbl_user.*', 'tbl_prescription.id AS preid', 'tbl_branch.branchname')
             ->leftJoin('tbl_branch', 'tbl_prescription.branchname', '=', 'tbl_branch.id')
+            ->leftJoin('tbl_user', 'tbl_prescription.patient_id', '=', 'tbl_user.id')
             ->where('tbl_prescription.branchname',$patientprescriptionbranch)
             ->get();
 

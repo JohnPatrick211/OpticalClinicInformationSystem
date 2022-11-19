@@ -73,8 +73,8 @@
                                     <thead>
                                         <tr>
                                             <th>Product Code</th>
-                                            <th>Name</th>
-                                            <th>Branch</th>
+                                            <th>Product Name</th>
+                                            <th>Branch Name</th>
                                             <th>Qty</th>
                                             <th>Reorder</th>
                                             <th>Category</th>

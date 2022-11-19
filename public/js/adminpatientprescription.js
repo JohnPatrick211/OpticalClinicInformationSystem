@@ -37,6 +37,7 @@ $(document).ready(function(){
       //  }],
 
           columns:[
+            {data: 'name', name: 'name'},
             {data: 'doctor_name', name: 'doctor_name'},
             {data: 'branchname', name: 'branchname'},
             {data: 'date', name: 'date'},

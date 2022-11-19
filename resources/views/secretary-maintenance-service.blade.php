@@ -74,7 +74,7 @@
                                         <tr>
                                             <th>Service Code</th>
                                             <th>Service Name</th>
-                                            <th>Branch</th>
+                                            <th>Branch Name</th>
                                             <th>Original Price</th>
                                             <th>Selling Price</th>
                                             <th>Action</th>

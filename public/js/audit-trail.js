@@ -23,6 +23,23 @@ $(document).ready(function()
             },
            },
 
+           columnDefs: [{
+            targets: 0,
+            searchable: true,
+         },{
+            targets: 1,
+            searchable: true,
+         },{
+            targets: 2,
+            searchable: false,
+         },{
+            targets: 3,
+            searchable: false,
+         },{
+            targets: 4,
+            searchable: false,
+         }],
+
            columns:[
             {data: 'name', name: 'name'},
             {data: 'user_type', name: 'user_type'},

@@ -22,7 +22,8 @@
                                 <table class="table table-bordered" id="datatable-staffpatientprescription" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Doctor Name</th>
+                                            <th>Patient Name</th>
+                                            <!-- <th>Doctor Name</th> -->
                                             <th>Branch Name</th>
                                             <th>Appointment Date</th>
                                             <th>Appointment Time</th>

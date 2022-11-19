@@ -97,7 +97,7 @@
                 <div id="collapseAppointmentApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="secretary-appointment-approval">Appointment Approval</a>
-                        <a class="collapse-item" href="secretary-appointment-list">Appointment List</a>
+                        <!-- <a class="collapse-item" href="secretary-appointment-list">Appointment List</a> -->
                     </div>
                 </div>
             </li>
@@ -444,6 +444,7 @@
     <script src="js/servicesreport.js"></script>
     <script src="js/secretarypatienthistory.js"></script>
     <script src="js/secretarypatientprescription.js"></script>
+    <script src="js/secretaryappointmentlist.js"></script>
     <script src="js/patientinformation.js"></script>
     <script src="js/login.js"></script>
     <script src="js/require-2.3.5.min.js"></script>

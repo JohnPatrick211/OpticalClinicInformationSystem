@@ -56,5 +56,58 @@ var check = function() {
     }
   }
 
+  $('#registerphone_no').blur(function() {
+    var phone_no = $('#registerphone_no').val();
+    isPhoneNumberExists(phone_no.replace(/\s/g, ''));
+  });
+
+  function isPhoneNumberExists(phone_no) {
+    $.ajax({
+        url:"/signup/isexists",
+        type:"GET",
+        data:{
+            phone_no:phone_no
+        },
+        success:function(response){
+         
+         setTimeout(function() {
+            if(isPhoneNoValid(phone_no) == true)
+            {
+                if(response == '1')
+                {
+                    $("#pn-validation").remove();
+                    $('#registerphone_no')
+                    .after('<span class="label-small text-danger" id="pn-validation">Phone number is already exists.</div>');
+                    $('#registerphone_no').val('');
+                    document.getElementById('btn-register-user').disabled = true;
+                }
+                else{
+                    $("#pn-validation").remove();
+                    document.getElementById('btn-register-user').disabled = false;
+                }
+              }
+         },500);
+          
+        }         
+       })
+}
+
+function isPhoneNoValid(phone_no) {
+  if(phone_no){
+      if(phone_no.replace(/ /g,'').length > 11 || phone_no.replace(/ /g,'').length <= 10){
+          $("#pn-validation").remove();
+          $('#registerphone_no')
+          .after('<span class="label-small text-danger" id="pn-validation">Please enter a valid phone number.</div>');
+          document.getElementById('btn-register-user').disabled = true;
+          return false
+      }
+      else{
+          $("#pn-validation").remove();
+          document.getElementById('btn-register-user').disabled = false;
+          return true;
+      }
+  }
+}
+
 
 

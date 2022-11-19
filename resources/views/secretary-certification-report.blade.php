@@ -72,7 +72,7 @@
                                         <tr>
                                             <th>Patient Name</th>
                                             <th>Doctor Name</th>
-                                            <th>Branch</th>
+                                            <th>Branch Name</th>
                                             <th>Date</th>
                                             <th>Action</th>
                                         </tr>

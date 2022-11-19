@@ -1,4 +1,4 @@
-@include('modals.appointmentprescription_modals')
+@include('modals.secretaryappointmentprescription_modals')
 @extends('layouts.secretary')
 
 @section('content')
@@ -47,7 +47,7 @@
                               </div>
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                              <table class="table responsive table-bordered table-hover" id="appointment-list-table" width="100%" cellspacing="0">
+                              <table class="table responsive table-bordered table-hover" id="secretaryappointment-list-table" width="100%" cellspacing="0">
                                 <thead>
                                   <tr>
                                             <th>Patient Name</th>

@@ -72,7 +72,7 @@
                         <a class="collapse-item" href="doctor-patient-information">Patient Information</a>
                         <a class="collapse-item" href="doctor-patient-history">Patient History</a>
                         <a class="collapse-item" href="doctor-patient-prescription">Patient Prescription</a>
-                        <a class="collapse-item" href="doctor-patient-approval">Patient Approval</a>
+                        <!-- <a class="collapse-item" href="doctor-patient-approval">Patient Approval</a> -->
                     </div>
                 </div>
             </li>
@@ -96,7 +96,7 @@
                 </a>
                 <div id="collapseAppointmentApproval" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="doctor-appointment-approval">Appointment Approval</a>
+                    <!-- <a class="collapse-item" href="doctor-appointment-approval">Appointment Approval</a> -->
                         <a class="collapse-item" href="doctor-appointment-list">Appointment List</a>
                     </div>
                 </div>
@@ -124,15 +124,15 @@
                 </a>
                 <div id="ReportscollapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="doctor-sales-reports">Sales Reports</a>
-                        <a class="collapse-item" href="doctor-services-reports">Service Reports</a>
+                        <!-- <a class="collapse-item" href="doctor-sales-reports">Sales Reports</a>
+                        <a class="collapse-item" href="doctor-services-reports">Service Reports</a> -->
                         <a class="collapse-item" href="doctor-appointment-reports">Appointment Report</a>
                         <a class="collapse-item" href="doctor-certification-reports">Certification Report</a>
                     </div>
                 </div>
             </li>
 
-            <li class="nav-item active">
+            <!-- <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMaintenance"
                     aria-expanded="true" aria-controls="collapseMaintenance">
                     <i class="fas fa-fw fa-cog"></i>
@@ -145,7 +145,7 @@
                         <a class="collapse-item" href="doctor-maintenance-schedule">Schedule Maintenance</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <!--<li class="nav-item active">-->

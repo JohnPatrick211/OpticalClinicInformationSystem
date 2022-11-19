@@ -29,7 +29,8 @@ $(document).ready(function(){
       //  }],
 
           columns:[
-            {data: 'doctor_name', name: 'doctor_name'},
+            {data: 'name', name: 'name'},
+            // {data: 'doctor_name', name: 'doctor_name'},
             {data: 'branchname', name: 'branchname'},
             {data: 'date', name: 'date'},
             {data: 'time', name: 'time'},
@@ -43,6 +44,8 @@ $(document).ready(function(){
           ],
            order: [[1, 'asc']],
         });
+
+  
 
       }
 
