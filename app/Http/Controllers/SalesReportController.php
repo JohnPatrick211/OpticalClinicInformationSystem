@@ -187,7 +187,7 @@ class SalesReportController extends Controller
          $add3 = '';
          if($salesreportbranch == 'All Branches')
          {
-             $add = 'All Optical Clinic';
+             $add = 'Optical Clinic';
          }
          else
          {
@@ -277,9 +277,9 @@ class SalesReportController extends Controller
              <thead>
                  <tr>
                     <th>Invoice No.</th>
-                    <th>Product/Service Code</th>
-                    <th>Name</th>
-                    <th>Branch</th>
+                    <th>Product Code</th>
+                    <th>Product Name</th>
+                    <th>Branch Name</th>
                     <th>Price</th>
                     <th>Qty</th>
                     <th>Amount</th>

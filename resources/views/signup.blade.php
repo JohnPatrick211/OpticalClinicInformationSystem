@@ -81,7 +81,7 @@
 
                         <div class="col-md-2 mb-3">
                             <label class="label-small">House No.</label>
-                            <input type="text" class="form-control" id="houseno" placeholder="House No.">
+                            <input type="number" class="form-control" id="houseno" placeholder="House No.">
                         </div>
 
                         <div class="col-md-2 mb-3">
@@ -111,7 +111,7 @@
             
                         <div class="col-md-6">
                             <label class="label-small">Phone Number</label>
-                            <input type="text" maxlength="11" class="form-control" id="phone_no">
+                            <input type="number" maxlength="11" class="form-control" id="phone_no">
                             <a id="send-OTP" style="cursor: pointer; color:#32638D;" class="label-small"><u>Send OTP</u></a>
                             <span class="countdown label-small"></span>
                         </div> 

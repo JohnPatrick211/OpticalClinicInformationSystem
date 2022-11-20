@@ -187,7 +187,7 @@ class ServicesReportController extends Controller
          $add3 = '';
          if($servicesreportbranch == 'All Branches')
          {
-             $add = 'All Optical Clinic';
+             $add = 'Optical Clinic';
          }
          else
          {
@@ -278,8 +278,8 @@ class ServicesReportController extends Controller
                  <tr>
                     <th>Invoice No.</th>
                     <th>Service Code</th>
-                    <th>Name</th>
-                    <th>Branch</th>
+                    <th>Service Name</th>
+                    <th>Branch Name</th>
                     <th>Price</th>
                     <th>Qty</th>
                     <th>Amount</th>

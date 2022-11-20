@@ -45,6 +45,7 @@
 
                             <div class="col-sm-2 mb-3">
                             <select class="form-control" name="appointmentapprovaldoctorname" id="appointmentapprovaldoctorname">
+                            <option value="All Doctors">All Doctors</option>
                               @foreach($users5 as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>
                               @endforeach
